@@ -1,0 +1,79 @@
+[
+  {
+    "cue": 1,
+    "start": "0:00",
+    "end": "0:49",
+    "duration_seconds": 49,
+    "filename": "cue_01_cold_open.mp3",
+    "transcript_snippet": "We're basically about to solve the greatest detective story ever told... the clues are hidden inside you.",
+    "narrative_beat": "Cold open — two hosts hook the audience with the premise: a 7-million-year cold case. Tone is conspiratorial and urgent. The big reveal lands: every person on earth is African.",
+    "suggested_mood": "tension + intrigue + mystery",
+    "lyria_prompt": "Tense cinematic thriller opening. Low drone strings, sparse piano stabs, subtle African percussion (talking drum undertone), building slowly. 60 BPM. Dark and mysterious with a sense of ancient time. No melody — just mood and pulse. No brass fanfares, no major-key brightness, no orchestral swells."
+  },
+  {
+    "cue": 2,
+    "start": "0:50",
+    "end": "1:51",
+    "duration_seconds": 61,
+    "filename": "cue_02_dna_forensics.mp3",
+    "transcript_snippet": "The proof is written in tiny accidental spelling mistakes — mutations piling up in our DNA for millions of years.",
+    "narrative_beat": "The forensic tool is introduced — DNA as evidence. The molecular clock concept arrives. Feeling of a detective piecing clues together, scanning data, finding patterns.",
+    "suggested_mood": "analytical + unsettled + curious",
+    "lyria_prompt": "Minimalist science-thriller underscore. Sparse electronic textures over plucked strings (pizzicato cello). Steady ticking or clock-like rhythm, 72 BPM. Slightly eerie, like a lab at night. Evokes scanning through data, precision, slow revelation. No vocals. No loud percussion. No cinematic climax."
+  },
+  {
+    "cue": 3,
+    "start": "1:52",
+    "end": "2:50",
+    "duration_seconds": 58,
+    "filename": "cue_03_the_clock.mp3",
+    "transcript_snippet": "The clock isn't a Swiss watch — scientists calibrate it with anchor points from the fossil record.",
+    "narrative_beat": "The DNA clock's precision and limitations are explained. Scientists go hunting for a ghost ancestor. Tension builds toward the 7-million-year number.",
+    "suggested_mood": "methodical + mounting tension",
+    "lyria_prompt": "Slow-burn documentary tension. Sustained string pad (low viola, cello) with a subtle rhythmic pulse like a heartbeat at 65 BPM. Gradual harmonic movement. Feels like a countdown. Hint of ancient Africa — kalimba note occasionally breaking through. No resolution. Ends on an unresolved harmonic suspension."
+  },
+  {
+    "cue": 4,
+    "start": "2:51",
+    "end": "4:03",
+    "duration_seconds": 72,
+    "filename": "cue_04_toumai_discovery.mp3",
+    "transcript_snippet": "In 2001, in the Djurab desert in Chad, they found something that changed everything. A skull.",
+    "narrative_beat": "The ghost ancestor is found — Toumaï. Brunet's announcement. The foramen magnum smoking gun. This is the biggest revelation of the episode: physical proof of the DNA prediction.",
+    "suggested_mood": "revelation + ancient + awe",
+    "lyria_prompt": "Ancient mystery revealed. Deep African percussion (djembe, frame drum) enters slowly under droning strings. A single high woodwind melody (bamboo flute or duduk) emerges — haunting and ancient. 55 BPM, rubato feel. The music should feel like unearthing something sacred. Big but restrained — no triumphant orchestra. No western pop rhythm. No major chord resolution."
+  },
+  {
+    "cue": 5,
+    "start": "4:04",
+    "end": "5:35",
+    "duration_seconds": 91,
+    "filename": "cue_05_family_album.mp3",
+    "transcript_snippet": "Lucy was found in Ethiopia in '74 and became an instant icon... every single link in that chain was found in Africa.",
+    "narrative_beat": "The family album unfolds — Lucy, Homo habilis, an unbroken chain of African fossil evidence. Sense of wonder, accumulation of proof, the story gaining momentum.",
+    "suggested_mood": "wonder + ancient warmth + building",
+    "lyria_prompt": "Warm archaeological wonder. Layered acoustic textures — kora (West African harp), light marimba, sustained strings. 70 BPM, steady and forward-moving. Melodic but subtle — not emotional resolution yet, still building. Evokes savanna and deep time. No drama or climax. No electric instruments. Ends openly, not concluded."
+  },
+  {
+    "cue": 6,
+    "start": "5:36",
+    "end": "7:32",
+    "duration_seconds": 116,
+    "filename": "cue_06_red_herring_verdict.mp3",
+    "transcript_snippet": "Every good detective story has a twist... Java Man sent science down the wrong rabbit hole for 50 years. Darwin saw it coming. Africa: case closed.",
+    "narrative_beat": "The red herring — Java Man's false lead, the Out of Asia theory. Then Darwin vindicated. Then the verdict: all clues point to Africa. This is the climax.",
+    "suggested_mood": "suspense + twist + resolve + triumph",
+    "lyria_prompt": "Two-part documentary climax. Part 1 (first 60s): Thriller tension — syncopated strings, dissonant piano, sense of misdirection and confusion, 80 BPM. Part 2 (final 60s): Resolution builds — African percussion returns, strings swell, kora melody rises, momentum toward a verdict. Not triumphant fanfare — more like deep certainty arriving. 75 BPM. No pop instrumentation. No full orchestral explosion."
+  },
+  {
+    "cue": 7,
+    "start": "7:33",
+    "end": "8:06",
+    "duration_seconds": 33,
+    "filename": "cue_07_resolution.mp3",
+    "transcript_snippet": "One story. One single shared family tree with roots planted deep in African soil. Every border, every wall — built on top of one ancient, undivided human family.",
+    "narrative_beat": "The emotional close. The science resolves into a philosophical statement: all human division is a recent invention. Warm, profound, quietly powerful.",
+    "suggested_mood": "warm + profound + united + resolution",
+    "lyria_prompt": "Gentle, profound resolution. Solo cello or oud melody over a soft string pad. 52 BPM, unhurried. Feels like sitting with a large truth. Warm but not sentimental — no swelling chorus, no movie-trailer crescendo. African tonal color. Fades naturally over 8-10 seconds. No percussion. No drama. Just warmth and stillness."
+  }
+]

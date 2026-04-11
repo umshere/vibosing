@@ -1,0 +1,75 @@
+LYRIA MUSIC PROMPTS — The Missing Ancestor
+============================================================
+Volume guideline: Mix all tracks at 12-18% under narration.
+Tone: Science thriller / documentary / African ancestry
+
+────────────────────────────────────────────────────────────
+PROMPT 1  |  0:00 → 0:49  (49s)
+File: cue_01_cold_open.mp3
+Mood: tension + intrigue + mystery
+Narrative: Cold open — two hosts hook the audience with the premise: a 7-million-year cold case. Tone is conspiratorial and urgent. The big reveal lands: every person on earth is African.
+
+LYRIA PROMPT:
+Tense cinematic thriller opening. Low drone strings, sparse piano stabs, subtle African percussion (talking drum undertone), building slowly. 60 BPM. Dark and mysterious with a sense of ancient time. No melody — just mood and pulse. No brass fanfares, no major-key brightness, no orchestral swells.
+
+────────────────────────────────────────────────────────────
+PROMPT 2  |  0:50 → 1:51  (61s)
+File: cue_02_dna_forensics.mp3
+Mood: analytical + unsettled + curious
+Narrative: The forensic tool is introduced — DNA as evidence. The molecular clock concept arrives. Feeling of a detective piecing clues together, scanning data, finding patterns.
+
+LYRIA PROMPT:
+Minimalist science-thriller underscore. Sparse electronic textures over plucked strings (pizzicato cello). Steady ticking or clock-like rhythm, 72 BPM. Slightly eerie, like a lab at night. Evokes scanning through data, precision, slow revelation. No vocals. No loud percussion. No cinematic climax.
+
+────────────────────────────────────────────────────────────
+PROMPT 3  |  1:52 → 2:50  (58s)
+File: cue_03_the_clock.mp3
+Mood: methodical + mounting tension
+Narrative: The DNA clock's precision and limitations are explained. Scientists go hunting for a ghost ancestor. Tension builds toward the 7-million-year number.
+
+LYRIA PROMPT:
+Slow-burn documentary tension. Sustained string pad (low viola, cello) with a subtle rhythmic pulse like a heartbeat at 65 BPM. Gradual harmonic movement. Feels like a countdown. Hint of ancient Africa — kalimba note occasionally breaking through. No resolution. Ends on an unresolved harmonic suspension.
+
+────────────────────────────────────────────────────────────
+PROMPT 4  |  2:51 → 4:03  (72s)
+File: cue_04_toumai_discovery.mp3
+Mood: revelation + ancient + awe
+Narrative: The ghost ancestor is found — Toumaï. Brunet's announcement. The foramen magnum smoking gun. This is the biggest revelation of the episode: physical proof of the DNA prediction.
+
+LYRIA PROMPT:
+Ancient mystery revealed. Deep African percussion (djembe, frame drum) enters slowly under droning strings. A single high woodwind melody (bamboo flute or duduk) emerges — haunting and ancient. 55 BPM, rubato feel. The music should feel like unearthing something sacred. Big but restrained — no triumphant orchestra. No western pop rhythm. No major chord resolution.
+
+────────────────────────────────────────────────────────────
+PROMPT 5  |  4:04 → 5:35  (91s)
+File: cue_05_family_album.mp3
+Mood: wonder + ancient warmth + building
+Narrative: The family album unfolds — Lucy, Homo habilis, an unbroken chain of African fossil evidence. Sense of wonder, accumulation of proof, the story gaining momentum.
+
+LYRIA PROMPT:
+Warm archaeological wonder. Layered acoustic textures — kora (West African harp), light marimba, sustained strings. 70 BPM, steady and forward-moving. Melodic but subtle — not emotional resolution yet, still building. Evokes savanna and deep time. No drama or climax. No electric instruments. Ends openly, not concluded.
+
+────────────────────────────────────────────────────────────
+PROMPT 6  |  5:36 → 7:32  (116s)
+File: cue_06_red_herring_verdict.mp3
+Mood: suspense + twist + resolve + triumph
+Narrative: The red herring — Java Man's false lead, the Out of Asia theory. Then Darwin vindicated. Then the verdict: all clues point to Africa. This is the climax.
+
+LYRIA PROMPT:
+Two-part documentary climax. Part 1 (first 60s): Thriller tension — syncopated strings, dissonant piano, sense of misdirection and confusion, 80 BPM. Part 2 (final 60s): Resolution builds — African percussion returns, strings swell, kora melody rises, momentum toward a verdict. Not triumphant fanfare — more like deep certainty arriving. 75 BPM. No pop instrumentation. No full orchestral explosion.
+
+────────────────────────────────────────────────────────────
+PROMPT 7  |  7:33 → 8:06  (33s)
+File: cue_07_resolution.mp3
+Mood: warm + profound + united + resolution
+Narrative: The emotional close. The science resolves into a philosophical statement: all human division is a recent invention. Warm, profound, quietly powerful.
+
+LYRIA PROMPT:
+Gentle, profound resolution. Solo cello or oud melody over a soft string pad. 52 BPM, unhurried. Feels like sitting with a large truth. Warm but not sentimental — no swelling chorus, no movie-trailer crescendo. African tonal color. Fades naturally over 8-10 seconds. No percussion. No drama. Just warmth and stillness.
+
+============================================================
+END OF PROMPTS
+
+Generation tips:
+- Generate each cue slightly longer than needed (add 5-10s)
+- Trim to exact duration in CapCut with 1s fade in / 1.5s fade out
+- All cues should loop-safe (no hard endings except cue 7)

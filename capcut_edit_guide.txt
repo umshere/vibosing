@@ -1,0 +1,123 @@
+CAPCUT EDIT GUIDE — The Missing Ancestor
+==========================================
+Video: The_Missing_Ancestor.mp4  (8:06 duration)
+Audio language: English (Malayalam version — re-sync same cues)
+Master volume: 100%
+
+VOLUME RULE: All music tracks at 12-18% volume while voice is active.
+             Fade in: 1 second. Fade out: 1.5 seconds at each boundary.
+
+─────────────────────────────────────────────────────────────
+TRACK 1: VOICE (main video)
+─────────────────────────────────────────────────────────────
+  Layer:   The_Missing_Ancestor.mp4
+  Start:   0:00
+  End:     8:06
+  Volume:  100%
+  Notes:   No cuts. Full video on Track 1.
+
+─────────────────────────────────────────────────────────────
+TRACK 2: MUSIC CUES
+─────────────────────────────────────────────────────────────
+
+  CUE 1 — Cold Open / Detective Hook
+  File:       cue_01_cold_open.mp3
+  Start:      0:00
+  End:        0:49
+  Duration:   49s
+  Volume:     15%
+  Fade in:    1s from start
+  Fade out:   1.5s before 0:49
+  Mood:       Tension + mystery
+  Note:       Begin music exactly at 0:00. This sets the thriller tone.
+
+  CUE 2 — DNA Forensics / The Evidence
+  File:       cue_02_dna_forensics.mp3
+  Start:      0:50
+  End:        1:51
+  Duration:   61s
+  Volume:     13%
+  Fade in:    1s from 0:50
+  Fade out:   1.5s before 1:51
+  Mood:       Analytical + eerie
+  Note:       Keep very low here — voice is dense with information.
+
+  CUE 3 — The DNA Clock / Hunting the Ghost
+  File:       cue_03_the_clock.mp3
+  Start:      1:52
+  End:        2:50
+  Duration:   58s
+  Volume:     14%
+  Fade in:    1s from 1:52
+  Fade out:   1.5s before 2:50
+  Mood:       Mounting tension / countdown
+  Note:       Must END unresolved — cue 4 is the payoff.
+
+  CUE 4 — Toumaï Discovery / The Ghost Revealed
+  File:       cue_04_toumai_discovery.mp3
+  Start:      2:51
+  End:        4:03
+  Duration:   72s
+  Volume:     16%
+  Fade in:    1s from 2:51
+  Fade out:   1.5s before 4:03
+  Mood:       Ancient + revelation + awe
+  Note:       This is the emotional centrepiece. Slightly higher volume.
+              At 3:13 ("They found it!") — consider a brief volume bump to 18%.
+
+  CUE 5 — Family Album / Lucy to Homo Habilis
+  File:       cue_05_family_album.mp3
+  Start:      4:04
+  End:        5:35
+  Duration:   91s
+  Volume:     13%
+  Fade in:    1s from 4:04
+  Fade out:   1.5s before 5:35
+  Mood:       Warm + ancient + building
+  Note:       Longest single stretch of narration — keep music subtle.
+              African kora texture should feel like a backdrop, not foreground.
+
+  CUE 6 — Red Herring + Verdict (two-part)
+  File:       cue_06_red_herring_verdict.mp3
+  Start:      5:36
+  End:        7:32
+  Duration:   116s
+  Volume:     Part 1 (5:36–6:36): 15% | Part 2 (6:36–7:32): 17%
+  Fade in:    1s from 5:36
+  Fade out:   1.5s before 7:32
+  Mood:       Suspense → twist → verdict
+  Note:       At ~6:36 ("all the clues point to Africa — case closed")
+              the track shifts from thriller tension to resolution.
+              Manually adjust volume keyframe UP at 6:36 if needed.
+
+  CUE 7 — Resolution / One Human Family
+  File:       cue_07_resolution.mp3
+  Start:      7:33
+  End:        8:06
+  Duration:   33s
+  Volume:     18%
+  Fade in:    1s from 7:33
+  Fade out:   Natural fade built into track (8-10s tail)
+  Mood:       Warm + profound + still
+  Note:       Allow the music to outlast the voice by 2-3 seconds.
+              Let it breathe. This is the emotional landing.
+
+─────────────────────────────────────────────────────────────
+QUICK CHECKLIST BEFORE EXPORT
+─────────────────────────────────────────────────────────────
+  [ ] All 7 cues placed on Track 2 at correct start times
+  [ ] Volume never exceeds 18% on music track
+  [ ] Fade in/out applied at every cue boundary
+  [ ] No music bleed between cues (small gap 0:49-0:50, etc.)
+  [ ] Final export: 1080p, H.264, AAC audio 192kbps
+  [ ] Export filename: The_Missing_Ancestor_SCORED.mp4
+
+─────────────────────────────────────────────────────────────
+MALAYALAM VERSION NOTE
+─────────────────────────────────────────────────────────────
+When you generate the Malayalam audio version, the same 7 cue
+boundaries should hold — the narrative structure maps identically.
+Re-sync music cues to the Malayalam timestamps after aligning
+transcript segments. Cue 4 (Toumaï reveal) will likely need
+the most adjustment if the Malayalam version lingers longer.
+─────────────────────────────────────────────────────────────

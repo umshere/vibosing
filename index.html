@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIBosing — Vibe Composing</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;600;800&display=swap');
+
+:root {
+  --bg: #08080d;
+  --gold: #c8a96e;
+  --gold-dim: rgba(200,169,110,0.35);
+  --text: #e8e6f0;
+  --dim: rgba(232,230,240,0.4);
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.07);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Noise grain overlay ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  background: linear-gradient(to bottom, rgba(8,8,13,0.95), transparent);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+.nav-logo span { font-style: italic; color: rgba(200,169,110,0.6); font-weight: 700; }
+.nav-links {
+  display: flex; gap: 28px; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.nav-links a {
+  color: var(--dim); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 8px 20px; border-radius: 4px;
+  border: 1px solid var(--gold-dim);
+  background: transparent; color: var(--gold);
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: rgba(200,169,110,0.1); border-color: var(--gold); }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 120px 48px 80px;
+  position: relative; text-align: center;
+  overflow: hidden;
+}
+
+/* animated waveform bg */
+.wave-bg {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; opacity: 0.12;
+}
+.wave-bg svg { width: 100%; height: 100%; }
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 900; line-height: 0.95;
+  letter-spacing: -0.02em;
+  opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  margin-bottom: 8px;
+}
+.hero-title .vib { color: var(--gold); }
+.hero-title .osing { color: rgba(232,230,240,0.9); font-style: italic; }
+.hero-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 40px;
+  opacity: 0; animation: fadeUp 0.8s 0.55s forwards;
+}
+.hero-desc {
+  font-size: 18px; line-height: 1.75; color: rgba(232,230,240,0.65);
+  max-width: 560px; margin: 0 auto 52px;
+  opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-desc strong { color: var(--gold); font-weight: 600; }
+
+.hero-actions {
+  display: flex; gap: 14px; align-items: center; justify-content: center;
+  opacity: 0; animation: fadeUp 0.8s 0.85s forwards;
+}
+.btn-primary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 14px 32px; border-radius: 5px;
+  background: var(--gold); color: #08080d; font-weight: 600;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: all 0.2s; display: inline-block;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-ghost {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 5px;
+  background: transparent; color: var(--dim);
+  border: 1px solid var(--border); cursor: pointer; text-decoration: none;
+  transition: all 0.2s; display: inline-block;
+}
+.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+}
+.scroll-arrow { animation: bounce 2s infinite; font-size: 16px; }
+
+/* ── Flow section ── */
+.flow-section {
+  padding: 100px 48px;
+  max-width: 1100px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700; line-height: 1.1;
+  margin-bottom: 60px; color: var(--text);
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* flow steps */
+.flow-steps {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative;
+}
+/* vertical line */
+.flow-steps::before {
+  content: '';
+  position: absolute; left: 28px; top: 40px; bottom: 40px;
+  width: 1px; background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+}
+
+.flow-step {
+  display: grid; grid-template-columns: 60px 1fr;
+  gap: 24px; align-items: start;
+  padding: 28px 0;
+  opacity: 0; transform: translateX(-20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.flow-step.visible { opacity: 1; transform: none; }
+
+.step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--bg); color: var(--dim);
+  flex-shrink: 0; z-index: 1; position: relative;
+  transition: all 0.3s;
+}
+.flow-step:hover .step-num {
+  border-color: var(--gold-dim);
+  color: var(--gold);
+  background: rgba(200,169,110,0.06);
+}
+
+.step-body { padding-top: 14px; }
+.step-tool {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 6px;
+}
+.step-name {
+  font-size: 20px; font-weight: 700; margin-bottom: 8px;
+  color: var(--text);
+}
+.step-desc {
+  font-size: 14px; line-height: 1.7; color: rgba(232,230,240,0.55);
+  max-width: 600px;
+}
+.step-badge {
+  display: inline-flex; margin-top: 10px;
+  padding: 4px 10px; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(200,169,110,0.1); color: var(--gold);
+  border: 1px solid rgba(200,169,110,0.2);
+}
+.step-badge.you { background: rgba(100,200,150,0.08); color: #6fcf97; border-color: rgba(111,207,151,0.2); }
+.step-badge.auto { background: rgba(100,150,255,0.08); color: #88aaff; border-color: rgba(136,170,255,0.2); }
+
+/* ── What VIBosing does ── */
+.features-section {
+  padding: 80px 48px 100px;
+  background: rgba(255,255,255,0.02);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 1;
+}
+.features-inner {
+  max-width: 1100px; margin: 0 auto;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-top: 60px;
+}
+.feature-card {
+  padding: 28px; border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.feature-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+.feature-icon {
+  font-size: 28px; margin-bottom: 16px; display: block;
+}
+.feature-title {
+  font-size: 16px; font-weight: 700; margin-bottom: 8px;
+}
+.feature-desc {
+  font-size: 13px; line-height: 1.65;
+  color: rgba(232,230,240,0.5);
+}
+
+/* ── CTA bottom ── */
+.cta-section {
+  padding: 120px 48px;
+  text-align: center; position: relative; z-index: 1;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(200,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 900; margin-bottom: 20px; line-height: 1.1;
+}
+.cta-title em { font-style: italic; color: var(--gold); }
+.cta-sub {
+  font-size: 16px; color: var(--dim); margin-bottom: 44px;
+  max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 900; color: var(--gold-dim);
+}
+.footer-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: rgba(232,230,240,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@keyframes wave {
+  0%   { d: path("M0,50 Q100,20 200,50 Q300,80 400,50 Q500,20 600,50 Q700,80 800,50 Q900,20 1000,50 Q1100,80 1200,50 Q1300,20 1440,50 L1440,100 L0,100 Z"); }
+  50%  { d: path("M0,50 Q100,80 200,50 Q300,20 400,50 Q500,80 600,50 Q700,20 800,50 Q900,80 1000,50 Q1100,20 1200,50 Q1300,80 1440,50 L1440,100 L0,100 Z"); }
+  100% { d: path("M0,50 Q100,20 200,50 Q300,80 400,50 Q500,20 600,50 Q700,80 800,50 Q900,20 1000,50 Q1100,80 1200,50 Q1300,20 1440,50 L1440,100 L0,100 Z"); }
+}
+
+/* waveform bars animation */
+.bars { display: flex; align-items: center; gap: 3px; height: 48px; }
+.bar {
+  width: 3px; background: var(--gold);
+  border-radius: 2px; opacity: 0.4;
+  animation: barPulse var(--dur) ease-in-out infinite alternate;
+}
+@keyframes barPulse {
+  from { height: var(--min); opacity: 0.25; }
+  to   { height: var(--max); opacity: 0.6; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">VIB<span>osing</span></div>
+  <div class="nav-links">
+    <a href="#flow">Flow</a>
+    <a href="#features">Features</a>
+    <a href="composer.html">Composer</a>
+  </div>
+  <a href="composer.html" class="nav-cta">Open Composer →</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <!-- animated wave bg -->
+  <div class="wave-bg">
+    <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#c8a96e" stop-opacity="0"/>
+          <stop offset="20%" stop-color="#c8a96e" stop-opacity="0.6"/>
+          <stop offset="50%" stop-color="#c8a96e" stop-opacity="1"/>
+          <stop offset="80%" stop-color="#c8a96e" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#c8a96e" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- multiple wave lines -->
+      <g stroke="url(#wg)" stroke-width="1" fill="none">
+        <path d="M0,200 C200,160 300,240 500,200 C700,160 800,240 1000,200 C1200,160 1300,240 1440,200"/>
+        <path d="M0,210 C150,170 350,250 550,210 C750,170 850,250 1050,210 C1250,170 1350,250 1440,210" opacity="0.5"/>
+        <path d="M0,190 C250,150 350,230 600,190 C850,150 950,230 1200,190 C1350,150 1420,230 1440,190" opacity="0.3"/>
+      </g>
+      <!-- vertical bars simulating waveform -->
+      <g fill="#c8a96e">
+        <script type="text/javascript">
+          // bars rendered by JS below
+        </script>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-eyebrow">Intelligent Background Scoring for Video</div>
+
+  <h1 class="hero-title">
+    <span class="vib">VIB</span><span class="osing">osing</span>
+  </h1>
+
+  <div class="hero-sub">Vibe · Compose · Publish</div>
+
+  <!-- animated bars -->
+  <div class="bars" id="hero-bars" style="margin-bottom:36px;opacity:0;animation:fadeUp 0.8s 0.65s forwards"></div>
+
+  <p class="hero-desc">
+    Turn any <strong>NotebookLM video</strong> into a professionally scored documentary — with music that breathes with the voice, reacts to every scene cut, and lands on every emotional beat.
+  </p>
+
+  <div class="hero-actions">
+    <a href="composer.html" class="btn-primary">Open Score Composer</a>
+    <a href="#flow" class="btn-ghost">See how it works</a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-arrow">↓</div>
+    <span>The workflow</span>
+  </div>
+</section>
+
+<!-- Flow -->
+<section class="flow-section" id="flow">
+  <div class="section-label">The Pipeline</div>
+  <h2 class="section-title">From idea to<br><em>scored video</em></h2>
+
+  <div class="flow-steps" id="flow-steps">
+
+    <div class="flow-step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <div class="step-tool">You</div>
+        <div class="step-name">Find an interesting idea</div>
+        <div class="step-desc">A scientific discovery. A historical mystery. A mind-bending concept your audience hasn't encountered before. Pick your topic.</div>
+        <span class="step-badge you">Your creative decision</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <div class="step-tool">NotebookLM</div>
+        <div class="step-name">Generate the video</div>
+        <div class="step-desc">Paste your sources into NotebookLM. Generate a Cinematic Video Overview — two-host format, narrated slides, thriller tone. Download the MP4.</div>
+        <span class="step-badge">notebooklm.google.com</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <div class="step-tool">VIBosing — Score Composer</div>
+        <div class="step-name">Analyse & score the video</div>
+        <div class="step-desc">Drop the video in. VIBosing analyses voice modulation, shot changes, and script narrative — then generates a precisely timed background score using ElevenLabs.</div>
+        <span class="step-badge auto">Automated</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <div class="step-tool">CapCut / DaVinci</div>
+        <div class="step-name">Final mix & edit</div>
+        <div class="step-desc">VIBosing gives you a CapCut edit guide with exact timestamps, volumes, and fade instructions. 20-minute edit. Music ducks on every line of dialogue automatically.</div>
+        <span class="step-badge">capcut.com</span>
+      </div>
+    </div>
+
+    <div class="flow-step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <div class="step-tool">Share</div>
+        <div class="step-name">Publish the finished piece</div>
+        <div class="step-desc">A video that sounds like it had a real composer. Upload anywhere — YouTube, social, presentations. The score makes it land.</div>
+        <span class="step-badge you">Your audience</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="section-label">What VIBosing does</div>
+    <h2 class="section-title">More than background<br><em>music placement</em></h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎙</span>
+        <div class="feature-title">Voice-Aware Ducking</div>
+        <div class="feature-desc">Analyses voice modulation second-by-second. Music automatically ducks under dense dialogue and rises in pauses and transitions.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎬</span>
+        <div class="feature-title">Shot Change Detection</div>
+        <div class="feature-desc">Detects every visual scene cut. Music transitions align with what the viewer sees, not just what they hear.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🧠</span>
+        <div class="feature-title">Script Intelligence</div>
+        <div class="feature-desc">Reads the transcript and classifies every segment — revelation, question, explanation, climax — then maps music behaviour to narrative meaning.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title">One-Click Generation</div>
+        <div class="feature-desc">Sends the full composition plan to ElevenLabs as one API call. One coherent score, no mood drift between sections.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎚</span>
+        <div class="feature-title">Visual Automation Curve</div>
+        <div class="feature-desc">See and adjust the volume envelope on a timeline. Drag keyframes. Every DROP, HOOK, and HIT POINT is marked and editable.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📋</span>
+        <div class="feature-title">CapCut Edit Guide</div>
+        <div class="feature-desc">Exports a plain-text guide: every track, every timestamp, every volume level. Paste into CapCut and your edit is done in 20 minutes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <h2 class="cta-title">Your video.<br><em>Properly scored.</em></h2>
+  <p class="cta-sub">Drop any video. VIBosing listens to the voice, reads the script, watches the cuts — and composes a score that fits.</p>
+  <a href="composer.html" class="btn-primary">Open Score Composer →</a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">VIBosing</div>
+  <div class="footer-note">Vibe · Compose · Score — intelligent background music for video</div>
+</footer>
+
+<script>
+// ── Animated bars in hero ─────────────────────────────────────────────────
+const barsEl = document.getElementById('hero-bars');
+const barCount = 40;
+for (let i = 0; i < barCount; i++) {
+  const b = document.createElement('div');
+  b.className = 'bar';
+  const minH = 4 + Math.random() * 8;
+  const maxH = 20 + Math.random() * 28;
+  const dur  = (0.6 + Math.random() * 1.2).toFixed(2) + 's';
+  b.style.cssText = `--min:${minH}px;--max:${maxH}px;--dur:${dur};height:${minH}px;animation-delay:${(Math.random()*0.8).toFixed(2)}s`;
+  barsEl.appendChild(b);
+}
+
+// ── Scroll-triggered step reveals ─────────────────────────────────────────
+const steps = document.querySelectorAll('.flow-step');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      const idx = Array.from(steps).indexOf(e.target);
+      setTimeout(() => e.target.classList.add('visible'), idx * 120);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+steps.forEach(s => obs.observe(s));
+
+// ── Check if server is running ────────────────────────────────────────────
+fetch('http://localhost:5000/api/status')
+  .then(r => r.json())
+  .then(d => {
+    if (d.key_loaded) {
+      const note = document.createElement('div');
+      note.style.cssText = 'position:fixed;bottom:20px;right:20px;background:rgba(111,207,151,0.1);border:1px solid rgba(111,207,151,0.25);color:#6fcf97;font-family:JetBrains Mono,monospace;font-size:10px;padding:8px 14px;border-radius:5px;letter-spacing:0.06em;z-index:200';
+      note.textContent = '● Server running · ElevenLabs connected';
+      document.body.appendChild(note);
+      setTimeout(() => note.style.opacity = '0', 4000);
+      setTimeout(() => note.remove(), 4500);
+    }
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>

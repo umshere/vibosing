@@ -1,0 +1,498 @@
+{
+  "source": "The_Missing_Ancestor.mp4",
+  "language": "ml",
+  "model": "medium",
+  "duration_seconds": 486.37,
+  "segments": [
+    {
+      "id": 0,
+      "start": 0.0,
+      "end": 5.0,
+      "start_fmt": "0:00",
+      "text": "Okay, look, we're basically about to solve the greatest detective story ever told."
+    },
+    {
+      "id": 1,
+      "start": 5.0,
+      "end": 13.0,
+      "start_fmt": "0:05",
+      "text": "Seriously, we're on the hunt for a single missing ancestor, a cold case that's been unsolved for seven million years."
+    },
+    {
+      "id": 2,
+      "start": 13.0,
+      "end": 20.0,
+      "start_fmt": "0:13",
+      "text": "And the craziest part? The clues aren't buried in some dusty desert. They're hidden inside you, inside all of us."
+    },
+    {
+      "id": 3,
+      "start": 20.0,
+      "end": 27.0,
+      "start_fmt": "0:20",
+      "text": "And the whole story really starts with this one simple, kind of mind-blowing fact. Every single person on this planet is African."
+    },
+    {
+      "id": 4,
+      "start": 27.0,
+      "end": 32.0,
+      "start_fmt": "0:27",
+      "text": "Whoa, hold on, I'm from Cleveland. How on earth can every single person be African?"
+    },
+    {
+      "id": 5,
+      "start": 32.0,
+      "end": 43.0,
+      "start_fmt": "0:32",
+      "text": "Well, it's like this. If you trace the DNA of every person alive today, I mean everyone, and you go back far enough, every single one of our family trees leads back to the exact same place, Africa."
+    },
+    {
+      "id": 6,
+      "start": 43.0,
+      "end": 45.0,
+      "start_fmt": "0:43",
+      "text": "In a way, our species never really left."
+    },
+    {
+      "id": 7,
+      "start": 45.0,
+      "end": 50.0,
+      "start_fmt": "0:45",
+      "text": "Okay, that's a pretty huge claim. So where's the actual proof?"
+    },
+    {
+      "id": 8,
+      "start": 50.0,
+      "end": 61.0,
+      "start_fmt": "0:50",
+      "text": "Well, you won't find it in a history book. It's written in the tiny accidental spelling mistakes, the mutations that have been quietly piling up in our DNA for millions and millions of years."
+    },
+    {
+      "id": 9,
+      "start": 61.0,
+      "end": 64.0,
+      "start_fmt": "1:01",
+      "text": "This is our forensic evidence."
+    },
+    {
+      "id": 10,
+      "start": 64.0,
+      "end": 76.0,
+      "start_fmt": "1:04",
+      "text": "Right, so to turn all those millions of tiny clues into a timeline that actually makes sense, scientists needed a serious forensic tool, something to tell them not just what happened, but when it happened."
+    },
+    {
+      "id": 11,
+      "start": 76.0,
+      "end": 79.0,
+      "start_fmt": "1:16",
+      "text": "And they call it the DNA clock."
+    },
+    {
+      "id": 12,
+      "start": 79.0,
+      "end": 88.0,
+      "start_fmt": "1:19",
+      "text": "The whole idea is just, it's incredible. See, our DNA collects these little typos or mutations at a surprisingly steady rate over geologic time."
+    },
+    {
+      "id": 13,
+      "start": 88.0,
+      "end": 96.0,
+      "start_fmt": "1:28",
+      "text": "You know how chimpanzees are our closest living relatives? It's wild. Human chromosome 2 is literally two of their ancestral chromosomes fused together."
+    },
+    {
+      "id": 14,
+      "start": 96.0,
+      "end": 99.0,
+      "start_fmt": "1:36",
+      "text": "You can actually see the genetic scar where they merged."
+    },
+    {
+      "id": 15,
+      "start": 99.0,
+      "end": 107.0,
+      "start_fmt": "1:39",
+      "text": "So by counting up all those differences between our DNA and a chimps, you can wind the clock backwards to figure out exactly when we last shared a grandparent species."
+    },
+    {
+      "id": 16,
+      "start": 107.0,
+      "end": 112.0,
+      "start_fmt": "1:47",
+      "text": "But wait, I don't get it. How can a bunch of random stakes work like some kind of precise clock?"
+    },
+    {
+      "id": 17,
+      "start": 112.0,
+      "end": 121.0,
+      "start_fmt": "1:52",
+      "text": "You're right. It's not perfect. The clock isn't a Swiss watch. It can speed up or slow down a bit depending on things like how long a generation is or the size of a population."
+    },
+    {
+      "id": 18,
+      "start": 121.0,
+      "end": 133.0,
+      "start_fmt": "2:01",
+      "text": "So scientists have to constantly calibrate it. They use what they call anchor points from the fossil record, dates they are absolutely positive about, like the split between mammals and birds right after the asteroid wiped out the dinosaurs."
+    },
+    {
+      "id": 19,
+      "start": 133.0,
+      "end": 138.0,
+      "start_fmt": "2:13",
+      "text": "They use those known events to make sure their DNA timeline is deadly accurate."
+    },
+    {
+      "id": 20,
+      "start": 138.0,
+      "end": 145.0,
+      "start_fmt": "2:18",
+      "text": "So with their clock all wound up and calibrated, scientists could finally go hunting. They weren't looking for just any fossil."
+    },
+    {
+      "id": 21,
+      "start": 145.0,
+      "end": 155.0,
+      "start_fmt": "2:25",
+      "text": "They were hunting for a ghost, an ancestor that the DNA said must exist, but that was completely missing from the fossil record, a seven million year old ghost."
+    },
+    {
+      "id": 22,
+      "start": 155.0,
+      "end": 160.0,
+      "start_fmt": "2:35",
+      "text": "So what happened? They aimed this DNA clock at the biggest question of all."
+    },
+    {
+      "id": 23,
+      "start": 160.0,
+      "end": 168.0,
+      "start_fmt": "2:40",
+      "text": "When did the human branch of the family tree officially split away from the branch that led to modern chimps? What date did the gene spit out?"
+    },
+    {
+      "id": 24,
+      "start": 168.0,
+      "end": 175.0,
+      "start_fmt": "2:48",
+      "text": "The answer that came back was just staggering. About seven million years ago."
+    },
+    {
+      "id": 25,
+      "start": 175.0,
+      "end": 181.0,
+      "start_fmt": "2:55",
+      "text": "So it's just a number. And for decades, that's all it was. A theoretical ancestor with zero physical proof."
+    },
+    {
+      "id": 26,
+      "start": 181.0,
+      "end": 193.0,
+      "start_fmt": "3:01",
+      "text": "Exactly. A ghost. That is, until 2001, a team of paleontologists were out in the Jirab desert in Chad, right in the heart of Central Africa, and they found something that changed, well, everything."
+    },
+    {
+      "id": 27,
+      "start": 193.0,
+      "end": 198.0,
+      "start_fmt": "3:13",
+      "text": "They found it. No way. They found the ghost. A skull."
+    },
+    {
+      "id": 28,
+      "start": 198.0,
+      "end": 205.0,
+      "start_fmt": "3:18",
+      "text": "The team leader, Michel Brunet, stood up and told the world the ancestor of humanity is Chadian. Tumay is your ancestor."
+    },
+    {
+      "id": 29,
+      "start": 205.0,
+      "end": 211.0,
+      "start_fmt": "3:25",
+      "text": "I mean, can you imagine? They actually found the physical evidence that the DNA had been predicting for decades."
+    },
+    {
+      "id": 30,
+      "start": 211.0,
+      "end": 219.0,
+      "start_fmt": "3:31",
+      "text": "OK, so the age was a dead on match for the DNA clock. But how did they know it was a human ancestor and not just some random ancient ape?"
+    },
+    {
+      "id": 31,
+      "start": 219.0,
+      "end": 227.0,
+      "start_fmt": "3:39",
+      "text": "It all came down to this one tiny, but absolutely crucial detail. The forum and magnum. It's the hole in the skull where your spine connects."
+    },
+    {
+      "id": 32,
+      "start": 227.0,
+      "end": 235.0,
+      "start_fmt": "3:47",
+      "text": "In apes that walk on four limbs, it's at the back of the skull. But in Tumay, it's positioned directly underneath. That right there is the smoking gun."
+    },
+    {
+      "id": 33,
+      "start": 235.0,
+      "end": 243.0,
+      "start_fmt": "3:55",
+      "text": "It means Tumay almost certainly walked upright, on two legs. This wasn't just another ape. This was a hominin. This was page one."
+    },
+    {
+      "id": 34,
+      "start": 244.0,
+      "end": 250.0,
+      "start_fmt": "4:04",
+      "text": "So Tumay is the starting pistol for our story. But one skull doesn't solve a seven million year old mystery. Right."
+    },
+    {
+      "id": 35,
+      "start": 250.0,
+      "end": 256.0,
+      "start_fmt": "4:10",
+      "text": "You have to connect that first clue to the present day. You need to fill in the gaps. You need to meet the rest of the family."
+    },
+    {
+      "id": 36,
+      "start": 256.0,
+      "end": 266.0,
+      "start_fmt": "4:16",
+      "text": "And the most famous member of our ancient family is, without a doubt, Lucy. She was found in Ethiopia back in 74, and she became an instant icon."
+    },
+    {
+      "id": 37,
+      "start": 266.0,
+      "end": 274.0,
+      "start_fmt": "4:26",
+      "text": "The story goes that as the paleontologists were celebrating their incredible find, the Beatles song Lucy in the Sky with Diamonds was just playing on repeat at their camp."
+    },
+    {
+      "id": 38,
+      "start": 274.0,
+      "end": 280.0,
+      "start_fmt": "4:34",
+      "text": "And just like that, a scientific legend was born. She became the star witness in the case."
+    },
+    {
+      "id": 39,
+      "start": 280.0,
+      "end": 289.0,
+      "start_fmt": "4:40",
+      "text": "So after Lucy, what was the next big step in the story? Well, fast forward about a million years after Lucy, and we meet a totally different kind of ancestor."
+    },
+    {
+      "id": 40,
+      "start": 290.0,
+      "end": 302.0,
+      "start_fmt": "4:50",
+      "text": "Handyman, or Homo habilis. This was a game changer. As one of the very first members of our own genus, Homo, this was the species that started to systematically create and use stone tools."
+    },
+    {
+      "id": 41,
+      "start": 302.0,
+      "end": 311.0,
+      "start_fmt": "5:02",
+      "text": "So you can literally see the trail of evidence building piece by piece. With Lucy, you have an ancestor totally adapted for walking on two legs."
+    },
+    {
+      "id": 42,
+      "start": 312.0,
+      "end": 321.0,
+      "start_fmt": "5:12",
+      "text": "Then with Handyman, you see the first real spark of technology. It's an unbroken chain of evidence filling in that huge gap between Tumay and us."
+    },
+    {
+      "id": 43,
+      "start": 321.0,
+      "end": 325.0,
+      "start_fmt": "5:21",
+      "text": "And every single link in that chain was found in Africa."
+    },
+    {
+      "id": 44,
+      "start": 325.0,
+      "end": 335.0,
+      "start_fmt": "5:25",
+      "text": "Okay, this is all starting to seem a little too neat. DNA predicts a date, the skull shows up right on time, all the other fossils are in the right place."
+    },
+    {
+      "id": 45,
+      "start": 335.0,
+      "end": 342.0,
+      "start_fmt": "5:35",
+      "text": "Every good detective story has a twist, right? A red herring? Oh, and this story had a massive one."
+    },
+    {
+      "id": 46,
+      "start": 342.0,
+      "end": 349.0,
+      "start_fmt": "5:42",
+      "text": "A completely false clue that sent the entire scientific community down the wrong rabbit hole for more than 50 years."
+    },
+    {
+      "id": 47,
+      "start": 349.0,
+      "end": 362.0,
+      "start_fmt": "5:49",
+      "text": "And what's absolutely wild is that Charles Darwin totally saw this coming. Back in 1871, with no fossils to go on, just by looking at the anatomy of living apes, he wrote that Africa was our most probable birth continent."
+    },
+    {
+      "id": 48,
+      "start": 362.0,
+      "end": 366.0,
+      "start_fmt": "6:02",
+      "text": "The man basically solved the case 100 years before anyone else."
+    },
+    {
+      "id": 49,
+      "start": 366.0,
+      "end": 377.0,
+      "start_fmt": "6:06",
+      "text": "So if Darwin figured it out so early, why was he pretty much ignored? Because the first blockbuster fossil ever found, the first thing that screamed missing link, wasn't discovered in Africa."
+    },
+    {
+      "id": 50,
+      "start": 377.0,
+      "end": 382.0,
+      "start_fmt": "6:17",
+      "text": "It was unearthed half a world away on the island of Java in what's now Indonesia."
+    },
+    {
+      "id": 51,
+      "start": 382.0,
+      "end": 393.0,
+      "start_fmt": "6:22",
+      "text": "So in 1891, this Dutch anatomist Eugene Dubois finds what he dubs Java man, and he was absolutely convinced this was it, the starting point for all humanity."
+    },
+    {
+      "id": 52,
+      "start": 393.0,
+      "end": 399.0,
+      "start_fmt": "6:33",
+      "text": "This one fossil fueled this powerful out of Asia theory that completely dominated science for decades."
+    },
+    {
+      "id": 53,
+      "start": 399.0,
+      "end": 408.0,
+      "start_fmt": "6:39",
+      "text": "It really wasn't until the 1950s when all these new fossils like Lucy's species started pouring out of Africa that science could finally put Java man in his proper place."
+    },
+    {
+      "id": 54,
+      "start": 408.0,
+      "end": 413.0,
+      "start_fmt": "6:48",
+      "text": "An important but later side branch of our family tree, not the root."
+    },
+    {
+      "id": 55,
+      "start": 413.0,
+      "end": 418.0,
+      "start_fmt": "6:53",
+      "text": "So with that major red herring finally put to bed, we can bring all the evidence together."
+    },
+    {
+      "id": 56,
+      "start": 418.0,
+      "end": 424.0,
+      "start_fmt": "6:58",
+      "text": "We can finally deliver the verdict in this ancient case, the case of the missing ancestor."
+    },
+    {
+      "id": 57,
+      "start": 424.0,
+      "end": 430.0,
+      "start_fmt": "7:04",
+      "text": "And the verdict is just, it's overwhelming. The DNA pointed to a specific time and place."
+    },
+    {
+      "id": 58,
+      "start": 430.0,
+      "end": 434.0,
+      "start_fmt": "7:10",
+      "text": "The skull to my showed up right on schedule."
+    },
+    {
+      "id": 59,
+      "start": 434.0,
+      "end": 438.0,
+      "start_fmt": "7:14",
+      "text": "The family album from Lucy to handyman is exclusively African."
+    },
+    {
+      "id": 60,
+      "start": 438.0,
+      "end": 442.0,
+      "start_fmt": "7:18",
+      "text": "And that first big clue Java man turns out it was a detour, not the destination."
+    },
+    {
+      "id": 61,
+      "start": 442.0,
+      "end": 445.0,
+      "start_fmt": "7:22",
+      "text": "All the clues point to Africa case closed."
+    },
+    {
+      "id": 62,
+      "start": 445.0,
+      "end": 449.0,
+      "start_fmt": "7:25",
+      "text": "It's just it's an impossible amount of time to wrap your head around."
+    },
+    {
+      "id": 63,
+      "start": 449.0,
+      "end": 453.0,
+      "start_fmt": "7:29",
+      "text": "Seven million years, one unbroken line."
+    },
+    {
+      "id": 64,
+      "start": 453.0,
+      "end": 455.0,
+      "start_fmt": "7:33",
+      "text": "And that's really what this is all about."
+    },
+    {
+      "id": 65,
+      "start": 455.0,
+      "end": 457.0,
+      "start_fmt": "7:35",
+      "text": "It's not a bunch of different stories from different places."
+    },
+    {
+      "id": 66,
+      "start": 457.0,
+      "end": 464.0,
+      "start_fmt": "7:37",
+      "text": "It's one story, one single shared family tree with roots planted deep, deep in African soil."
+    },
+    {
+      "id": 67,
+      "start": 464.0,
+      "end": 470.0,
+      "start_fmt": "7:44",
+      "text": "When you really let that sink in that our family has been one single undivided unit for that long,"
+    },
+    {
+      "id": 68,
+      "start": 470.0,
+      "end": 477.0,
+      "start_fmt": "7:50",
+      "text": "you start to realize that everything we use to divide ourselves today, every border, every wall, every flag,"
+    },
+    {
+      "id": 69,
+      "start": 477.0,
+      "end": 483.0,
+      "start_fmt": "7:57",
+      "text": "all of it is just a very recent invention built right on top of one ancient and undivided human family."
+    }
+  ]
+}

@@ -1,0 +1,4875 @@
+{
+  "duration": 486.37,
+  "curve": [
+    {
+      "time": 0,
+      "time_fmt": "0:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.392,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.105
+    },
+    {
+      "time": 1,
+      "time_fmt": "0:01",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.608,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 2,
+      "time_fmt": "0:02",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.601,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 3,
+      "time_fmt": "0:03",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.461,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 4,
+      "time_fmt": "0:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.372,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 5,
+      "time_fmt": "0:05",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.416,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 6,
+      "time_fmt": "0:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.586,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 7,
+      "time_fmt": "0:07",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.588,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 8,
+      "time_fmt": "0:08",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.38,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 9,
+      "time_fmt": "0:09",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.482,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 10,
+      "time_fmt": "0:10",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.56,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 11,
+      "time_fmt": "0:11",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.561,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 12,
+      "time_fmt": "0:12",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.463,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 13,
+      "time_fmt": "0:13",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.482,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 14,
+      "time_fmt": "0:14",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.4,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 15,
+      "time_fmt": "0:15",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.585,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 16,
+      "time_fmt": "0:16",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.363,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 17,
+      "time_fmt": "0:17",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.496,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 18,
+      "time_fmt": "0:18",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.379,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 19,
+      "time_fmt": "0:19",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.383,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 20,
+      "time_fmt": "0:20",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.689,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 21,
+      "time_fmt": "0:21",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.494,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 22,
+      "time_fmt": "0:22",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.624,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 23,
+      "time_fmt": "0:23",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.628,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 24,
+      "time_fmt": "0:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.457,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 25,
+      "time_fmt": "0:25",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.612,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 26,
+      "time_fmt": "0:26",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.382,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 27,
+      "time_fmt": "0:27",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.519,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 28,
+      "time_fmt": "0:28",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.628,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 29,
+      "time_fmt": "0:29",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.567,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 30,
+      "time_fmt": "0:30",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.577,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 31,
+      "time_fmt": "0:31",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.454,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 32,
+      "time_fmt": "0:32",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.537,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 33,
+      "time_fmt": "0:33",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.429,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 34,
+      "time_fmt": "0:34",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.617,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 35,
+      "time_fmt": "0:35",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.59,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 36,
+      "time_fmt": "0:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.396,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 37,
+      "time_fmt": "0:37",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.615,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 38,
+      "time_fmt": "0:38",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.554,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 39,
+      "time_fmt": "0:39",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.604,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 40,
+      "time_fmt": "0:40",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.412,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 41,
+      "time_fmt": "0:41",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.334,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 42,
+      "time_fmt": "0:42",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.208,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 43,
+      "time_fmt": "0:43",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.685,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 44,
+      "time_fmt": "0:44",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.61,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 45,
+      "time_fmt": "0:45",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.593,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 46,
+      "time_fmt": "0:46",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.666,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 47,
+      "time_fmt": "0:47",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.355,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 48,
+      "time_fmt": "0:48",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.671,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 49,
+      "time_fmt": "0:49",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.28,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 50,
+      "time_fmt": "0:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.591,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 51,
+      "time_fmt": "0:51",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.72,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 52,
+      "time_fmt": "0:52",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.281,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 53,
+      "time_fmt": "0:53",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.72,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 54,
+      "time_fmt": "0:54",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.77,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 55,
+      "time_fmt": "0:55",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.617,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 56,
+      "time_fmt": "0:56",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.589,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 57,
+      "time_fmt": "0:57",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.484,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 58,
+      "time_fmt": "0:58",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.822,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 59,
+      "time_fmt": "0:59",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.855,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 60,
+      "time_fmt": "1:00",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.922,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 61,
+      "time_fmt": "1:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.493,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 62,
+      "time_fmt": "1:02",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.614,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 63,
+      "time_fmt": "1:03",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.283,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 64,
+      "time_fmt": "1:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.379,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 65,
+      "time_fmt": "1:05",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.721,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 66,
+      "time_fmt": "1:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.567,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 67,
+      "time_fmt": "1:07",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.653,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 68,
+      "time_fmt": "1:08",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.622,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 69,
+      "time_fmt": "1:09",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.397,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 70,
+      "time_fmt": "1:10",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.657,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 71,
+      "time_fmt": "1:11",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.657,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 72,
+      "time_fmt": "1:12",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.617,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 73,
+      "time_fmt": "1:13",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.516,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 74,
+      "time_fmt": "1:14",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.441,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 75,
+      "time_fmt": "1:15",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.521,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 76,
+      "time_fmt": "1:16",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.251,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 77,
+      "time_fmt": "1:17",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.513,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 78,
+      "time_fmt": "1:18",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.596,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 79,
+      "time_fmt": "1:19",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.422,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 80,
+      "time_fmt": "1:20",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.577,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 81,
+      "time_fmt": "1:21",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.431,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 82,
+      "time_fmt": "1:22",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.543,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 83,
+      "time_fmt": "1:23",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.54,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 84,
+      "time_fmt": "1:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.478,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 85,
+      "time_fmt": "1:25",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.378,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 86,
+      "time_fmt": "1:26",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.601,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 87,
+      "time_fmt": "1:27",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.423,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 88,
+      "time_fmt": "1:28",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.443,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 89,
+      "time_fmt": "1:29",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.564,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 90,
+      "time_fmt": "1:30",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.433,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 91,
+      "time_fmt": "1:31",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.446,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 92,
+      "time_fmt": "1:32",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.621,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 93,
+      "time_fmt": "1:33",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.643,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 94,
+      "time_fmt": "1:34",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.563,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 95,
+      "time_fmt": "1:35",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.432,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 96,
+      "time_fmt": "1:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.474,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 97,
+      "time_fmt": "1:37",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.61,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 98,
+      "time_fmt": "1:38",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.539,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 99,
+      "time_fmt": "1:39",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.366,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 100,
+      "time_fmt": "1:40",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.67,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 101,
+      "time_fmt": "1:41",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.541,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 102,
+      "time_fmt": "1:42",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.428,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 103,
+      "time_fmt": "1:43",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.63,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 104,
+      "time_fmt": "1:44",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.467,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 105,
+      "time_fmt": "1:45",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.544,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 106,
+      "time_fmt": "1:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.428,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 107,
+      "time_fmt": "1:47",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.386,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 108,
+      "time_fmt": "1:48",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.481,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 109,
+      "time_fmt": "1:49",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.62,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 110,
+      "time_fmt": "1:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.527,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 111,
+      "time_fmt": "1:51",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.551,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 112,
+      "time_fmt": "1:52",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.427,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 113,
+      "time_fmt": "1:53",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.348,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 114,
+      "time_fmt": "1:54",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.54,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 115,
+      "time_fmt": "1:55",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.397,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 116,
+      "time_fmt": "1:56",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.577,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 117,
+      "time_fmt": "1:57",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.446,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 118,
+      "time_fmt": "1:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.501,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 119,
+      "time_fmt": "1:59",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.425,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 120,
+      "time_fmt": "2:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.533,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 121,
+      "time_fmt": "2:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.314,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 122,
+      "time_fmt": "2:02",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.447,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 123,
+      "time_fmt": "2:03",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.418,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 124,
+      "time_fmt": "2:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.41,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 125,
+      "time_fmt": "2:05",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.495,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 126,
+      "time_fmt": "2:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.467,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 127,
+      "time_fmt": "2:07",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.431,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 128,
+      "time_fmt": "2:08",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.586,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 129,
+      "time_fmt": "2:09",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.277,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 130,
+      "time_fmt": "2:10",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.522,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 131,
+      "time_fmt": "2:11",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.558,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 132,
+      "time_fmt": "2:12",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.447,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 133,
+      "time_fmt": "2:13",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.237,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 134,
+      "time_fmt": "2:14",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.695,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 135,
+      "time_fmt": "2:15",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.461,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 136,
+      "time_fmt": "2:16",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.533,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 137,
+      "time_fmt": "2:17",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.401,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 138,
+      "time_fmt": "2:18",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.357,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 139,
+      "time_fmt": "2:19",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.429,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 140,
+      "time_fmt": "2:20",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.677,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 141,
+      "time_fmt": "2:21",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.492,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 142,
+      "time_fmt": "2:22",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.459,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 143,
+      "time_fmt": "2:23",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.231,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 144,
+      "time_fmt": "2:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.493,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 145,
+      "time_fmt": "2:25",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.323,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 146,
+      "time_fmt": "2:26",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.473,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 147,
+      "time_fmt": "2:27",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.368,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 148,
+      "time_fmt": "2:28",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.448,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 149,
+      "time_fmt": "2:29",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.508,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 150,
+      "time_fmt": "2:30",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.313,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 151,
+      "time_fmt": "2:31",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.426,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 152,
+      "time_fmt": "2:32",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.38,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 153,
+      "time_fmt": "2:33",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.663,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 154,
+      "time_fmt": "2:34",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.441,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 155,
+      "time_fmt": "2:35",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.525,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 156,
+      "time_fmt": "2:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.56,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 157,
+      "time_fmt": "2:37",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.867,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 158,
+      "time_fmt": "2:38",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.627,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 159,
+      "time_fmt": "2:39",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.77,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 160,
+      "time_fmt": "2:40",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.47,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 161,
+      "time_fmt": "2:41",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.882,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 162,
+      "time_fmt": "2:42",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.668,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 163,
+      "time_fmt": "2:43",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.656,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 164,
+      "time_fmt": "2:44",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.866,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 165,
+      "time_fmt": "2:45",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.698,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 166,
+      "time_fmt": "2:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.464,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 167,
+      "time_fmt": "2:47",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.675,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 168,
+      "time_fmt": "2:48",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.418,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 169,
+      "time_fmt": "2:49",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.44,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 170,
+      "time_fmt": "2:50",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.187,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.177
+    },
+    {
+      "time": 171,
+      "time_fmt": "2:51",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.252,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.2
+    },
+    {
+      "time": 172,
+      "time_fmt": "2:52",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.141,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.16
+    },
+    {
+      "time": 173,
+      "time_fmt": "2:53",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.624,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 174,
+      "time_fmt": "2:54",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.372,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 175,
+      "time_fmt": "2:55",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.535,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 176,
+      "time_fmt": "2:56",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.342,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 177,
+      "time_fmt": "2:57",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.559,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 178,
+      "time_fmt": "2:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.397,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 179,
+      "time_fmt": "2:59",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.606,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 180,
+      "time_fmt": "3:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.553,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 181,
+      "time_fmt": "3:01",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.213,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 182,
+      "time_fmt": "3:02",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.39,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 183,
+      "time_fmt": "3:03",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.47,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 184,
+      "time_fmt": "3:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.51,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 185,
+      "time_fmt": "3:05",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.505,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 186,
+      "time_fmt": "3:06",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.655,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 187,
+      "time_fmt": "3:07",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.558,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 188,
+      "time_fmt": "3:08",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.507,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 189,
+      "time_fmt": "3:09",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.487,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 190,
+      "time_fmt": "3:10",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.452,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 191,
+      "time_fmt": "3:11",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.565,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 192,
+      "time_fmt": "3:12",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.459,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 193,
+      "time_fmt": "3:13",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.306,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 194,
+      "time_fmt": "3:14",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.697,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 195,
+      "time_fmt": "3:15",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.584,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 196,
+      "time_fmt": "3:16",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.596,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 197,
+      "time_fmt": "3:17",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.416,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 198,
+      "time_fmt": "3:18",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.643,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 199,
+      "time_fmt": "3:19",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.627,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 200,
+      "time_fmt": "3:20",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.59,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 201,
+      "time_fmt": "3:21",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.674,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 202,
+      "time_fmt": "3:22",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.548,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 203,
+      "time_fmt": "3:23",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.648,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 204,
+      "time_fmt": "3:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.415,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 205,
+      "time_fmt": "3:25",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.455,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 206,
+      "time_fmt": "3:26",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.55,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 207,
+      "time_fmt": "3:27",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.516,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 208,
+      "time_fmt": "3:28",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.551,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 209,
+      "time_fmt": "3:29",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.676,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 210,
+      "time_fmt": "3:30",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.458,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 211,
+      "time_fmt": "3:31",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.271,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 212,
+      "time_fmt": "3:32",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.596,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 213,
+      "time_fmt": "3:33",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.64,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 214,
+      "time_fmt": "3:34",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.268,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 215,
+      "time_fmt": "3:35",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.72,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 216,
+      "time_fmt": "3:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.592,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 217,
+      "time_fmt": "3:37",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.624,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 218,
+      "time_fmt": "3:38",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.608,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 219,
+      "time_fmt": "3:39",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.506,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 220,
+      "time_fmt": "3:40",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.735,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 221,
+      "time_fmt": "3:41",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.493,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 222,
+      "time_fmt": "3:42",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.479,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 223,
+      "time_fmt": "3:43",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.55,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 224,
+      "time_fmt": "3:44",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.47,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 225,
+      "time_fmt": "3:45",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.72,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 226,
+      "time_fmt": "3:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.543,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 227,
+      "time_fmt": "3:47",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.479,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 228,
+      "time_fmt": "3:48",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.697,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 229,
+      "time_fmt": "3:49",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.602,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 230,
+      "time_fmt": "3:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.432,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 231,
+      "time_fmt": "3:51",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.69,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 232,
+      "time_fmt": "3:52",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.627,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 233,
+      "time_fmt": "3:53",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.501,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 234,
+      "time_fmt": "3:54",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.657,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 235,
+      "time_fmt": "3:55",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.385,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 236,
+      "time_fmt": "3:56",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.799,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 237,
+      "time_fmt": "3:57",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.602,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 238,
+      "time_fmt": "3:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.495,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 239,
+      "time_fmt": "3:59",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.472,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 240,
+      "time_fmt": "4:00",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.669,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 241,
+      "time_fmt": "4:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.542,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 242,
+      "time_fmt": "4:02",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.406,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.22
+    },
+    {
+      "time": 243,
+      "time_fmt": "4:03",
+      "volume": 0.4,
+      "speaking": false,
+      "energy": 0.252,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.203
+    },
+    {
+      "time": 244,
+      "time_fmt": "4:04",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.685,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.187
+    },
+    {
+      "time": 245,
+      "time_fmt": "4:05",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.748,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 246,
+      "time_fmt": "4:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.443,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 247,
+      "time_fmt": "4:07",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.931,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 248,
+      "time_fmt": "4:08",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 1.0,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 249,
+      "time_fmt": "4:09",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.382,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 250,
+      "time_fmt": "4:10",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.449,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 251,
+      "time_fmt": "4:11",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.606,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 252,
+      "time_fmt": "4:12",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.782,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 253,
+      "time_fmt": "4:13",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.667,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 254,
+      "time_fmt": "4:14",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.643,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 255,
+      "time_fmt": "4:15",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.698,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 256,
+      "time_fmt": "4:16",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.291,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 257,
+      "time_fmt": "4:17",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.723,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 258,
+      "time_fmt": "4:18",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.652,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 259,
+      "time_fmt": "4:19",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.618,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 260,
+      "time_fmt": "4:20",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.693,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 261,
+      "time_fmt": "4:21",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.262,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 262,
+      "time_fmt": "4:22",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.668,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 263,
+      "time_fmt": "4:23",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.503,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 264,
+      "time_fmt": "4:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.438,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 265,
+      "time_fmt": "4:25",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.553,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 266,
+      "time_fmt": "4:26",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.42,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 267,
+      "time_fmt": "4:27",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.686,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 268,
+      "time_fmt": "4:28",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.65,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 269,
+      "time_fmt": "4:29",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.577,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 270,
+      "time_fmt": "4:30",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.603,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 271,
+      "time_fmt": "4:31",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.622,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 272,
+      "time_fmt": "4:32",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.531,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 273,
+      "time_fmt": "4:33",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.649,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 274,
+      "time_fmt": "4:34",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.46,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 275,
+      "time_fmt": "4:35",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.554,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 276,
+      "time_fmt": "4:36",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.637,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 277,
+      "time_fmt": "4:37",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.318,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 278,
+      "time_fmt": "4:38",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.687,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 279,
+      "time_fmt": "4:39",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.401,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 280,
+      "time_fmt": "4:40",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.459,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 281,
+      "time_fmt": "4:41",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.615,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 282,
+      "time_fmt": "4:42",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.554,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 283,
+      "time_fmt": "4:43",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.212,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 284,
+      "time_fmt": "4:44",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.646,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 285,
+      "time_fmt": "4:45",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.723,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 286,
+      "time_fmt": "4:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.351,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 287,
+      "time_fmt": "4:47",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.675,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 288,
+      "time_fmt": "4:48",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.521,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 289,
+      "time_fmt": "4:49",
+      "volume": 0.2,
+      "speaking": false,
+      "energy": 0.216,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 290,
+      "time_fmt": "4:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.51,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 291,
+      "time_fmt": "4:51",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.603,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 292,
+      "time_fmt": "4:52",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.481,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 293,
+      "time_fmt": "4:53",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.263,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 294,
+      "time_fmt": "4:54",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.63,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 295,
+      "time_fmt": "4:55",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.664,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 296,
+      "time_fmt": "4:56",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.599,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 297,
+      "time_fmt": "4:57",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.491,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 298,
+      "time_fmt": "4:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.556,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 299,
+      "time_fmt": "4:59",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.562,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 300,
+      "time_fmt": "5:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.527,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 301,
+      "time_fmt": "5:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.539,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 302,
+      "time_fmt": "5:02",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.285,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 303,
+      "time_fmt": "5:03",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.686,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 304,
+      "time_fmt": "5:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.599,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 305,
+      "time_fmt": "5:05",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.509,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 306,
+      "time_fmt": "5:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.466,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 307,
+      "time_fmt": "5:07",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.539,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 308,
+      "time_fmt": "5:08",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.683,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 309,
+      "time_fmt": "5:09",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.596,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 310,
+      "time_fmt": "5:10",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.645,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 311,
+      "time_fmt": "5:11",
+      "volume": 0.13,
+      "speaking": false,
+      "energy": 0.505,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 312,
+      "time_fmt": "5:12",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.785,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 313,
+      "time_fmt": "5:13",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.486,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 314,
+      "time_fmt": "5:14",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.659,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 315,
+      "time_fmt": "5:15",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.531,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 316,
+      "time_fmt": "5:16",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.641,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 317,
+      "time_fmt": "5:17",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.591,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 318,
+      "time_fmt": "5:18",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.617,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 319,
+      "time_fmt": "5:19",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.599,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 320,
+      "time_fmt": "5:20",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.579,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 321,
+      "time_fmt": "5:21",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.416,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 322,
+      "time_fmt": "5:22",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.744,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 323,
+      "time_fmt": "5:23",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.588,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 324,
+      "time_fmt": "5:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.516,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 325,
+      "time_fmt": "5:25",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.43,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 326,
+      "time_fmt": "5:26",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.558,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 327,
+      "time_fmt": "5:27",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.531,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 328,
+      "time_fmt": "5:28",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.364,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 329,
+      "time_fmt": "5:29",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.105,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 330,
+      "time_fmt": "5:30",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.429,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.177
+    },
+    {
+      "time": 331,
+      "time_fmt": "5:31",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.253,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 332,
+      "time_fmt": "5:32",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.398,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 333,
+      "time_fmt": "5:33",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.497,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 334,
+      "time_fmt": "5:34",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.607,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 335,
+      "time_fmt": "5:35",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.273,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 336,
+      "time_fmt": "5:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.506,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 337,
+      "time_fmt": "5:37",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.311,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 338,
+      "time_fmt": "5:38",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.346,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 339,
+      "time_fmt": "5:39",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.322,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 340,
+      "time_fmt": "5:40",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.255,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 341,
+      "time_fmt": "5:41",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.456,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.177
+    },
+    {
+      "time": 342,
+      "time_fmt": "5:42",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.149,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 343,
+      "time_fmt": "5:43",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.477,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 344,
+      "time_fmt": "5:44",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.419,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 345,
+      "time_fmt": "5:45",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.479,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 346,
+      "time_fmt": "5:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.481,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 347,
+      "time_fmt": "5:47",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.534,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 348,
+      "time_fmt": "5:48",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.475,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 349,
+      "time_fmt": "5:49",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.148,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 350,
+      "time_fmt": "5:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.438,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 351,
+      "time_fmt": "5:51",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.497,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 352,
+      "time_fmt": "5:52",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.553,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 353,
+      "time_fmt": "5:53",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.417,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 354,
+      "time_fmt": "5:54",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.457,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 355,
+      "time_fmt": "5:55",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.536,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 356,
+      "time_fmt": "5:56",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.616,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 357,
+      "time_fmt": "5:57",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.522,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 358,
+      "time_fmt": "5:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.555,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 359,
+      "time_fmt": "5:59",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.457,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 360,
+      "time_fmt": "6:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.411,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 361,
+      "time_fmt": "6:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.564,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 362,
+      "time_fmt": "6:02",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.297,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 363,
+      "time_fmt": "6:03",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.58,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 364,
+      "time_fmt": "6:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.523,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 365,
+      "time_fmt": "6:05",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.421,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 366,
+      "time_fmt": "6:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.343,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 367,
+      "time_fmt": "6:07",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.766,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 368,
+      "time_fmt": "6:08",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.575,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 369,
+      "time_fmt": "6:09",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.658,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 370,
+      "time_fmt": "6:10",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.435,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 371,
+      "time_fmt": "6:11",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.733,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 372,
+      "time_fmt": "6:12",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.794,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 373,
+      "time_fmt": "6:13",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.647,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 374,
+      "time_fmt": "6:14",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.773,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 375,
+      "time_fmt": "6:15",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.705,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 376,
+      "time_fmt": "6:16",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.819,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 377,
+      "time_fmt": "6:17",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.666,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 378,
+      "time_fmt": "6:18",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.769,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 379,
+      "time_fmt": "6:19",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.731,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 380,
+      "time_fmt": "6:20",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.751,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 381,
+      "time_fmt": "6:21",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.68,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 382,
+      "time_fmt": "6:22",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.367,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 383,
+      "time_fmt": "6:23",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.551,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 384,
+      "time_fmt": "6:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.524,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 385,
+      "time_fmt": "6:25",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.605,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 386,
+      "time_fmt": "6:26",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.593,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 387,
+      "time_fmt": "6:27",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.401,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 388,
+      "time_fmt": "6:28",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.638,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 389,
+      "time_fmt": "6:29",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.545,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 390,
+      "time_fmt": "6:30",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.387,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 391,
+      "time_fmt": "6:31",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.571,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 392,
+      "time_fmt": "6:32",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.539,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 393,
+      "time_fmt": "6:33",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.547,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 394,
+      "time_fmt": "6:34",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.532,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 395,
+      "time_fmt": "6:35",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.576,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 396,
+      "time_fmt": "6:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.424,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 397,
+      "time_fmt": "6:37",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.615,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 398,
+      "time_fmt": "6:38",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.389,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 399,
+      "time_fmt": "6:39",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.65,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 400,
+      "time_fmt": "6:40",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.558,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 401,
+      "time_fmt": "6:41",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.614,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 402,
+      "time_fmt": "6:42",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.643,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 403,
+      "time_fmt": "6:43",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.457,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 404,
+      "time_fmt": "6:44",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.601,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 405,
+      "time_fmt": "6:45",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.419,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 406,
+      "time_fmt": "6:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.548,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 407,
+      "time_fmt": "6:47",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.525,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 408,
+      "time_fmt": "6:48",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.503,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 409,
+      "time_fmt": "6:49",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.569,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 410,
+      "time_fmt": "6:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.502,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 411,
+      "time_fmt": "6:51",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.511,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 412,
+      "time_fmt": "6:52",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.48,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 413,
+      "time_fmt": "6:53",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.672,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 414,
+      "time_fmt": "6:54",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.882,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 415,
+      "time_fmt": "6:55",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.643,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 416,
+      "time_fmt": "6:56",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.715,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.08
+    },
+    {
+      "time": 417,
+      "time_fmt": "6:57",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.672,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 418,
+      "time_fmt": "6:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.431,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 419,
+      "time_fmt": "6:59",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.783,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 420,
+      "time_fmt": "7:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.468,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 421,
+      "time_fmt": "7:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.372,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 422,
+      "time_fmt": "7:02",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.62,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 423,
+      "time_fmt": "7:03",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.21,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 424,
+      "time_fmt": "7:04",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.468,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 425,
+      "time_fmt": "7:05",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.467,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 426,
+      "time_fmt": "7:06",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.442,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 427,
+      "time_fmt": "7:07",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.568,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 428,
+      "time_fmt": "7:08",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.417,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 429,
+      "time_fmt": "7:09",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.356,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 430,
+      "time_fmt": "7:10",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.516,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 431,
+      "time_fmt": "7:11",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.476,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 432,
+      "time_fmt": "7:12",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.578,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 433,
+      "time_fmt": "7:13",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.273,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 434,
+      "time_fmt": "7:14",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.636,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 435,
+      "time_fmt": "7:15",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.614,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 436,
+      "time_fmt": "7:16",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.401,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 437,
+      "time_fmt": "7:17",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.315,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 438,
+      "time_fmt": "7:18",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.576,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 439,
+      "time_fmt": "7:19",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.456,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 440,
+      "time_fmt": "7:20",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.541,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 441,
+      "time_fmt": "7:21",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.362,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 442,
+      "time_fmt": "7:22",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.456,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 443,
+      "time_fmt": "7:23",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.268,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 444,
+      "time_fmt": "7:24",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.399,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 445,
+      "time_fmt": "7:25",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.488,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 446,
+      "time_fmt": "7:26",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.603,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 447,
+      "time_fmt": "7:27",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.619,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 448,
+      "time_fmt": "7:28",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.273,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 449,
+      "time_fmt": "7:29",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.689,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 450,
+      "time_fmt": "7:30",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.647,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 451,
+      "time_fmt": "7:31",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.538,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.097
+    },
+    {
+      "time": 452,
+      "time_fmt": "7:32",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.704,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 453,
+      "time_fmt": "7:33",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.274,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.12
+    },
+    {
+      "time": 454,
+      "time_fmt": "7:34",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.639,
+      "zone": "high",
+      "near_shot": true,
+      "volume_smooth": 0.137
+    },
+    {
+      "time": 455,
+      "time_fmt": "7:35",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.436,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 456,
+      "time_fmt": "7:36",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.452,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 457,
+      "time_fmt": "7:37",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.299,
+      "zone": "low",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 458,
+      "time_fmt": "7:38",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.376,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 459,
+      "time_fmt": "7:39",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.511,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 460,
+      "time_fmt": "7:40",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.516,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 461,
+      "time_fmt": "7:41",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.397,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 462,
+      "time_fmt": "7:42",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.467,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 463,
+      "time_fmt": "7:43",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.402,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 464,
+      "time_fmt": "7:44",
+      "volume": 0.2,
+      "speaking": true,
+      "energy": 0.293,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 465,
+      "time_fmt": "7:45",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.471,
+      "zone": "medium",
+      "near_shot": true,
+      "volume_smooth": 0.153
+    },
+    {
+      "time": 466,
+      "time_fmt": "7:46",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.416,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 467,
+      "time_fmt": "7:47",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.459,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 468,
+      "time_fmt": "7:48",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.473,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 469,
+      "time_fmt": "7:49",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.585,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 470,
+      "time_fmt": "7:50",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.327,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 471,
+      "time_fmt": "7:51",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.545,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 472,
+      "time_fmt": "7:52",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.502,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 473,
+      "time_fmt": "7:53",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.44,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 474,
+      "time_fmt": "7:54",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.484,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 475,
+      "time_fmt": "7:55",
+      "volume": 0.08,
+      "speaking": true,
+      "energy": 0.662,
+      "zone": "high",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 476,
+      "time_fmt": "7:56",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.464,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.113
+    },
+    {
+      "time": 477,
+      "time_fmt": "7:57",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.479,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 478,
+      "time_fmt": "7:58",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.526,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 479,
+      "time_fmt": "7:59",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.386,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 480,
+      "time_fmt": "8:00",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.549,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 481,
+      "time_fmt": "8:01",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.492,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.13
+    },
+    {
+      "time": 482,
+      "time_fmt": "8:02",
+      "volume": 0.13,
+      "speaking": true,
+      "energy": 0.562,
+      "zone": "medium",
+      "near_shot": false,
+      "volume_smooth": 0.22
+    },
+    {
+      "time": 483,
+      "time_fmt": "8:03",
+      "volume": 0.4,
+      "speaking": false,
+      "energy": 0.148,
+      "zone": "low",
+      "near_shot": true,
+      "volume_smooth": 0.327
+    },
+    {
+      "time": 484,
+      "time_fmt": "8:04",
+      "volume": 0.45,
+      "speaking": false,
+      "energy": 0.0,
+      "zone": "silence",
+      "near_shot": true,
+      "volume_smooth": 0.433
+    },
+    {
+      "time": 485,
+      "time_fmt": "8:05",
+      "volume": 0.45,
+      "speaking": false,
+      "energy": 0.0,
+      "zone": "silence",
+      "near_shot": false,
+      "volume_smooth": 0.45
+    },
+    {
+      "time": 486,
+      "time_fmt": "8:06",
+      "volume": 0.45,
+      "speaking": false,
+      "energy": 0.0,
+      "zone": "silence",
+      "near_shot": false,
+      "volume_smooth": 0.45
+    }
+  ]
+}
