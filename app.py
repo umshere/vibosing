@@ -71,23 +71,13 @@ def analyze():
         'filename': video.name
     })
 
-# ── Shot detection ────────────────────────────────────────────────────────
-@app.route('/api/shots', methods=['POST'])
-def detect_shots():
-    data = request.json
-    video = BASE / data.get('filename', 'The_Missing_Ancestor.mp4')
-    threshold = float(data.get('threshold', 0.35))
-
-    if not video.exists():
-        return jsonify({'error': 'File not found'}), 404
-
-    # Use ffmpeg scene detection
+# ── Shot detection (shared helper) ───────────────────────────────────────
+def _detect_shots(video_path, threshold=0.35):
     result = subprocess.run([
-        'ffmpeg', '-i', str(video),
+        'ffmpeg', '-i', str(video_path),
         '-vf', f"select='gt(scene,{threshold})',showinfo",
         '-f', 'null', '-'
     ], capture_output=True, text=True, timeout=120)
-
     shots = []
     for line in result.stderr.split('\n'):
         if 'pts_time' in line and 'showinfo' in line:
@@ -97,18 +87,107 @@ def detect_shots():
                 shots.append(round(t, 2))
             except Exception:
                 continue
-
-    # Deduplicate close shots (within 0.5s)
     deduped = []
     for t in sorted(shots):
         if not deduped or t - deduped[-1] > 0.5:
             deduped.append(t)
+    return deduped
 
-    # Save to file
+@app.route('/api/shots', methods=['POST'])
+def detect_shots():
+    data = request.json
+    video = BASE / data.get('filename', 'The_Missing_Ancestor.mp4')
+    threshold = float(data.get('threshold', 0.35))
+    if not video.exists():
+        return jsonify({'error': 'File not found'}), 404
+    deduped = _detect_shots(video, threshold)
     out = BASE / 'shot_changes.json'
     out.write_text(json.dumps({'shots': deduped, 'count': len(deduped)}, indent=2))
-
     return jsonify({'shots': deduped, 'count': len(deduped)})
+
+# ── Upload video file ─────────────────────────────────────────────────────
+@app.route('/api/upload', methods=['POST'])
+def upload_video():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
+    f = request.files['file']
+    if not f.filename:
+        return jsonify({'error': 'No filename'}), 400
+    safe_name = Path(f.filename).name
+    if not safe_name.lower().endswith(('.mp4', '.mov', '.webm', '.mkv', '.avi')):
+        return jsonify({'error': 'Invalid file type — use mp4, mov, webm, mkv or avi'}), 400
+    dest = BASE / safe_name
+    f.save(str(dest))
+    return jsonify({'filename': safe_name, 'size_mb': round(dest.stat().st_size / 1e6, 1)})
+
+# ── Full analysis pipeline (shots + cues + automation + transcript) ───────
+@app.route('/api/analyze-full', methods=['POST'])
+def analyze_full():
+    data = request.json
+    filename = data.get('filename', '')
+    video = BASE / filename
+    if not video.exists():
+        return jsonify({'error': 'File not found'}), 404
+
+    stem = video.stem   # e.g. "The_Missing_Ancestor"
+    result = {}
+
+    # 1. Duration
+    try:
+        r = subprocess.run([
+            'ffprobe', '-v', 'quiet', '-print_format', 'json', '-show_format', str(video)
+        ], capture_output=True, text=True)
+        result['duration'] = float(json.loads(r.stdout)['format']['duration'])
+    except Exception:
+        result['duration'] = 0
+
+    # 2. Shots — per-video file → generic fallback → detect fresh
+    shots_per = BASE / f'{stem}_shots.json'
+    shots_gen = BASE / 'shot_changes.json'
+    if shots_per.exists():
+        result['shots'] = json.loads(shots_per.read_text()).get('shots', [])
+    elif shots_gen.exists():
+        result['shots'] = json.loads(shots_gen.read_text()).get('shots', [])
+    else:
+        shots = _detect_shots(video)
+        shots_per.write_text(json.dumps({'shots': shots, 'count': len(shots), 'source': filename}, indent=2))
+        result['shots'] = shots
+
+    # 3. Cue sheet — per-video → generic cue_sheet.json → empty
+    cues_per = BASE / f'{stem}_cues.json'
+    cues_gen = BASE / 'cue_sheet.json'
+    if cues_per.exists():
+        result['cues'] = json.loads(cues_per.read_text())
+    elif cues_gen.exists():
+        result['cues'] = json.loads(cues_gen.read_text())
+    else:
+        result['cues'] = []
+
+    # 4. Volume automation — per-video → volume_automation.json → auto_duck_curve.json → empty
+    auto_per = BASE / f'{stem}_automation.json'
+    auto_gen = BASE / 'volume_automation.json'
+    auto_duck = BASE / 'auto_duck_curve.json'
+    if auto_per.exists():
+        result['automation'] = json.loads(auto_per.read_text())
+    elif auto_gen.exists():
+        result['automation'] = json.loads(auto_gen.read_text())
+    elif auto_duck.exists():
+        curve_data = json.loads(auto_duck.read_text())
+        result['automation'] = [[p['time'], p['volume']] for p in curve_data.get('curve', [])]
+    else:
+        result['automation'] = []
+
+    # 5. Transcript — per-video → generic transcript.json → empty
+    tr_per = BASE / f'{stem}_transcript.json'
+    tr_gen = BASE / 'transcript.json'
+    if tr_per.exists():
+        result['transcript'] = json.loads(tr_per.read_text()).get('segments', [])
+    elif tr_gen.exists():
+        result['transcript'] = json.loads(tr_gen.read_text()).get('segments', [])
+    else:
+        result['transcript'] = []
+
+    return jsonify(result)
 
 # ── Load existing JSON files ──────────────────────────────────────────────
 @app.route('/api/load/<filename>')
