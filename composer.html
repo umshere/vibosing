@@ -3,1324 +3,298 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Score Composer — The Missing Ancestor</title>
+<title>VIBosing — Composer</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-  :root {
-    --bg: #0a0a0e;
-    --surface: #111118;
-    --surface2: #17171f;
-    --border: rgba(255,255,255,0.07);
-    --text: #e8e6f0;
-    --text-dim: rgba(232,230,240,0.45);
-    --accent: #c8a96e;
-    --drop-color: #ff4466;
-    --hook-color: #44ddaa;
-    --hit-color: #ffcc44;
-  }
+:root {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface2: #f5f5f7;
+  --border: #e8e8ec;
+  --text: #1a1a2e;
+  --text-2: #6b6b80;
+  --text-3: #9898a8;
+  --accent: #5e6ad2;
+  --accent-light: #eef0ff;
+  --drop: #e5484d;
+  --peak: #30a46c;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
-  /* ── Header ── */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 9px 18px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    flex-shrink: 0;
-  }
-  .logo { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
-  .title-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); }
-  .header-right { display: flex; gap: 8px; align-items: center; }
-  .btn {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 5px 12px;
-    border-radius: 4px; border: 1px solid var(--border); background: var(--surface2);
-    color: var(--text-dim); cursor: pointer; transition: all 0.15s; letter-spacing: 0.04em;
-  }
-  .btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-  .btn-accent { background: var(--accent); color: #0a0a0e; border-color: var(--accent); font-weight: 600; }
-  .btn-accent:hover { opacity: 0.85; color: #0a0a0e; }
-  .btn-eleven { border-color: #6b4fa8; color: #b89fe0; background: transparent; }
-  .btn-eleven:hover { background: rgba(107,79,168,0.15); color: #b89fe0; border-color: #6b4fa8; }
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.logo { font-size: 13px; font-weight: 600; text-decoration: none; color: var(--text); }
+.logo span { color: var(--accent); }
+.status { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); display: flex; align-items: center; gap: 5px; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); }
+.status-dot.on { background: var(--peak); }
+.nav-right { display: flex; gap: 8px; }
+.btn { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg); color: var(--text-2); cursor: pointer; font-family: inherit; transition: all 0.12s; }
+.btn:hover { border-color: #ccc; color: var(--text); }
+.btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-accent:hover { opacity: 0.9; color: #fff; }
 
-  /* legend pills */
-  .legend { display: flex; gap: 10px; align-items: center; }
-  .leg-item { display: flex; align-items: center; gap: 5px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 0.05em; }
-  .leg-dot { width: 8px; height: 8px; border-radius: 2px; }
+.main { display: flex; flex: 1; overflow: hidden; }
+.editor { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
-  /* ── Workspace ── */
-  .workspace { display: flex; flex: 1; overflow: hidden; }
-  .main-panel { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+/* Video */
+.video-wrap { flex: 1; background: var(--surface2); display: flex; align-items: center; justify-content: center; position: relative; min-height: 0; }
+.drop-zone { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
+.drop-icon { width: 48px; height: 48px; border: 1.5px dashed var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text-3); transition: border-color 0.15s; }
+.drop-zone:hover .drop-icon { border-color: var(--accent); color: var(--accent); }
+.drop-label { font-size: 13px; color: var(--text-3); }
+.drop-label strong { color: var(--accent); font-weight: 500; }
+#file-input { display: none; }
+#video-el { max-width: 100%; max-height: 100%; display: none; }
+.now-playing { position: absolute; top: 10px; left: 10px; display: none; align-items: center; gap: 6px; background: rgba(255,255,255,0.92); border: 1px solid var(--border); padding: 4px 10px; border-radius: 5px; pointer-events: none; font-size: 11px; font-weight: 500; color: var(--text-2); }
+.np-dot { width: 6px; height: 6px; border-radius: 50%; }
 
-  /* ── Video ── */
-  .video-area {
-    flex: 1; background: #000; display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden; min-height: 0;
-  }
-  .drop-zone {
-    display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; user-select: none;
-  }
-  .drop-icon {
-    width: 60px; height: 60px; border: 2px dashed rgba(200,169,110,0.3); border-radius: 12px;
-    display: flex; align-items: center; justify-content: center; font-size: 22px; transition: all 0.2s;
-  }
-  .drop-zone:hover .drop-icon { border-color: var(--accent); }
-  .drop-label { font-size: 13px; color: var(--text-dim); text-align: center; line-height: 1.7; }
-  .drop-label strong { color: var(--accent); }
-  #file-input { display: none; }
-  #video-el { max-width: 100%; max-height: 100%; display: none; }
+/* Transport */
+.transport { display: flex; align-items: center; gap: 10px; padding: 6px 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.t-btn { background: none; border: none; color: var(--text-3); cursor: pointer; font-size: 13px; padding: 4px; }
+.t-btn:hover { color: var(--text); }
+.play-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+.t-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); }
+.t-time b { color: var(--text); font-weight: 500; }
+.vol-label { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); }
 
-  .cue-overlay {
-    position: absolute; top: 12px; left: 12px; display: none;
-    align-items: center; gap: 7px;
-    background: rgba(10,10,14,0.8); border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(8px); padding: 5px 10px; border-radius: 5px; pointer-events: none;
-  }
-  .cue-overlay-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .cue-overlay-txt { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+/* Timeline */
+.timeline { flex-shrink: 0; height: 170px; border-top: 1px solid var(--border); display: flex; flex-direction: column; background: var(--surface); }
+.tl-header { display: flex; align-items: center; justify-content: space-between; padding: 4px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.tl-title { font-size: 11px; font-weight: 500; color: var(--text-2); }
+.tl-legend { display: flex; gap: 12px; }
+.leg { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-3); }
+.leg-dot { width: 8px; height: 3px; border-radius: 1px; }
+.tl-body { flex: 1; position: relative; overflow: hidden; }
+canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+#auto-cv { z-index: 3; }
+#wave-cv { z-index: 2; }
+#region-cv { z-index: 1; }
+#interact-cv { z-index: 5; cursor: pointer; }
+#playhead { position: absolute; top: 0; width: 1px; height: 100%; background: var(--accent); pointer-events: none; z-index: 10; left: 0; }
+#playhead::before { content: ''; position: absolute; top: -1px; left: -4px; width: 9px; height: 6px; background: var(--accent); clip-path: polygon(0 0,100% 0,50% 100%); }
 
-  /* ── Transport ── */
-  .transport {
-    display: flex; align-items: center; gap: 12px; padding: 7px 16px;
-    background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0;
-  }
-  .tbtn { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 16px; transition: color 0.15s; }
-  .tbtn:hover { color: var(--text); }
-  .play-btn {
-    width: 32px; height: 32px; background: var(--accent); color: #0a0a0e;
-    border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center;
-    border: none; cursor: pointer; transition: opacity 0.15s; flex-shrink: 0;
-  }
-  .play-btn:hover { opacity: 0.82; }
-  .t-display { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); min-width: 105px; }
-  .t-display span { color: var(--text); }
-  .vol-row { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); }
-  input[type=range] { -webkit-appearance: none; height: 3px; background: var(--border); border-radius: 2px; outline: none; cursor: pointer; }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); cursor: pointer; }
-  #vol-range { width: 70px; }
+/* Sidebar */
+.sidebar { width: 300px; flex-shrink: 0; border-left: 1px solid var(--border); background: var(--bg); display: flex; flex-direction: column; overflow: hidden; }
+.sb-tabs { display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.sb-tab { flex: 1; padding: 8px; text-align: center; font-size: 11px; font-weight: 500; color: var(--text-3); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; }
+.sb-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.sb-content { flex: 1; overflow-y: auto; }
 
-  /* ── Timeline ── */
-  .timeline-panel {
-    background: var(--surface); border-top: 1px solid var(--border);
-    flex-shrink: 0; height: 210px; position: relative;
-  }
+/* Transcript */
+.tr-seg { display: flex; gap: 8px; padding: 5px 12px; font-size: 11px; line-height: 1.55; cursor: pointer; transition: background 0.1s; border-left: 2px solid transparent; }
+.tr-seg:hover { background: var(--surface2); }
+.tr-seg.active { background: var(--accent-light); border-left-color: var(--accent); }
+.tr-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); flex-shrink: 0; width: 32px; padding-top: 1px; }
+.tr-text { color: var(--text-2); }
+.tr-seg.active .tr-text { color: var(--text); }
 
-  /* tab bar */
-  .tl-tabs {
-    display: flex; gap: 0; border-bottom: 1px solid var(--border);
-    padding: 0 12px; height: 28px; align-items: flex-end;
-  }
-  .tl-tab {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.07em;
-    text-transform: uppercase; padding: 4px 12px; cursor: pointer; color: var(--text-dim);
-    border-bottom: 2px solid transparent; transition: all 0.15s; user-select: none;
-    margin-bottom: -1px;
-  }
-  .tl-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+/* Cue detail */
+.cue-detail { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.sb-badge { width: 26px; height: 26px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; }
+.sb-title { font-size: 13px; font-weight: 600; }
+.sb-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); }
+.pill { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; background: var(--accent-light); color: var(--accent); }
+.label { font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+.text-sm { font-size: 12px; line-height: 1.6; color: var(--text-2); }
+.text-em { font-size: 12px; line-height: 1.6; color: var(--text); font-style: italic; }
+.prompt-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 10px; }
+.prompt-box textarea { width: 100%; background: none; border: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.7; color: var(--text); resize: vertical; outline: none; min-height: 80px; }
+.copy-btn { font-size: 10px; padding: 3px 8px; border-radius: 3px; border: 1px solid var(--border); background: var(--bg); color: var(--text-3); cursor: pointer; }
+.copy-btn:hover { color: var(--text); }
 
-  .tracks-wrap { position: relative; height: 182px; overflow: hidden; }
-
-  /* track rows */
-  .track-row {
-    position: absolute; left: 0; right: 0;
-    display: flex; align-items: center;
-  }
-  .track-label {
-    width: 80px; flex-shrink: 0; font-family: 'JetBrains Mono', monospace;
-    font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase;
-    color: var(--text-dim); padding: 0 10px; border-right: 1px solid var(--border);
-    height: 100%; display: flex; align-items: center;
-  }
-  .track-canvas-wrap { flex: 1; position: relative; height: 100%; overflow: hidden; }
-
-  /* rows */
-  .row-automation { top: 0; height: 70px; }
-  .row-waveform   { top: 70px; height: 50px; border-top: 1px solid var(--border); }
-  .row-thumbs     { top: 120px; height: 62px; border-top: 1px solid var(--border); }
-
-  canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-  /* automation canvas is interactive */
-  #auto-canvas { cursor: crosshair; }
-  #cue-canvas { pointer-events: none; }
-
-  /* thumb strip */
-  #thumb-strip {
-    position: absolute; inset: 0; display: flex; background: #07070e; overflow: hidden;
-  }
-  .thumb-frame {
-    flex-shrink: 0; height: 100%; position: relative;
-    border-right: 1px solid rgba(255,255,255,0.04); overflow: hidden; cursor: pointer;
-  }
-  .thumb-frame:hover { filter: brightness(1.3); }
-  .thumb-frame canvas { width: 100%; height: 100%; display: block; }
-  .thumb-time {
-    position: absolute; bottom: 2px; left: 3px;
-    font-family: 'JetBrains Mono', monospace; font-size: 8px;
-    color: rgba(255,255,255,0.45); text-shadow: 0 1px 3px #000; pointer-events: none;
-  }
-
-  /* playhead */
-  #playhead {
-    position: absolute; top: 0; width: 1px; height: 182px;
-    background: rgba(255,255,255,0.9); pointer-events: none; z-index: 30; left: 80px;
-    box-shadow: 0 0 6px rgba(255,255,255,0.3);
-  }
-  #playhead::before {
-    content: ''; position: absolute; top: -1px; left: -4px;
-    width: 9px; height: 7px; background: #fff;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-  }
-
-  /* tooltip */
-  #tooltip {
-    position: fixed; background: rgba(10,10,14,0.95); border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(10px); padding: 7px 11px; border-radius: 5px;
-    pointer-events: none; z-index: 200; display: none;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.55;
-    max-width: 200px; color: var(--text);
-  }
-
-  /* ── Sidebar ── */
-  .sidebar {
-    width: 0; flex-shrink: 0; background: var(--surface2);
-    border-left: 1px solid var(--border); overflow: hidden;
-    transition: width 0.25s cubic-bezier(0.4,0,0.2,1);
-  }
-  .sidebar.open { width: 360px; }
-  .sidebar-inner {
-    width: 360px; display: flex; flex-direction: column; height: 100%;
-    overflow-y: auto; padding: 18px; gap: 15px;
-  }
-  .sb-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-  .sb-badge {
-    width: 34px; height: 34px; border-radius: 7px; display: flex; align-items: center;
-    justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
-    flex-shrink: 0;
-  }
-  .sb-title-block { flex: 1; }
-  .sb-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
-  .sb-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim); }
-  .close-btn { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 16px; transition: color 0.15s; }
-  .close-btn:hover { color: var(--text); }
-  .mood-pill {
-    display: inline-flex; padding: 3px 9px; border-radius: 20px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
-  }
-  .sl { font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 5px; }
-  .st { font-size: 12px; line-height: 1.65; color: rgba(232,230,240,0.72); }
-  .st-em { font-size: 12px; line-height: 1.65; color: var(--text); font-style: italic; }
-  .lyria-box { background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 7px; padding: 11px; }
-  .lyria-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; }
-  textarea.lyria-ta {
-    width: 100%; background: none; border: none; color: var(--text);
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.7;
-    resize: vertical; outline: none; min-height: 110px;
-  }
-  .copy-btn {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 3px 9px;
-    border-radius: 3px; border: 1px solid var(--border); background: var(--surface);
-    color: var(--text-dim); cursor: pointer; transition: all 0.15s;
-  }
-  .copy-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-  .copy-btn.ok { color: #6fcf97; border-color: #6fcf97; }
-  .dur-bar { height: 3px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; margin-bottom: 4px; }
-  .dur-fill { height: 100%; border-radius: 2px; }
-
-  /* hit point marker style */
-  .hit-legend { display: flex; flex-direction: column; gap: 4px; }
-  .hit-row { display: flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); }
-  .hit-icon { width: 12px; height: 12px; flex-shrink: 0; }
-
-  /* ── Generation Panel ── */
-  .gen-panel {
-    width: 0; flex-shrink: 0; background: var(--surface2);
-    border-left: 1px solid var(--border); overflow: hidden;
-    transition: width 0.25s cubic-bezier(0.4,0,0.2,1);
-  }
-  .gen-panel.open { width: 420px; }
-  .gen-panel-inner {
-    width: 420px; padding: 20px; overflow-y: auto; height: 100%;
-    display: flex; flex-direction: column; gap: 16px;
-  }
-
-  /* Credit tracker */
-  .credit-tracker {
-    background: rgba(107,79,168,0.08); border: 1px solid rgba(107,79,168,0.25);
-    border-radius: 7px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;
-  }
-  .credit-row {
-    display: flex; align-items: center; gap: 8px;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim);
-  }
-  .credit-row input[type=number] {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(107,79,168,0.4);
-    border-radius: 3px; color: #b89fe0; font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; padding: 2px 6px; width: 70px; outline: none;
-    -moz-appearance: textfield;
-  }
-  .credit-row input[type=number]::-webkit-inner-spin-button,
-  .credit-row input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
-  .credit-budget { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b89fe0; }
-  .credit-bar-wrap { height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
-  .credit-bar-used { height: 100%; background: #6b4fa8; border-radius: 2px; transition: width 0.2s; }
-
-  /* Section headers */
-  .gen-section-title {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px; text-transform: uppercase;
-    letter-spacing: 0.14em; color: var(--text-dim); padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* Movement cards */
-  .movement-card {
-    background: var(--surface); border-radius: 7px; padding: 14px;
-    border-left: 3px solid #6b4fa8; display: flex; flex-direction: column; gap: 9px;
-  }
-  .mv-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .mv-title { font-size: 12px; font-weight: 700; }
-  .mv-badge {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px;
-    padding: 2px 7px; border-radius: 3px; background: rgba(255,255,255,0.06);
-    color: var(--text-dim); white-space: nowrap;
-  }
-  .mv-meta { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); display: flex; gap: 12px; }
-  .mv-cost { color: #b89fe0; }
-  .mv-prompt-wrap { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 5px; padding: 9px; }
-  .mv-prompt-wrap textarea {
-    width: 100%; background: none; border: none; color: var(--text);
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.65;
-    resize: vertical; outline: none; min-height: 90px;
-  }
-  .mv-actions { display: flex; gap: 8px; align-items: center; }
-  .mark-btn {
-    font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 3px 9px;
-    border-radius: 3px; border: 1px solid var(--border); background: var(--surface);
-    color: var(--text-dim); cursor: pointer; transition: all 0.15s; margin-left: auto;
-  }
-  .mark-btn:hover { border-color: #6fcf97; color: #6fcf97; }
-  .mark-btn.done { color: #6fcf97; border-color: #6fcf97; background: rgba(111,207,151,0.08); }
-
-  /* Sting cards */
-  .sting-card {
-    background: var(--surface); border-radius: 5px; padding: 10px 12px;
-    border-left: 3px solid #ff4466; display: flex; flex-direction: column; gap: 7px;
-  }
-  .sting-header { display: flex; align-items: center; gap: 8px; }
-  .sting-time {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
-    color: #ff4466;
-  }
-  .sting-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-dim); flex: 1; }
-  .sting-prompt {
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(232,230,240,0.65);
-    line-height: 1.55;
-  }
-
-  /* Placement table */
-  .placement-table-wrap { overflow-x: auto; }
-  .placement-table {
-    width: 100%; border-collapse: collapse;
-    font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  }
-  .placement-table th {
-    text-align: left; padding: 6px 10px; color: var(--text-dim);
-    text-transform: uppercase; letter-spacing: 0.08em;
-    border-bottom: 1px solid var(--border); font-weight: 400;
-  }
-  .placement-table td {
-    padding: 6px 10px; color: rgba(232,230,240,0.75);
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-  .placement-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-  .placement-table tr:hover td { background: rgba(255,255,255,0.04); }
-  .pt-file { color: var(--text-dim); }
-  .pt-vol { color: #b89fe0; }
-
-  .gen-panel-close {
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .gen-panel-heading {
-    font-size: 12px; font-weight: 700; color: #b89fe0; letter-spacing: 0.05em;
-  }
-
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Score Composer</div>
-  <div class="title-tag">The Missing Ancestor · Director's View</div>
-  <div class="legend">
-    <div class="leg-item"><div class="leg-dot" style="background:var(--accent);opacity:0.7"></div>Volume curve</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--drop-color)"></div>DROP</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--hook-color)"></div>HOOK</div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--hit-color)"></div>HIT POINT</div>
-    <div class="leg-item"><div class="leg-dot" style="background:#334;border:1px solid #556"></div>DEEP DUCK</div>
-  </div>
-  <div class="header-right">
-    <button class="btn btn-eleven" onclick="showPanel('generate')">ElevenLabs &#x2197;</button>
-    <button class="btn" onclick="exportAll()">Export</button>
+<nav>
+  <a href="index.html" class="logo">VIB<span>osing</span></a>
+  <div class="status"><div class="status-dot" id="srv-dot"></div><span id="srv-status">Checking...</span></div>
+  <div class="nav-right">
+    <button class="btn" onclick="exportJSON()">Export</button>
     <button class="btn btn-accent" onclick="document.getElementById('file-input').click()">Load Video</button>
   </div>
-</header>
+</nav>
 
-<div class="workspace">
-  <div class="main-panel">
-
-    <div class="video-area" id="drop-area">
+<div class="main">
+  <div class="editor">
+    <div class="video-wrap" id="drop-area">
       <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
-        <div class="drop-icon">&#9654;</div>
-        <div class="drop-label"><strong>Drop your .mp4 here</strong><br>or click to browse</div>
+        <div class="drop-icon">+</div>
+        <div class="drop-label"><strong>Drop video</strong> or click to browse</div>
       </div>
-      <video id="video-el" preload="auto"></video>
-      <div class="cue-overlay" id="cue-overlay">
-        <div class="cue-overlay-dot" id="ov-dot"></div>
-        <div class="cue-overlay-txt" id="ov-txt"></div>
-      </div>
+      <video id="video-el"></video>
+      <div class="now-playing" id="np"><div class="np-dot" id="np-dot"></div><span id="np-text"></span></div>
       <input type="file" id="file-input" accept="video/*">
     </div>
 
     <div class="transport">
-      <button class="tbtn" onclick="skipBy(-10)">&#10216;&#10216;</button>
+      <button class="t-btn" onclick="skipBy(-10)">&#9664;&#9664;</button>
       <button class="play-btn" id="play-btn" onclick="togglePlay()">&#9654;</button>
-      <button class="tbtn" onclick="skipBy(10)">&#10217;&#10217;</button>
-      <div class="t-display"><span id="t-cur">0:00</span> / <span id="t-tot">0:00</span></div>
-      <div class="vol-row">&#128266; <input type="range" id="vol-range" min="0" max="1" step="0.02" value="1" oninput="video.volume=this.value"></div>
+      <button class="t-btn" onclick="skipBy(10)">&#9654;&#9654;</button>
+      <div class="t-time"><b id="t-cur">0:00</b> / <span id="t-tot">0:00</span></div>
+      <div class="vol-label" id="vol-label">Vol: —</div>
     </div>
 
-    <div class="timeline-panel">
-      <div class="tl-tabs">
-        <div class="tl-tab active" onclick="switchTab('director')">Director's View</div>
-        <div class="tl-tab" onclick="switchTab('cues')">Cue Map</div>
+    <div class="timeline">
+      <div class="tl-header">
+        <div class="tl-title">Timeline</div>
+        <div class="tl-legend">
+          <div class="leg"><div class="leg-dot" style="background:var(--accent);opacity:0.5"></div>Volume</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--drop)"></div>Drop</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--peak)"></div>Peak</div>
+          <div class="leg"><div class="leg-dot" style="background:var(--border)"></div>Shot</div>
+        </div>
       </div>
-
-      <div class="tracks-wrap" id="tracks-wrap">
-
-        <!-- automation row -->
-        <div class="track-row row-automation">
-          <div class="track-label">Volume<br>Automation</div>
-          <div class="track-canvas-wrap" id="auto-wrap">
-            <canvas id="bg-canvas"></canvas>
-            <canvas id="auto-canvas"></canvas>
-            <canvas id="marker-canvas"></canvas>
-          </div>
-        </div>
-
-        <!-- waveform row -->
-        <div class="track-row row-waveform">
-          <div class="track-label">Waveform</div>
-          <div class="track-canvas-wrap" id="wf-wrap">
-            <canvas id="wf-canvas"></canvas>
-            <canvas id="cue-canvas"></canvas>
-          </div>
-        </div>
-
-        <!-- thumbs row -->
-        <div class="track-row row-thumbs">
-          <div class="track-label">Frames</div>
-          <div style="flex:1;position:relative;height:100%;overflow:hidden;" id="thumb-outer">
-            <div id="thumb-strip"></div>
-          </div>
-        </div>
-
+      <div class="tl-body" id="tl-body">
+        <canvas id="region-cv"></canvas>
+        <canvas id="wave-cv"></canvas>
+        <canvas id="auto-cv"></canvas>
+        <canvas id="interact-cv"></canvas>
         <div id="playhead"></div>
       </div>
     </div>
-
   </div>
 
-  <!-- sidebar -->
   <div class="sidebar" id="sidebar">
-    <div class="sidebar-inner" id="sb-inner"></div>
-  </div>
-
-  <!-- generation panel -->
-  <div class="gen-panel" id="gen-panel">
-    <div class="gen-panel-inner" id="gen-panel-inner"></div>
+    <div class="sb-tabs">
+      <div class="sb-tab active" onclick="switchTab('transcript')">Transcript</div>
+      <div class="sb-tab" onclick="switchTab('cues')">Cues</div>
+    </div>
+    <div class="sb-content" id="sb-content"></div>
   </div>
 </div>
 
-<div id="tooltip"></div>
-
 <script>
-// ── CUE DATA ─────────────────────────────────────────────────────────────
-const CUE_DATA = [
-  {cue:1,start:"0:00",end:"0:49",duration_seconds:49,name:"Cold Open",filename:"cue_01_cold_open.mp3",
-   transcript_snippet:"We're basically about to solve the greatest detective story ever told... the clues are hidden inside you.",
-   narrative_beat:"Cold open — two hosts hook the audience. 7-million-year cold case. The big reveal: every person on earth is African.",
-   suggested_mood:"tension + intrigue + mystery",
-   lyria_prompt:"Tense cinematic thriller opening. Low drone strings, sparse piano stabs, subtle African percussion (talking drum undertone), building slowly. 60 BPM. Dark and mysterious with a sense of ancient time. No melody — just mood and pulse. No brass fanfares, no major-key brightness, no orchestral swells."},
-  {cue:2,start:"0:50",end:"1:51",duration_seconds:61,name:"DNA Forensics",filename:"cue_02_dna_forensics.mp3",
-   transcript_snippet:"The proof is written in tiny accidental spelling mistakes — mutations piling up in our DNA for millions of years.",
-   narrative_beat:"DNA as forensic evidence. Molecular clock introduced. Dense technical information — music must be nearly inaudible here.",
-   suggested_mood:"analytical + unsettled + curious",
-   lyria_prompt:"Minimalist science-thriller underscore. Sparse electronic textures over plucked strings (pizzicato cello). Steady ticking or clock-like rhythm, 72 BPM. Slightly eerie, like a lab at night. No vocals. No loud percussion. No cinematic climax."},
-  {cue:3,start:"1:52",end:"2:50",duration_seconds:58,name:"The Clock",filename:"cue_03_the_clock.mp3",
-   transcript_snippet:"The clock isn't a Swiss watch — scientists calibrate it with anchor points from the fossil record.",
-   narrative_beat:"DNA clock precision explained. Scientists hunt for a ghost ancestor. Tension building toward the 7-million-year number.",
-   suggested_mood:"methodical + mounting tension",
-   lyria_prompt:"Slow-burn documentary tension. Sustained string pad (low viola, cello) with heartbeat pulse, 65 BPM. Gradual harmonic movement. Kalimba note occasionally breaking through. No resolution. Ends on an unresolved harmonic suspension."},
-  {cue:4,start:"2:51",end:"4:03",duration_seconds:72,name:"Toumaï Found",filename:"cue_04_toumai_discovery.mp3",
-   transcript_snippet:"In 2001, in the Djurab desert in Chad, they found something that changed everything. A skull.",
-   narrative_beat:"THE CENTREPIECE. Toumaï skull found. Complete music DROP at 3:13, then a single struck hit. African texture enters. The foramen magnum smoking gun.",
-   suggested_mood:"revelation + ancient + awe",
-   lyria_prompt:"Ancient mystery revealed. Deep African percussion (djembe, frame drum) enters slowly under droning strings. Single high woodwind melody (bamboo flute or duduk) emerges — haunting and ancient. 55 BPM, rubato feel. Feels like unearthing something sacred. No triumphant orchestra. No western pop rhythm."},
-  {cue:5,start:"4:04",end:"5:35",duration_seconds:91,name:"Family Album",filename:"cue_05_family_album.mp3",
-   transcript_snippet:"Lucy was found in Ethiopia in '74 and became an instant icon... every single link in that chain was found in Africa.",
-   narrative_beat:"Lucy → Homo habilis → unbroken African chain. LONGEST DENSE PASSAGE — music drops to 8-10% throughout. Kora texture only.",
-   suggested_mood:"wonder + ancient warmth + building",
-   lyria_prompt:"Warm archaeological wonder. Kora (West African harp), light marimba, sustained strings. 70 BPM. Melodic but subtle — not resolution yet. Evokes savanna and deep time. No drama. No electric instruments. Ends openly."},
-  {cue:6,start:"5:36",end:"7:32",duration_seconds:116,name:"Red Herring + Verdict",filename:"cue_06_verdict.mp3",
-   transcript_snippet:"Every good detective story has a twist... Java Man sent science down the wrong rabbit hole for 50 years. Africa: case closed.",
-   narrative_beat:"Twist + Darwin vindication + verdict. SECOND DROP at 7:22 — 'Africa. Case closed.' Then resolution begins rising.",
-   suggested_mood:"suspense + twist + resolve + triumph",
-   lyria_prompt:"Two-part climax. Part 1 (first 60s): Thriller tension — syncopated strings, dissonant piano, 80 BPM. Part 2 (final 60s): Resolution builds — African percussion returns, kora melody rises. Deep certainty arriving. No full orchestral explosion."},
-  {cue:7,start:"7:33",end:"8:06",duration_seconds:33,name:"Resolution",filename:"cue_07_resolution.mp3",
-   transcript_snippet:"One story. One single shared family tree with roots planted deep in African soil. Every border, every wall — one ancient, undivided human family.",
-   narrative_beat:"THE EMOTIONAL PEAK. Music saves everything for these 33 seconds. From 20% → 68% over the final lines. The score's entire purpose.",
-   suggested_mood:"warm + profound + united + resolution",
-   lyria_prompt:"Gentle, profound resolution. Solo cello or oud melody over soft string pad. 52 BPM, unhurried. Warm but not sentimental. African tonal color. Fades naturally 8-10s. No percussion. No drama. Just warmth and stillness."}
+const CUE_DATA=[
+  {cue:1,start:"0:00",end:"0:49",name:"Cold Open",color:"#7c6bc4",mood:"tension + intrigue",snippet:"We're basically about to solve the greatest detective story ever told...",beat:"Cold open. 7-million-year cold case. Every person on earth is African.",prompt:"Dark cinematic opener. Sub-bass drone with kalimba motif. Sparse piano stabs. 60 BPM. Atmospheric."},
+  {cue:2,start:"0:50",end:"1:51",name:"DNA Forensics",color:"#5b8a9a",mood:"analytical",snippet:"The proof is written in tiny spelling mistakes...",beat:"DNA as evidence. Molecular clock introduced.",prompt:"Ticking clock texture. Woodblock pulse 72 BPM. Sub-bass drone. Cold, precise."},
+  {cue:3,start:"1:52",end:"2:50",name:"The Clock",color:"#4a9a8e",mood:"mounting tension",snippet:"The clock isn't a Swiss watch...",beat:"Scientists hunt for a ghost ancestor.",prompt:"Heartbeat bass pulse 65 BPM. Low strings, unresolved suspensions. Building."},
+  {cue:4,start:"2:51",end:"4:03",name:"Toumai Found",color:"#c8932a",mood:"revelation",snippet:"They found something that changed everything. A skull.",beat:"THE CENTREPIECE. DROP at 3:13, then African texture.",prompt:"Silence then drum hit. Duduk melody. Djembe. Ancient. 55 BPM."},
+  {cue:5,start:"4:04",end:"5:35",name:"Family Album",color:"#b86c3a",mood:"warmth",snippet:"Lucy was found in Ethiopia in '74...",beat:"Lucy to Homo habilis. Music nearly invisible.",prompt:"Kora harp, sparse. Light string pad. Minimum density. 65 BPM."},
+  {cue:6,start:"5:36",end:"7:32",name:"Verdict",color:"#a84050",mood:"resolve",snippet:"Every good detective story has a twist...",beat:"Java Man twist. Darwin vindication. Africa: case closed.",prompt:"Pizzicato, slight dissonance. Builds to kora + heartbeat."},
+  {cue:7,start:"7:33",end:"8:06",name:"Resolution",color:"#6a9a5a",mood:"profound",snippet:"One story. One shared family tree...",beat:"THE PEAK. Everything saved for these 33 seconds.",prompt:"Full palette. Kalimba + cello + kora. Warm. 55 BPM. Fades to kalimba alone."}
 ];
-const CUE_COLORS = ['#6b4fa8','#3a6b8a','#2a7a6e','#c8832a','#b85c3a','#a83040','#c8b890'];
+const SHOTS=[19.96,45.29,64,79.62,112.46,138.42,155.46,168.5,175.17,193.92,211.58,243.96,256.67,280.17,302.75,325.38,349.88,366.92,382.54,413.25,424.42,445.54,453.46,464.54,483.83];
+const AUTO_KF=[[0,.80],[3,.70],[5,.22],[6,.22],[19,.22],[20,.10],[21.5,.10],[22,.20],[23,.20],[43,.22],[48,.22],[49,.32],[50,.20],[51,.20],[61,.20],[76,.24],[79,.20],[96,.22],[99,.20],[111,.30],[112,.20],[138,.22],[145,.24],[155,.26],[165,.28],[168,.30],[170,.28],[181,.28],[190,.30],[192.5,.30],[193,0],[194.5,0],[195,.06],[197,.18],[198,.25],[205,.30],[210,.30],[219,.28],[225,.30],[235,.32],[240,.25],[244,.22],[266,.22],[274,.22],[290,.22],[295,.25],[300,.28],[310,.30],[321,.32],[325,.34],[330,.35],[335,.35],[336,.35],[342,.32],[349,.32],[355,.30],[362,.32],[366,.30],[380,.28],[390,.25],[399,.25],[413,.28],[424,.30],[430,.32],[438,.32],[440,.30],[441,.25],[442,.10],[443,.10],[444,.15],[445,.22],[448,.28],[453,.35],[455,.40],[457,.45],[462,.50],[464,.30],[468,.50],[470,.28],[472,.22],[475,.45],[477,.32],[479,.55],[480,.50],[483,.65],[484,.68],[485,.65],[486,.55],[488,.40],[490,.20]];
 
-// ── MOVEMENT DATA ─────────────────────────────────────────────────────────
-const MOVEMENTS = [
-  {
-    num: 1,
-    name: "The Inquiry",
-    range: "0:00 → 2:50",
-    duration_sec: 170,
-    color: "#6b4fa8",
-    prompt: `Cinematic documentary thriller underscore. Low cello drone, sparse piano stabs, subtle ticking pulse. 60-65 BPM. Slightly eerie, like an unsolved case. Faint kalimba texture. No melody. No vocals. No resolution. Ends on an unresolved suspended chord. Dark, ancient, mysterious.`
-  },
-  {
-    num: 2,
-    name: "The Evidence",
-    range: "2:51 → 5:35",
-    duration_sec: 164,
-    color: "#c8832a",
-    prompt: `African archaeological wonder. Begins with deep djembe percussion under droning strings. A single bamboo flute or duduk melody emerges — haunting, ancient. Transitions to kora harp texture with light marimba. 60-70 BPM, rubato feel. Warm but not triumphant. Feels like unearthing something sacred. No western pop rhythm. No major chord resolution.`
-  },
-  {
-    num: 3,
-    name: "The Verdict",
-    range: "5:36 → 8:06",
-    duration_sec: 150,
-    color: "#a83040",
-    prompt: `Two-part documentary climax. Opens with thriller tension — syncopated strings, dissonant piano, 80 BPM. After 60 seconds shifts to resolution: African percussion returns, kora melody rises, solo cello over soft pad. 52 BPM. Warm, profound, unhurried. Builds to an emotional peak then fades naturally. Not sentimental. Not a fanfare. Deep certainty arriving.`
-  }
-];
+function pt(s){const[m,n]=s.split(':').map(Number);return m*60+n;}
+function fmt(s){return`${Math.floor(s/60)}:${Math.floor(s%60).toString().padStart(2,'0')}`;}
+function volAt(t){for(let i=1;i<AUTO_KF.length;i++){if(t<=AUTO_KF[i][0]){const[t0,v0]=AUTO_KF[i-1],[t1,v1]=AUTO_KF[i];return v0+(v1-v0)*((t-t0)/(t1-t0));}}return AUTO_KF[AUTO_KF.length-1][1];}
 
-const STINGS = [
-  { t: "0:20", label: "DROP — Every person is African", prompt: "Complete silence for 2 seconds then fade back in. No sound." },
-  { t: "3:13", label: "DROP + STING — They found it. A skull.", prompt: "Single deep African percussion hit. One struck djembe or frame drum. Reverb tail 3 seconds. No melody. No harmony. Just the hit and the decay." },
-  { t: "7:22", label: "DROP — Africa. Case closed.", prompt: "Complete silence for 2 seconds. Let the line land. Then resolution music enters softly." }
-];
+const cues=CUE_DATA.map(c=>({...c,s:pt(c.start),e:pt(c.end)}));
+let totalDur=486.37,loaded=false,aCue=-1,wfD=null,drag=false,TRANSCRIPT=[],curTab='transcript';
 
-// ── AUTOMATION KEYFRAMES ──────────────────────────────────────────────────
-// [time_seconds, volume_0_to_1, type, label]
-const AUTO_KF = [
-  [0,    0.60, 'hook',  'HOOK: Pre-voice thriller open'],
-  [5,    0.15, 'duck',  'Voices enter'],
-  [20,   0.00, 'drop',  'DROP: "Every person is African"'],
-  [22,   0.12, 'norm',  ''],
-  [43,   0.22, 'swell', 'Swell: "species never really left"'],
-  [49,   0.38, 'trans', 'Edit point transition'],
-  [50,   0.10, 'duck',  ''],
-  [61,   0.20, 'breath','Breath: "forensic evidence"'],
-  [64,   0.08, 'deep',  'DEEP DUCK: DNA clock explanation'],
-  [76,   0.18, 'accent','Accent: "The DNA clock"'],
-  [79,   0.08, 'deep',  'Deep duck resumes'],
-  [88,   0.12, 'norm',  'Chimpanzees'],
-  [96,   0.20, 'swell', 'Swell: "genetic scar"'],
-  [99,   0.08, 'deep',  'Deep duck'],
-  [111,  0.40, 'trans', 'Edit point'],
-  [112,  0.12, 'duck',  ''],
-  [138,  0.18, 'build', 'Build: "scientists go hunting"'],
-  [145,  0.22, 'build', 'Build: "hunting for a ghost"'],
-  [155,  0.28, 'build', 'Build: "7M year old ghost"'],
-  [168,  0.38, 'swell', 'Pre-reveal swell'],
-  [171,  0.20, 'trans', 'Edit point'],
-  [181,  0.18, 'build', 'Build: "until 2001"'],
-  [193,  0.00, 'drop',  'DROP: "They found it. A skull."'],
-  [195,  0.05, 'hit',   'HIT POINT: single percussion sting'],
-  [198,  0.25, 'warm',  'African texture enters: Toumaï'],
-  [219,  0.20, 'duck',  'Foramen magnum explanation'],
-  [227,  0.25, 'swell', 'Swell: "smoking gun"'],
-  [235,  0.30, 'accent','Accent: "walked upright — page one"'],
-  [243,  0.42, 'trans', 'Edit point'],
-  [244,  0.10, 'deep',  'DEEP DUCK: Lucy/Habilis section'],
-  [266,  0.12, 'slight','Lucy icon'],
-  [274,  0.10, 'deep',  ''],
-  [290,  0.12, 'slight','Homo habilis'],
-  [312,  0.12, 'slight','"first spark of technology"'],
-  [321,  0.18, 'swell', 'Swell: "every link in Africa"'],
-  [325,  0.22, 'peak',  'Brief peak: "Africa"'],
-  [335,  0.35, 'trans', 'Edit point'],
-  [336,  0.20, 'twist', 'Twist texture: "detective story twist"'],
-  [342,  0.15, 'duck',  '50 year wrong path'],
-  [349,  0.08, 'deep',  'DEEP DUCK: Darwin/Java Man'],
-  [362,  0.18, 'warm',  'Darwin vindication'],
-  [366,  0.08, 'deep',  'Java Man explanation'],
-  [399,  0.14, 'build', 'Java Man in proper place'],
-  [413,  0.22, 'build', '"bring all evidence together"'],
-  [424,  0.26, 'build', '"verdict is overwhelming"'],
-  [430,  0.28, 'build', '"skull showed up on schedule"'],
-  [442,  0.00, 'drop',  'DROP: "Africa. Case closed."'],
-  [445,  0.20, 'norm',  'Resume'],
-  [453,  0.28, 'res',   'Resolution begins: "one unbroken line"'],
-  [457,  0.38, 'swell', '"one story, one shared family tree"'],
-  [464,  0.48, 'swell', '"one undivided unit for that long"'],
-  [470,  0.58, 'full',  '"borders, walls, flags"'],
-  [477,  0.68, 'peak',  'PEAK: "one ancient, undivided human family"'],
-  [486,  0.70, 'fade',  'Music outlasts voice, fades']
-];
+const $=id=>document.getElementById(id);
+const video=$('video-el'),tlBody=$('tl-body'),playhead=$('playhead');
 
-// hit points for special markers
-const HIT_POINTS = [
-  {t:20,  type:'drop', label:'DROP — "Every person is African"'},
-  {t:76,  type:'hit',  label:'HIT — "The DNA clock"'},
-  {t:155, type:'hit',  label:'HIT — "7M year old ghost"'},
-  {t:193, type:'drop', label:'DROP — "They found it. A skull."'},
-  {t:235, type:'hit',  label:'HIT — "smoking gun for walking upright"'},
-  {t:336, type:'hit',  label:'HIT — "every detective story has a twist"'},
-  {t:442, type:'drop', label:'DROP — "Africa. Case closed."'},
-  {t:477, type:'peak', label:'PEAK — "one ancient, undivided human family"'}
-];
+// File
+$('drop-area').addEventListener('dragover',e=>e.preventDefault());
+$('drop-area').addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)loadV(f);});
+$('file-input').addEventListener('change',()=>{if($('file-input').files[0])loadV($('file-input').files[0]);});
+function loadV(f){video.src=URL.createObjectURL(f);video.style.display='block';$('drop-zone').style.display='none';$('np').style.display='flex';video.load();}
+video.addEventListener('loadedmetadata',()=>{totalDur=video.duration;$('t-tot').textContent=fmt(totalDur);loaded=true;resize();extractWf();});
 
-// deep duck zones
-const DEEP_ZONES = [
-  {start:64,  end:111, label:'DNA clock explanation'},
-  {start:121, end:138, label:'Calibration method'},
-  {start:244, end:335, label:'Lucy → Homo habilis detail'},
-  {start:349, end:399, label:'Darwin + Java Man history'}
-];
+function resize(){const W=tlBody.clientWidth,H=tlBody.clientHeight;['region-cv','wave-cv','auto-cv','interact-cv'].forEach(id=>{const c=$(id);c.width=W;c.height=H;});drawAll();}
+window.addEventListener('resize',resize);
+function drawAll(){drawR();drawW();drawA();}
 
-// movement boundaries (seconds)
-const MOVEMENT_BOUNDARIES = [
-  { t: 170, label: 'M1|M2' },
-  { t: 335, label: 'M2|M3' }
-];
-
-// ── Utils ─────────────────────────────────────────────────────────────────
-function parseTime(s) { const [m,n]=s.split(':').map(Number); return m*60+n; }
-function fmt(s) { const m=Math.floor(s/60),n=Math.floor(s%60); return `${m}:${n.toString().padStart(2,'0')}`; }
-
-const cues = CUE_DATA.map((c,i)=>({...c,startSec:parseTime(c.start),endSec:parseTime(c.end),color:CUE_COLORS[i]}));
-
-// ── State ─────────────────────────────────────────────────────────────────
-let totalDur = 486.37;
-let videoLoaded = false;
-let activeCue = -1;
-let selectedCue = -1;
-let wfData = null;
-let dragging = false;
-let dragKfIdx = -1;
-let currentTab = 'director';
-
-// ── Elements ──────────────────────────────────────────────────────────────
-const video      = document.getElementById('video-el');
-const dropZone   = document.getElementById('drop-zone');
-const dropArea   = document.getElementById('drop-area');
-const fileInput  = document.getElementById('file-input');
-const bgCanvas   = document.getElementById('bg-canvas');
-const autoCanvas = document.getElementById('auto-canvas');
-const markerCanvas = document.getElementById('marker-canvas');
-const wfCanvas   = document.getElementById('wf-canvas');
-const cueCanvas  = document.getElementById('cue-canvas');
-const thumbStrip = document.getElementById('thumb-strip');
-const playhead   = document.getElementById('playhead');
-const playBtn    = document.getElementById('play-btn');
-const tCur       = document.getElementById('t-cur');
-const tTot       = document.getElementById('t-tot');
-const sidebar    = document.getElementById('sidebar');
-const sbInner    = document.getElementById('sb-inner');
-const genPanel   = document.getElementById('gen-panel');
-const genPanelInner = document.getElementById('gen-panel-inner');
-const cueOverlay = document.getElementById('cue-overlay');
-const ovDot      = document.getElementById('ov-dot');
-const ovTxt      = document.getElementById('ov-txt');
-const tooltip    = document.getElementById('tooltip');
-const tracksWrap = document.getElementById('tracks-wrap');
-const autoWrap   = document.getElementById('auto-wrap');
-const wfWrap     = document.getElementById('wf-wrap');
-
-// ── Panel show/hide ───────────────────────────────────────────────────────
-function showPanel(which) {
-  if (which === 'generate') {
-    sidebar.classList.remove('open');
-    genPanel.classList.toggle('open');
-    if (genPanel.classList.contains('open')) renderGenPanel();
-  } else if (which === 'cue') {
-    genPanel.classList.remove('open');
-    sidebar.classList.add('open');
-  }
+function drawR(){
+  const ctx=$('region-cv').getContext('2d'),W=ctx.canvas.width,H=ctx.canvas.height;ctx.clearRect(0,0,W,H);
+  cues.forEach((c,i)=>{const x1=(c.s/totalDur)*W,x2=(c.e/totalDur)*W;ctx.globalAlpha=i===aCue?0.12:0.05;ctx.fillStyle=c.color;ctx.fillRect(x1,0,x2-x1,H);ctx.globalAlpha=i===aCue?0.7:0.25;ctx.fillRect(x1,0,x2-x1,2);ctx.globalAlpha=0.45;ctx.font='500 9px Inter';if(x2-x1>35)ctx.fillText(c.name,x1+5,13);});ctx.globalAlpha=1;
+}
+async function extractWf(){
+  try{const ac=new AudioContext(),buf=await(await fetch(video.src)).arrayBuffer(),dec=await ac.decodeAudioData(buf),raw=dec.getChannelData(0),W=$('wave-cv').width,step=Math.floor(raw.length/W);wfD=new Float32Array(W);for(let i=0;i<W;i++){let mx=0;for(let j=0;j<step;j++){const v=Math.abs(raw[i*step+j]||0);if(v>mx)mx=v;}wfD[i]=mx;}drawW();}
+  catch(e){wfD=new Float32Array($('wave-cv').width).fill(0).map((_,i)=>0.15+0.15*Math.sin(i*0.06));drawW();}
+}
+function drawW(){
+  if(!wfD)return;const ctx=$('wave-cv').getContext('2d'),W=ctx.canvas.width,H=ctx.canvas.height;ctx.clearRect(0,0,W,H);
+  for(let x=0;x<W;x++){const v=wfD[x]||0,bh=Math.max(1,v*H*0.55),y=(H-bh)/2,t=(x/W)*totalDur,ci=cues.findIndex(c=>t>=c.s&&t<c.e);ctx.fillStyle=ci>=0?cues[ci].color:'#ddd';ctx.globalAlpha=0.3;ctx.fillRect(x,y,1,bh);}ctx.globalAlpha=1;
+}
+function drawA(){
+  const ctx=$('auto-cv').getContext('2d'),W=ctx.canvas.width,H=ctx.canvas.height;ctx.clearRect(0,0,W,H);
+  const tX=t=>(t/totalDur)*W,vY=v=>H-(v*H*0.82)-H*0.06;
+  // Fill
+  ctx.beginPath();ctx.moveTo(0,H);AUTO_KF.forEach(([t,v])=>ctx.lineTo(tX(t),vY(v)));ctx.lineTo(W,H);ctx.closePath();
+  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(94,106,210,0.12)');g.addColorStop(1,'rgba(94,106,210,0.01)');ctx.fillStyle=g;ctx.fill();
+  // Line
+  ctx.beginPath();AUTO_KF.forEach(([t,v],i)=>{i===0?ctx.moveTo(tX(t),vY(v)):ctx.lineTo(tX(t),vY(v));});ctx.strokeStyle='rgba(94,106,210,0.5)';ctx.lineWidth=1.5;ctx.stroke();
+  // Drops & peaks
+  AUTO_KF.forEach(([t,v])=>{if(v===0||v>=0.6){const x=tX(t),y=vY(v);ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle=v===0?'var(--drop)':'var(--peak)';ctx.fill();}});
+  // Shots
+  SHOTS.forEach(t=>{const x=tX(t);ctx.strokeStyle='rgba(0,0,0,0.06)';ctx.lineWidth=1;ctx.setLineDash([1,3]);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();ctx.setLineDash([]);});
+  // Grid
+  [.25,.5,.75].forEach(v=>{const y=vY(v);ctx.strokeStyle='rgba(0,0,0,0.04)';ctx.setLineDash([2,4]);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.setLineDash([]);});
+  // Cursor
+  if(loaded){const cx=tX(video.currentTime),cv=volAt(video.currentTime),cy=vY(cv);ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fillStyle='var(--accent)';ctx.fill();ctx.font='500 9px "JetBrains Mono"';ctx.fillStyle='var(--text-2)';ctx.fillText(`${Math.round(cv*100)}%`,cx+7,cy-3);}
 }
 
-// ── Generation Panel Render ───────────────────────────────────────────────
-function renderGenPanel() {
-  const totalUsedCredits = MOVEMENTS.reduce((s, m) => s + Math.round(m.duration_sec / 60 * 900), 0);
-
-  let html = `
-    <div class="gen-panel-close">
-      <div class="gen-panel-heading">ElevenLabs Generation</div>
-      <button class="close-btn" onclick="genPanel.classList.remove('open')">&#x2715;</button>
-    </div>
-
-    <!-- Credit Tracker -->
-    <div class="credit-tracker">
-      <div class="credit-row">
-        CREDITS REMAINING:&nbsp;
-        <input type="number" id="credits-input" value="9038" min="0" oninput="updateCreditBar()">
-        &nbsp;/ 900 per min
-      </div>
-      <div class="credit-budget" id="credit-budget"></div>
-      <div class="credit-bar-wrap">
-        <div class="credit-bar-used" id="credit-bar-used"></div>
-      </div>
-    </div>
-
-    <!-- Movements -->
-    <div class="gen-section-title">A — Three Movements</div>
-  `;
-
-  MOVEMENTS.forEach((mv, idx) => {
-    const cost = Math.round(mv.duration_sec / 60 * 900);
-    html += `
-    <div class="movement-card" id="mv-card-${idx}" style="border-left-color:${mv.color}">
-      <div class="mv-header">
-        <div class="mv-title" style="color:${mv.color}">Movement ${mv.num} — ${mv.name}</div>
-        <div class="mv-badge">${mv.range}</div>
-      </div>
-      <div class="mv-meta">
-        <span>${mv.duration_sec}s</span>
-        <span class="mv-cost">${cost} credits</span>
-      </div>
-      <div class="mv-prompt-wrap">
-        <textarea id="mv-prompt-${idx}">${mv.prompt}</textarea>
-      </div>
-      <div class="mv-actions">
-        <button class="copy-btn" id="mv-copy-${idx}" onclick="copyMovementPrompt(${idx})">Copy Prompt</button>
-        <button class="mark-btn" id="mv-mark-${idx}" onclick="toggleMark(${idx})">Mark Generated &#x2713;</button>
-      </div>
-    </div>
-    `;
-  });
-
-  // Stings
-  html += `<div class="gen-section-title">B — Hit Stings</div>`;
-  STINGS.forEach((st, idx) => {
-    html += `
-    <div class="sting-card">
-      <div class="sting-header">
-        <div class="sting-time">${st.t}</div>
-        <div class="sting-label">${st.label}</div>
-        <button class="copy-btn" id="sting-copy-${idx}" onclick="copySting(${idx})">Copy</button>
-      </div>
-      <div class="sting-prompt">${st.prompt}</div>
-    </div>
-    `;
-  });
-
-  // Placement guide
-  html += `
-    <div class="gen-section-title">C — Placement Guide</div>
-    <div class="placement-table-wrap">
-      <table class="placement-table">
-        <thead>
-          <tr>
-            <th>Track</th><th>File</th><th>Start</th><th>End</th><th>Volume</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td class="pt-file">The_Missing_Ancestor.mp4</td>
-            <td>0:00</td><td>8:06</td>
-            <td class="pt-vol">100%</td>
-          </tr>
-          <tr style="background:rgba(107,79,168,0.06)">
-            <td>2</td>
-            <td class="pt-file">movement_1.mp3</td>
-            <td>0:00</td><td>2:50</td>
-            <td class="pt-vol" style="color:#b89fe0">15% <span style="color:var(--text-dim)">(8% at 1:04–1:51)</span></td>
-          </tr>
-          <tr style="background:rgba(200,131,42,0.06)">
-            <td>3</td>
-            <td class="pt-file">movement_2.mp3</td>
-            <td>2:51</td><td>5:35</td>
-            <td class="pt-vol" style="color:#c8832a">15% <span style="color:var(--text-dim)">(8% at 4:04–5:21)</span></td>
-          </tr>
-          <tr style="background:rgba(168,48,64,0.06)">
-            <td>4</td>
-            <td class="pt-file">movement_3.mp3</td>
-            <td>5:36</td><td>8:06</td>
-            <td class="pt-vol" style="color:#a83040">15% &#x2192; 65% at 7:44</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td class="pt-file">sting_skull.mp3</td>
-            <td>3:13</td><td>3:18</td>
-            <td class="pt-vol">40%</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  `;
-
-  genPanelInner.innerHTML = html;
-  updateCreditBar();
-}
-
-function updateCreditBar() {
-  const input = document.getElementById('credits-input');
-  const budgetEl = document.getElementById('credit-budget');
-  const barEl = document.getElementById('credit-bar-used');
-  if (!input || !budgetEl || !barEl) return;
-
-  const remaining = parseInt(input.value) || 0;
-  const totalUsed = MOVEMENTS.reduce((s, m) => s + Math.round(m.duration_sec / 60 * 900), 0);
-  const totalPool = remaining + totalUsed;
-  const budgetMin = (remaining / 900).toFixed(1);
-  budgetEl.textContent = `BUDGET: ~${budgetMin} minutes of music`;
-  const usedPct = totalPool > 0 ? Math.min(100, (totalUsed / totalPool) * 100) : 0;
-  barEl.style.width = usedPct + '%';
-}
-
-function copyMovementPrompt(idx) {
-  const ta = document.getElementById(`mv-prompt-${idx}`);
-  const btn = document.getElementById(`mv-copy-${idx}`);
-  if (!ta || !btn) return;
-  navigator.clipboard.writeText(ta.value).then(() => {
-    btn.textContent = 'Copied!'; btn.classList.add('ok');
-    setTimeout(() => { btn.textContent = 'Copy Prompt'; btn.classList.remove('ok'); }, 1800);
-  });
-}
-
-function copySting(idx) {
-  const btn = document.getElementById(`sting-copy-${idx}`);
-  if (!btn) return;
-  navigator.clipboard.writeText(STINGS[idx].prompt).then(() => {
-    btn.textContent = 'Copied!'; btn.classList.add('ok');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1800);
-  });
-}
-
-function toggleMark(idx) {
-  const btn = document.getElementById(`mv-mark-${idx}`);
-  if (!btn) return;
-  btn.classList.toggle('done');
-  btn.textContent = btn.classList.contains('done') ? 'Generated \u2713' : 'Mark Generated \u2713';
-}
-
-// ── File load ─────────────────────────────────────────────────────────────
-dropArea.addEventListener('dragover', e=>{e.preventDefault();});
-dropArea.addEventListener('drop', e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('video/'))loadVid(f);});
-fileInput.addEventListener('change',()=>{if(fileInput.files[0])loadVid(fileInput.files[0]);});
-
-function loadVid(f) {
-  video.src = URL.createObjectURL(f);
-  video.style.display = 'block';
-  dropZone.style.display = 'none';
-  cueOverlay.style.display = 'flex';
-  video.load();
-}
-
-video.addEventListener('loadedmetadata',()=>{
-  totalDur = video.duration;
-  tTot.textContent = fmt(totalDur);
-  videoLoaded = true;
-  resize();
-  buildThumbs();
-  extractWf();
-});
-
-// ── Resize ────────────────────────────────────────────────────────────────
-function resize() {
-  const autoW = autoWrap.clientWidth, autoH = autoWrap.clientHeight;
-  const wfW = wfWrap.clientWidth, wfH = wfWrap.clientHeight;
-  [bgCanvas, autoCanvas, markerCanvas].forEach(c=>{c.width=autoW;c.height=autoH;});
-  [wfCanvas, cueCanvas].forEach(c=>{c.width=wfW;c.height=wfH;});
-  drawAll();
-}
-window.addEventListener('resize', ()=>{ if(videoLoaded||true) resize(); });
-
-function drawAll() {
-  drawBg();
-  drawAuto();
-  drawMarkers();
-  drawWf();
-  drawCues();
-  drawMovements();
-}
-
-// ── Background: deep duck zones + grid ───────────────────────────────────
-function drawBg() {
-  const ctx = bgCanvas.getContext('2d');
-  const W = bgCanvas.width, H = bgCanvas.height;
-  ctx.clearRect(0,0,W,H);
-
-  // deep duck zones
-  DEEP_ZONES.forEach(z=>{
-    const x1 = (z.start/totalDur)*W, x2 = (z.end/totalDur)*W;
-    ctx.fillStyle = 'rgba(20,20,40,0.7)';
-    ctx.fillRect(x1,0,x2-x1,H);
-    ctx.fillStyle = 'rgba(80,80,140,0.15)';
-    ctx.fillRect(x1,0,x2-x1,H);
-    // label
-    ctx.fillStyle = 'rgba(100,100,180,0.5)';
-    ctx.font = '8px "JetBrains Mono", monospace';
-    ctx.fillText('DEEP DUCK', x1+3, H-4);
-  });
-
-  // horizontal grid lines
-  [0.25, 0.5, 0.75, 1.0].forEach(v=>{
-    const y = H - (v * H * 0.85) - H*0.05;
-    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([2,4]);
-    ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = 'rgba(255,255,255,0.2)';
-    ctx.font = '8px "JetBrains Mono", monospace';
-    ctx.fillText(`${Math.round(v*100)}%`, 2, y-2);
-  });
-
-  // 1-minute ruler lines
-  for (let m=0; m*60 < totalDur; m++) {
-    const x = (m*60/totalDur)*W;
-    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-    ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
-    ctx.fillStyle = 'rgba(255,255,255,0.25)';
-    ctx.font = '8px "JetBrains Mono", monospace';
-    ctx.fillText(`${m}:00`, x+2, 9);
-  }
-}
-
-// ── Automation curve ──────────────────────────────────────────────────────
-function volAtTime(t) {
-  if (t <= AUTO_KF[0][0]) return AUTO_KF[0][1];
-  for (let i=1; i<AUTO_KF.length; i++) {
-    if (t <= AUTO_KF[i][0]) {
-      const t0=AUTO_KF[i-1][0], v0=AUTO_KF[i-1][1];
-      const t1=AUTO_KF[i][0],   v1=AUTO_KF[i][1];
-      const frac = (t-t0)/(t1-t0);
-      return v0 + (v1-v0)*frac;
-    }
-  }
-  return AUTO_KF[AUTO_KF.length-1][1];
-}
-
-function timeToX(t, W) { return (t/totalDur)*W; }
-function volToY(v, H) { return H - (v * H * 0.85) - H*0.05; }
-function xToTime(x, W) { return Math.max(0, Math.min(totalDur, (x/W)*totalDur)); }
-function yToVol(y, H) { return Math.max(0, Math.min(1, (H - y - H*0.05) / (H*0.85))); }
-
-function drawAuto() {
-  const ctx = autoCanvas.getContext('2d');
-  const W = autoCanvas.width, H = autoCanvas.height;
-  ctx.clearRect(0,0,W,H);
-
-  // filled area under curve
-  const playedX = videoLoaded ? timeToX(video.currentTime, W) : 0;
-
-  // draw filled gradient
-  ctx.beginPath();
-  ctx.moveTo(0, H);
-  AUTO_KF.forEach(([t,v])=>{ ctx.lineTo(timeToX(t,W), volToY(v,H)); });
-  ctx.lineTo(W, H); ctx.closePath();
-  const grad = ctx.createLinearGradient(0,0,0,H);
-  grad.addColorStop(0, 'rgba(200,169,110,0.25)');
-  grad.addColorStop(1, 'rgba(200,169,110,0.03)');
-  ctx.fillStyle = grad; ctx.fill();
-
-  // line
-  ctx.beginPath();
-  AUTO_KF.forEach(([t,v],i)=>{
-    const x=timeToX(t,W), y=volToY(v,H);
-    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-  });
-  ctx.strokeStyle = 'rgba(200,169,110,0.8)';
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-
-  // keyframe dots
-  AUTO_KF.forEach(([t,v,type], i)=>{
-    const x=timeToX(t,W), y=volToY(v,H);
-    const colors = {drop:'#ff4466',hook:'#44ddaa',hit:'#ffcc44',trans:'#6688aa',deep:'#334466',swell:'#88aacc'};
-    const col = colors[type] || 'rgba(200,169,110,0.6)';
-    ctx.beginPath(); ctx.arc(x,y,3,0,Math.PI*2);
-    ctx.fillStyle = col; ctx.fill();
-  });
-
-  // playhead position indicator on curve
-  if (videoLoaded) {
-    const cx = timeToX(video.currentTime, W);
-    const cv = volAtTime(video.currentTime);
-    const cy = volToY(cv, H);
-    ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI*2);
-    ctx.fillStyle = '#fff'; ctx.fill();
-    ctx.strokeStyle = 'rgba(200,169,110,0.8)'; ctx.lineWidth=1.5; ctx.stroke();
-
-    // vol readout
-    ctx.fillStyle = '#fff';
-    ctx.font = '9px "JetBrains Mono", monospace';
-    ctx.fillText(`${Math.round(cv*100)}%`, cx+8, cy-4);
-  }
-}
-
-// ── Markers: drops, hooks, hit points ────────────────────────────────────
-function drawMarkers() {
-  const ctx = markerCanvas.getContext('2d');
-  const W = markerCanvas.width, H = markerCanvas.height;
-  ctx.clearRect(0,0,W,H);
-
-  const typeColor = {drop:'#ff4466', hook:'#44ddaa', hit:'#ffcc44', peak:'#ff8844'};
-
-  HIT_POINTS.forEach(hp=>{
-    const x = timeToX(hp.t, W);
-    const col = typeColor[hp.type] || '#aaa';
-
-    // vertical marker line
-    ctx.strokeStyle = col;
-    ctx.globalAlpha = 0.6;
-    ctx.lineWidth = 1;
-    ctx.setLineDash([2,3]);
-    ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
-    ctx.setLineDash([]);
-
-    // triangle marker at top
-    ctx.globalAlpha = 0.9;
-    ctx.fillStyle = col;
-    ctx.beginPath();
-    ctx.moveTo(x-5,0); ctx.lineTo(x+5,0); ctx.lineTo(x,7); ctx.closePath();
-    ctx.fill();
-  });
-  ctx.globalAlpha = 1;
-}
-
-// ── Movement boundary lines on wf-canvas and auto-canvas (via cue-canvas) ─
-function drawMovements() {
-  // Draw on cue-canvas (overlays waveform)
-  drawMovementBoundariesOnCanvas(cueCanvas, wfCanvas.width, wfCanvas.height);
-  // Draw on marker-canvas (overlays automation)
-  drawMovementBoundariesOnCanvas(markerCanvas, markerCanvas.width, markerCanvas.height, true);
-}
-
-function drawMovementBoundariesOnCanvas(canvas, W, H, append) {
-  const ctx = canvas.getContext('2d');
-  if (!append) {
-    // cue-canvas is cleared per drawCues; we need to draw after drawCues
-    // so this is called after drawCues clears the canvas
-  }
-  MOVEMENT_BOUNDARIES.forEach(mb => {
-    const x = timeToX(mb.t, W);
-    ctx.save();
-    ctx.globalAlpha = 0.3;
-    ctx.strokeStyle = 'rgba(255,255,255,1)';
-    ctx.lineWidth = 2;
-    ctx.setLineDash([]);
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, H);
-    ctx.stroke();
-
-    // label
-    ctx.globalAlpha = 0.7;
-    ctx.fillStyle = '#fff';
-    ctx.font = '7px "JetBrains Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText(mb.label, x, 9);
-    ctx.textAlign = 'left';
-    ctx.restore();
-  });
-}
-
-// ── Waveform ──────────────────────────────────────────────────────────────
-async function extractWf() {
-  try {
-    const ctx2 = new (window.AudioContext||window.webkitAudioContext)();
-    const res = await fetch(video.src);
-    const buf = await res.arrayBuffer();
-    const dec = await ctx2.decodeAudioData(buf);
-    const raw = dec.getChannelData(0);
-    const W = wfCanvas.width;
-    const step = Math.floor(raw.length/W);
-    wfData = new Float32Array(W);
-    for(let i=0;i<W;i++){let max=0;for(let j=0;j<step;j++){const v=Math.abs(raw[i*step+j]||0);if(v>max)max=v;}wfData[i]=max;}
-    drawWf();
-  } catch(e) {
-    wfData = new Float32Array(wfCanvas.width).fill(0).map(()=>Math.random()*0.4+0.1);
-    drawWf();
-  }
-}
-
-function drawWf() {
-  if(!wfData) return;
-  const ctx = wfCanvas.getContext('2d');
-  const W = wfCanvas.width, H = wfCanvas.height;
-  ctx.clearRect(0,0,W,H);
-  const playedX = videoLoaded ? timeToX(video.currentTime,W) : 0;
-  for(let x=0;x<W;x++){
-    const v=wfData[x]||0;
-    const bh=Math.max(2,v*H*0.8);
-    const y=(H-bh)/2;
-    const t=(x/W)*totalDur;
-    const ci=cues.findIndex(c=>t>=c.startSec&&t<c.endSec);
-    const col=ci>=0?CUE_COLORS[ci]:'#2a2a3a';
-    ctx.globalAlpha = x<=playedX ? 0.8 : 0.3;
-    ctx.fillStyle = col;
-    ctx.fillRect(x,y,1,bh);
-  }
-  ctx.globalAlpha=1;
-}
-
-// ── Cue regions ───────────────────────────────────────────────────────────
-function drawCues() {
-  const ctx = cueCanvas.getContext('2d');
-  const W = cueCanvas.width, H = cueCanvas.height;
-  ctx.clearRect(0,0,W,H);
-  const fadeW = W*0.015;
-
-  cues.forEach((c,i)=>{
-    const x1=(c.startSec/totalDur)*W, x2=(c.endSec/totalDur)*W;
-    const isAct = i===activeCue, isSel = i===selectedCue;
-
-    ctx.globalAlpha = isAct?0.2:isSel?0.15:0.08;
-    ctx.fillStyle=c.color; ctx.fillRect(x1,0,x2-x1,H);
-
-    if(i<cues.length-1){
-      const g=ctx.createLinearGradient(x2-fadeW,0,x2+fadeW,0);
-      g.addColorStop(0,c.color+'55'); g.addColorStop(1,CUE_COLORS[i+1]+'55');
-      ctx.globalAlpha=0.4; ctx.fillStyle=g; ctx.fillRect(x2-fadeW,0,fadeW*2,H);
-    }
-    ctx.globalAlpha=isAct?1:isSel?0.7:0.4;
-    ctx.fillStyle=c.color; ctx.fillRect(x1,0,x2-x1,2);
-
-    if(isAct){ ctx.shadowColor=c.color; ctx.shadowBlur=8; ctx.fillRect(x1,0,x2-x1,2); ctx.shadowBlur=0; }
-
-    ctx.globalAlpha=isAct?0.9:0.45;
-    ctx.fillStyle='#fff'; ctx.font='500 9px "JetBrains Mono",monospace';
-    if(x2-x1>18) ctx.fillText(`${c.cue}`,x1+4,12);
-  });
-  ctx.globalAlpha=1;
-
-  // Draw movement boundaries on top of cue regions
-  drawMovementBoundariesOnCanvas(cueCanvas, W, H, true);
-}
-
-// ── Playback ──────────────────────────────────────────────────────────────
-function togglePlay(){if(!videoLoaded)return;if(video.paused){video.play();playBtn.textContent='⏸';}else{video.pause();playBtn.textContent='▶';}}
-function skipBy(s){if(!videoLoaded)return;video.currentTime=Math.max(0,Math.min(totalDur,video.currentTime+s));}
-video.addEventListener('ended',()=>playBtn.textContent='▶');
-
+// Playback
+function togglePlay(){if(!loaded)return;if(video.paused){video.play();$('play-btn').innerHTML='&#10074;&#10074;';}else{video.pause();$('play-btn').innerHTML='&#9654;';}}
+function skipBy(s){if(loaded)video.currentTime=Math.max(0,Math.min(totalDur,video.currentTime+s));}
+video.addEventListener('ended',()=>$('play-btn').innerHTML='&#9654;');
 video.addEventListener('timeupdate',()=>{
-  if(!videoLoaded||!totalDur)return;
-  const t=video.currentTime;
-  tCur.textContent=fmt(t);
-
-  // playhead — offset by track-label width (80px)
-  const tW=tracksWrap.clientWidth;
-  const tw=tW-80;
-  const px=80+((t/totalDur)*tw);
-  playhead.style.left=px+'px';
-
-  // active cue
-  const ci=cues.findIndex(c=>t>=c.startSec&&t<c.endSec);
-  if(ci!==activeCue){
-    activeCue=ci;
-    drawCues(); drawWf();
-    if(ci>=0){ ovDot.style.background=cues[ci].color; ovTxt.textContent=`Cue ${cues[ci].cue} — ${cues[ci].name}`; }
-  }
-  drawAuto(); // update cursor position on curve
+  if(!loaded)return;const t=video.currentTime;
+  $('t-cur').textContent=fmt(t);
+  $('vol-label').textContent=`Vol: ${Math.round(volAt(t)*100)}%`;
+  playhead.style.left=((t/totalDur)*tlBody.clientWidth)+'px';
+  const ci=cues.findIndex(c=>t>=c.s&&t<c.e);
+  if(ci!==aCue){aCue=ci;drawR();if(ci>=0){$('np-dot').style.background=cues[ci].color;$('np-text').textContent=`${cues[ci].cue}. ${cues[ci].name}`;}}
+  drawA();
+  document.querySelectorAll('.tr-seg').forEach(el=>{const s=+el.dataset.start,e=+el.dataset.end,a=t>=s&&t<e;el.classList.toggle('active',a);if(a)el.scrollIntoView({block:'nearest',behavior:'smooth'});});
 });
 
-// ── Timeline interaction ──────────────────────────────────────────────────
-function getTimeFromMouseX(e, wrap) {
-  const rect = wrap.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  return xToTime(x, rect.width);
+// Timeline scrub
+$('interact-cv').addEventListener('mousedown',e=>{if(!loaded)return;drag=true;seekTo(e);});
+document.addEventListener('mousemove',e=>{if(drag&&loaded)seekTo(e);});
+document.addEventListener('mouseup',()=>drag=false);
+function seekTo(e){const r=tlBody.getBoundingClientRect();video.currentTime=Math.max(0,Math.min(totalDur,((e.clientX-r.left)/r.width)*totalDur));}
+$('interact-cv').addEventListener('click',e=>{if(!loaded)return;const r=tlBody.getBoundingClientRect(),t=((e.clientX-r.left)/r.width)*totalDur,ci=cues.findIndex(c=>t>=c.s&&t<c.e);if(ci>=0){switchTab('cues');openCue(ci);}});
+
+// Sidebar tabs
+function switchTab(tab){
+  curTab=tab;
+  document.querySelectorAll('.sb-tab').forEach(t=>t.classList.toggle('active',t.textContent.toLowerCase().includes(tab.substring(0,3))));
+  if(tab==='transcript')renderTranscript();
+  else renderCues();
 }
-
-// scrub on waveform
-wfCanvas.addEventListener('mousedown', e=>{
-  if(!videoLoaded)return;
-  dragging=true;
-  video.currentTime = getTimeFromMouseX(e, wfWrap);
-});
-document.addEventListener('mousemove', e=>{
-  if(dragging && videoLoaded) video.currentTime = getTimeFromMouseX(e, wfWrap);
-});
-document.addEventListener('mouseup',()=>{dragging=false;dragKfIdx=-1;});
-
-wfCanvas.addEventListener('click', e=>{
-  if(!videoLoaded)return;
-  const t=getTimeFromMouseX(e,wfWrap);
-  const ci=cues.findIndex(c=>t>=c.startSec&&t<c.endSec);
-  if(ci>=0){selectedCue=ci;showPanel('cue');openSidebar(ci);drawCues();}
-});
-
-// hover tooltip
-function handleHover(e, wrap) {
-  if(!videoLoaded)return;
-  const t = getTimeFromMouseX(e, wrap);
-  // hit point nearby?
-  const W=wrap.clientWidth;
-  const hp=HIT_POINTS.find(h=>Math.abs(h.t-t)<(totalDur*6/W));
-  if(hp){
-    showTip(e,`<span style="color:${hp.type==='drop'?'#ff4466':hp.type==='peak'?'#ff8844':'#ffcc44'}">${hp.type.toUpperCase()}</span><br>${hp.label}`);
-    return;
-  }
-  const ci=cues.findIndex(c=>t>=c.startSec&&t<c.endSec);
-  if(ci>=0){
-    const c=cues[ci];
-    showTip(e,`<span style="color:${c.color}">Cue ${c.cue} — ${c.name}</span><br><span style="color:var(--text-dim)">${c.suggested_mood}</span><br>${c.start} → ${c.end}`);
-  } else hideTip();
+function renderTranscript(){
+  $('sb-content').innerHTML=TRANSCRIPT.map(s=>`<div class="tr-seg" data-start="${s.start}" data-end="${s.end}" onclick="if(loaded)video.currentTime=${s.start}"><div class="tr-time">${s.start_fmt}</div><div class="tr-text">${s.text}</div></div>`).join('')||'<div style="padding:16px;font-size:12px;color:var(--text-3)">Loading transcript...</div>';
 }
-wfCanvas.addEventListener('mousemove',e=>handleHover(e,wfWrap));
-wfCanvas.addEventListener('mouseleave',hideTip);
-autoCanvas.addEventListener('mousemove',e=>{
-  const rect=autoCanvas.getBoundingClientRect();
-  const t=xToTime(e.clientX-rect.left,rect.width);
-  const v=volAtTime(t);
-  showTip(e,`<span style="color:var(--accent)">${fmt(t)} — ${Math.round(v*100)}% vol</span>`);
-  // find nearest kf
-  const W=rect.width;
-  dragKfIdx=AUTO_KF.findIndex(([kt])=>Math.abs(timeToX(kt,W)-(e.clientX-rect.left))<7);
-  autoCanvas.style.cursor=dragKfIdx>=0?'ns-resize':'default';
-});
-autoCanvas.addEventListener('mouseleave',()=>{hideTip();autoCanvas.style.cursor='default';});
-autoCanvas.addEventListener('mousedown',e=>{
-  if(dragKfIdx>=0){dragging=true;}
-  else {
-    // seek
-    const rect=autoCanvas.getBoundingClientRect();
-    if(videoLoaded)video.currentTime=xToTime(e.clientX-rect.left,rect.width);
-  }
-});
-document.addEventListener('mousemove',e=>{
-  if(dragging&&dragKfIdx>=0){
-    const rect=autoCanvas.getBoundingClientRect();
-    const newV=yToVol(e.clientY-rect.top,rect.height);
-    AUTO_KF[dragKfIdx][1]=Math.max(0,Math.min(1,newV));
-    drawAuto();
-  }
-});
-
-function showTip(e,html){tooltip.style.display='block';tooltip.innerHTML=html;tooltip.style.left=(e.clientX+14)+'px';tooltip.style.top=(e.clientY-8)+'px';}
-function hideTip(){tooltip.style.display='none';}
-
-// ── Sidebar ───────────────────────────────────────────────────────────────
-function openSidebar(i) {
+function renderCues(){
+  $('sb-content').innerHTML=cues.map((c,i)=>`<div style="padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background=''" onclick="openCue(${i});if(loaded)video.currentTime=${c.s}"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:2px;background:${c.color}"></div><span style="font-size:12px;font-weight:500">${c.name}</span><span style="font-size:10px;color:var(--text-3);margin-left:auto;font-family:'JetBrains Mono',monospace">${c.start}→${c.end}</span></div><div style="font-size:11px;color:var(--text-3);margin-top:3px">${c.mood}</div></div>`).join('');
+}
+function openCue(i){
   const c=cues[i];
-  const pct=(c.duration_seconds/totalDur*100).toFixed(1);
-  sbInner.innerHTML=`
-    <div class="sb-head">
-      <div class="sb-badge" style="background:${c.color}22;border:1px solid ${c.color}44;color:${c.color}">${String(c.cue).padStart(2,'0')}</div>
-      <div class="sb-title-block">
-        <div class="sb-title">${c.name}</div>
-        <div class="sb-time">${c.start} → ${c.end} · ${c.duration_seconds}s</div>
-      </div>
-      <button class="close-btn" onclick="closeSidebar()">&#x2715;</button>
-    </div>
-    <div class="dur-bar"><div class="dur-fill" style="width:${pct}%;background:${c.color}"></div></div>
-    <span class="mood-pill" style="background:${c.color}22;color:${c.color};border:1px solid ${c.color}44">${c.suggested_mood}</span>
-    <div><div class="sl">Transcript</div><div class="st">"${c.transcript_snippet}"</div></div>
-    <div><div class="sl">Director's Note</div><div class="st-em">${c.narrative_beat}</div></div>
-    <div class="lyria-box">
-      <div class="lyria-top">
-        <div class="sl" style="margin:0">Lyria Prompt</div>
-        <button class="copy-btn" id="cpbtn-${i}" onclick="copyPr(${i})">Copy</button>
-      </div>
-      <textarea class="lyria-ta" id="pr-${i}">${c.lyria_prompt}</textarea>
-    </div>
-  `;
-  sidebar.classList.add('open');
-}
-function closeSidebar(){sidebar.classList.remove('open');selectedCue=-1;drawCues();}
-function copyPr(i){
-  const ta=document.getElementById(`pr-${i}`);
-  navigator.clipboard.writeText(ta.value).then(()=>{
-    const b=document.getElementById(`cpbtn-${i}`);b.textContent='Copied!';b.classList.add('ok');
-    setTimeout(()=>{b.textContent='Copy';b.classList.remove('ok');},1800);
-  });
+  $('sb-content').innerHTML=`<div class="cue-detail">
+    <div style="display:flex;gap:8px;align-items:center"><div class="sb-badge" style="background:${c.color}15;color:${c.color};border:1px solid ${c.color}30">${c.cue}</div><div><div class="sb-title">${c.name}</div><div class="sb-time">${c.start} → ${c.end}</div></div></div>
+    <span class="pill">${c.mood}</span>
+    <div><div class="label">Script</div><div class="text-sm">"${c.snippet}"</div></div>
+    <div><div class="label">Director's Note</div><div class="text-em">${c.beat}</div></div>
+    <div class="prompt-box"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div class="label" style="margin:0">Prompt</div><button class="copy-btn" onclick="navigator.clipboard.writeText(this.closest('.prompt-box').querySelector('textarea').value);this.textContent='Copied';setTimeout(()=>this.textContent='Copy',1500)">Copy</button></div><textarea>${c.prompt}</textarea></div>
+    <button class="btn" style="width:100%" onclick="switchTab('cues')">Back to cues</button>
+  </div>`;
 }
 
-// ── Tab switching ─────────────────────────────────────────────────────────
-function switchTab(name){
-  currentTab=name;
-  document.querySelectorAll('.tl-tab').forEach(t=>t.classList.toggle('active',t.textContent.toLowerCase().includes(name.substring(0,3))));
+function exportJSON(){
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({cues:CUE_DATA,automation:AUTO_KF,shots:SHOTS},null,2)]));a.download='score_data.json';a.click();
 }
 
-// ── Export ────────────────────────────────────────────────────────────────
-function exportAll(){
-  const out={
-    cue_sheet:cues.map((c,i)=>{const ta=document.getElementById(`pr-${i}`);return{...CUE_DATA[i],lyria_prompt:ta?ta.value:c.lyria_prompt};}),
-    automation_keyframes:AUTO_KF.map(([t,v,type,label])=>({time_sec:t,time_fmt:fmt(t),volume_pct:Math.round(v*100),type,label})),
-    hit_points:HIT_POINTS,
-    deep_duck_zones:DEEP_ZONES
-  };
-  const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='score_direction.json';a.click();
-}
+// Load transcript
+fetch('http://localhost:5000/api/load/transcript.json').then(r=>r.json()).then(d=>{TRANSCRIPT=d.segments||[];renderTranscript();}).catch(()=>{});
 
-// ── Init preview (before video load) ─────────────────────────────────────
-(function init(){
-  resize();
-  // fake waveform
-  wfData = new Float32Array(wfCanvas.width).fill(0).map((_,i)=>0.2+0.25*Math.sin(i*0.06)+0.15*Math.sin(i*0.19));
-  drawAll();
+// Server check
+fetch('http://localhost:5000/api/status').then(r=>r.json()).then(d=>{$('srv-dot').classList.toggle('on',d.key_loaded);$('srv-status').textContent=d.key_loaded?'Connected':'No API key';}).catch(()=>{$('srv-status').textContent='Offline';});
 
-  // placeholder thumbs
-  const count=28, W=document.getElementById('thumb-outer').clientWidth||700;
-  const fw=Math.floor(W/count);
-  thumbStrip.innerHTML='';
-  for(let i=0;i<count;i++){
-    const t=(i/count)*totalDur;
-    const ci=cues.findIndex(c=>t>=c.startSec&&t<c.endSec);
-    const f=document.createElement('div');
-    f.className='thumb-frame'; f.style.width=fw+'px';
-    f.style.background=ci>=0?CUE_COLORS[ci]+'18':'#0c0c14';
-    const ts=document.createElement('div');ts.className='thumb-time';ts.textContent=fmt(t);
-    f.appendChild(ts); thumbStrip.appendChild(f);
-  }
-})();
-
-async function buildThumbs(){
-  const count=28,W=document.getElementById('thumb-outer').clientWidth||700;
-  const fw=Math.floor(W/count);
-  thumbStrip.innerHTML='';
-  for(let i=0;i<count;i++){
-    const t=(i/count)*totalDur;
-    const f=document.createElement('div');f.className='thumb-frame';f.style.width=fw+'px';
-    const c=document.createElement('canvas');c.width=fw;c.height=62;f.appendChild(c);
-    const ts=document.createElement('div');ts.className='thumb-time';ts.textContent=fmt(t);f.appendChild(ts);
-    f.addEventListener('click',()=>{video.currentTime=t;});
-    thumbStrip.appendChild(f);
-    // capture
-    const tv=document.createElement('video');
-    tv.src=video.src;tv.preload='metadata';tv.muted=true;
-    tv.addEventListener('loadeddata',()=>{tv.currentTime=t;},{once:true});
-    tv.addEventListener('seeked',()=>{c.getContext('2d').drawImage(tv,0,0,fw,62);tv.src='';},{once:true});
-    tv.load();
-  }
-}
+// Init
+(function(){resize();wfD=new Float32Array($('wave-cv').width).fill(0).map((_,i)=>0.15+0.13*Math.sin(i*0.06));drawAll();renderTranscript();})();
 </script>
 </body>
 </html>
