@@ -1,6 +1,12 @@
 .env
 *.wav
 *.mp4
+*.mp3
+*.jpg
+*.png
+*.srt
+uploads/
+outputs/
 __pycache__/
 *.pyc
 .DS_Store

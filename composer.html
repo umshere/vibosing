@@ -3,331 +3,1841 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIBosing — Composer</title>
+<title>VIBosing — Score Composer</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg: #ffffff;
-  --surface: #fafafa;
-  --surface2: #f5f5f7;
-  --border: #e8e8ec;
-  --text: #1a1a2e;
-  --text-2: #6b6b80;
-  --text-3: #9898a8;
-  --accent: #5e6ad2;
-  --accent-light: #eef0ff;
-  --drop: #e5484d;
-  --peak: #30a46c;
+  --bg-deep:    #0c0c10;
+  --bg:         #121218;
+  --bg-elevated:#1a1a24;
+  --bg-hover:   #22222e;
+  --border:     #2a2a38;
+  --border-light:#1e1e2a;
+  --border-focus:#3a3a50;
+  --text:       #e8e6f0;
+  --text-2:     #9896a8;
+  --text-3:     #5c5a6e;
+  --accent:     #c9a84c;
+  --accent-dim: #a08030;
+  --accent-glow:rgba(201,168,76,0.12);
+  --accent-glow2:rgba(201,168,76,0.06);
+  --drop:       #e5484d;
+  --hit:        #d4a038;
+  --hook:       #5cb868;
+  --duck:       #4da8c4;
+  --auto-green: #2d8a56;
+  --director-amber:#d4a038;
+  --resolve:    #5cb868;
+  --nav-h:      48px;
+  --pipe-h:     36px;
+  --transport-h:40px;
+  --tl-h:       228px;
+  --ai-w:       300px;
+  --cm-w:       268px;
+  --label-w:    52px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
+body {
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: var(--nav-h) var(--pipe-h) 1fr var(--transport-h) var(--tl-h);
+  grid-template-columns: var(--ai-w) 1fr var(--cm-w);
+  grid-template-areas:
+    "nav       nav       nav"
+    "pipeline  pipeline  pipeline"
+    "ai        video     cuemap"
+    "ai        transport cuemap"
+    "timeline  timeline  timeline";
+}
+
+/* ── NAV ─────────────────────────────────────────────────────── */
 nav {
+  grid-area: nav;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  z-index: 20;
 }
-.logo { font-size: 13px; font-weight: 600; text-decoration: none; color: var(--text); }
+.logo { font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
 .logo span { color: var(--accent); }
-.status { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); display: flex; align-items: center; gap: 5px; }
-.status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); }
-.status-dot.on { background: var(--peak); }
-.nav-right { display: flex; gap: 8px; }
-.btn { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 5px; border: 1px solid var(--border); background: var(--bg); color: var(--text-2); cursor: pointer; font-family: inherit; transition: all 0.12s; }
-.btn:hover { border-color: #ccc; color: var(--text); }
-.btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
-.btn-accent:hover { opacity: 0.9; color: #fff; }
+.nav-center { font-size: 11px; color: var(--text-3); font-family: 'JetBrains Mono', monospace; }
+.nav-center b { color: var(--text-2); font-weight: 500; }
+.nav-right { display: flex; gap: 8px; align-items: center; }
+.btn {
+  font-size: 11px; font-weight: 500; padding: 5px 12px;
+  border-radius: 5px; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--text-2);
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.btn:hover { border-color: var(--border-focus); color: var(--text); }
+.btn-accent { background: var(--accent); color: var(--bg-deep); border-color: var(--accent); font-weight: 600; }
+.btn-accent:hover { background: #d4b255; color: var(--bg-deep); }
 
-.main { display: flex; flex: 1; overflow: hidden; }
-.editor { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+/* ── PIPELINE BAR ─────────────────────────────────────────────── */
+.pipeline-bar {
+  grid-area: pipeline;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border-light);
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.pipeline-steps { display: flex; align-items: center; gap: 6px; }
+.p-step {
+  display: flex; align-items: center; gap: 5px;
+  padding: 3px 8px; border-radius: 3px;
+  font-size: 9px; font-weight: 500; letter-spacing: 0.08em;
+  color: var(--text-3); transition: all 0.2s;
+}
+.p-step.active { color: var(--accent); background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.35); border-radius: 3px; font-weight: 600; }
+.p-step.done { color: var(--resolve); }
+.p-arrow { color: var(--border-focus); font-size: 10px; }
+.p-check { color: var(--resolve); }
+.p-spinner {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: breathe 2s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.pipeline-meta { display: flex; align-items: center; gap: 14px; }
+.el-credits { color: var(--text-3); font-size: 10px; }
+.el-credits b { color: var(--accent); font-weight: 500; }
+.srv-wrap { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--text-3); }
+.srv-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-3); flex-shrink: 0; }
+.srv-dot.on { background: var(--resolve); animation: breathe 2s ease-in-out infinite; }
 
-/* Video */
-.video-wrap { flex: 1; background: var(--surface2); display: flex; align-items: center; justify-content: center; position: relative; min-height: 0; }
-.drop-zone { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; }
-.drop-icon { width: 48px; height: 48px; border: 1.5px dashed var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text-3); transition: border-color 0.15s; }
+/* ── AI PANEL ─────────────────────────────────────────────────── */
+.ai-panel {
+  grid-area: ai;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.ai-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px 8px;
+  border-bottom: 1px solid var(--border-light);
+  flex-shrink: 0;
+}
+.ai-title { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
+.ai-badge { font-size: 9px; padding: 2px 7px; border-radius: 3px; background: var(--accent-glow); color: var(--accent); font-weight: 500; letter-spacing: 0.05em; }
+
+/* Context card */
+.ai-context {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+.ctx-card {
+  border-left: 3px solid var(--border-focus);
+  padding: 8px 10px;
+  background: var(--bg-elevated);
+  border-radius: 0 5px 5px 0;
+  transition: border-color 0.3s;
+}
+.ctx-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 5px; }
+.ctx-cue { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 3px; }
+.ctx-mood { font-size: 10px; color: var(--text-2); font-style: italic; margin-bottom: 6px; }
+.ctx-stats { display: flex; gap: 12px; }
+.ctx-stat { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-3); }
+.ctx-stat b { color: var(--text-2); font-weight: 500; }
+
+/* Analysis feed */
+.ai-feed {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border-light);
+  max-height: 90px; overflow-y: auto;
+  display: none;
+}
+.feed-line { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-3); line-height: 1.8; }
+.feed-line .ft { color: var(--accent); margin-right: 6px; }
+
+/* Suggestions */
+.ai-suggestions-wrap { flex: 1; overflow-y: auto; }
+.ai-suggestions-header {
+  padding: 8px 14px 6px;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.suggestions-count { color: var(--accent); }
+
+.suggestion-card {
+  margin: 0 10px 8px;
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-focus);
+  overflow: hidden;
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out, border-color 0.2s;
+  animation: cardIn 0.25s ease-out;
+  cursor: default;
+}
+@keyframes cardIn {
+  from { transform: translateX(16px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.suggestion-card:hover { border-color: var(--border-focus); }
+.suggestion-card.auto { border-left-color: var(--auto-green); }
+.suggestion-card.director { border-left-color: var(--director-amber); }
+.suggestion-card.applied { opacity: 0.4; pointer-events: none; }
+.suggestion-card.tl-highlight { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-glow); }
+
+.card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 10px 4px;
+}
+.card-type { font-size: 8px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 5px; border-radius: 2px; }
+.card-type.auto { color: var(--auto-green); background: rgba(45,138,86,0.12); }
+.card-type.director { color: var(--director-amber); background: rgba(212,160,56,0.12); }
+.card-tc { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); cursor: pointer; transition: color 0.15s; }
+.card-tc:hover { color: var(--accent); }
+.card-body { padding: 0 10px 8px; font-size: 11px; color: var(--text-2); line-height: 1.5; }
+.card-actions { display: flex; gap: 5px; padding: 0 10px 8px; flex-wrap: wrap; }
+.card-btn {
+  font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 3px;
+  border: 1px solid var(--border-focus); background: none; color: var(--text-2);
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.card-btn:hover { color: var(--text); border-color: var(--text-3); }
+.card-btn.primary { background: var(--bg-hover); color: var(--text); }
+.card-btn.dismiss { color: var(--text-3); border-color: transparent; }
+.card-btn.dismiss:hover { color: var(--drop); }
+.card-applied-label { font-size: 10px; color: var(--resolve); font-style: italic; }
+
+.no-suggestions { padding: 16px 14px; font-size: 11px; color: var(--text-3); line-height: 1.6; }
+
+/* ── VIDEO AREA ──────────────────────────────────────────────── */
+.video-area {
+  grid-area: video;
+  background: #08080c;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.drop-zone {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  cursor: pointer; text-align: center; padding: 20px;
+}
+.drop-icon {
+  width: 56px; height: 56px;
+  border: 1.5px dashed var(--border-focus); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--text-3); transition: all 0.2s;
+}
 .drop-zone:hover .drop-icon { border-color: var(--accent); color: var(--accent); }
 .drop-label { font-size: 13px; color: var(--text-3); }
 .drop-label strong { color: var(--accent); font-weight: 500; }
+.drop-sub { font-size: 10px; color: var(--text-3); margin-top: -6px; }
 #file-input { display: none; }
-#video-el { max-width: 100%; max-height: 100%; display: none; }
-.now-playing { position: absolute; top: 10px; left: 10px; display: none; align-items: center; gap: 6px; background: rgba(255,255,255,0.92); border: 1px solid var(--border); padding: 4px 10px; border-radius: 5px; pointer-events: none; font-size: 11px; font-weight: 500; color: var(--text-2); }
-.np-dot { width: 6px; height: 6px; border-radius: 50%; }
+#video-el { max-width: 100%; max-height: 100%; display: none; object-fit: contain; }
 
-/* Transport */
-.transport { display: flex; align-items: center; gap: 10px; padding: 6px 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); flex-shrink: 0; }
-.t-btn { background: none; border: none; color: var(--text-3); cursor: pointer; font-size: 13px; padding: 4px; }
+/* Cinematic cue overlay */
+.cue-overlay {
+  position: absolute; bottom: 14px; left: 14px;
+  display: none;
+  align-items: center; gap: 0;
+  background: rgba(12,12,16,0.82);
+  backdrop-filter: blur(10px);
+  border-radius: 6px; overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.cue-overlay-bar { width: 3px; align-self: stretch; flex-shrink: 0; }
+.cue-overlay-text { padding: 6px 12px; }
+.cue-overlay-name { font-size: 11px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.cue-overlay-mood { font-size: 9px; color: var(--text-2); margin-top: 1px; font-style: italic; }
+
+/* ── TRANSPORT ────────────────────────────────────────────────── */
+.transport {
+  grid-area: transport;
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 16px;
+  background: var(--bg);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.t-btn { background: none; border: none; color: var(--text-3); cursor: pointer; font-size: 12px; padding: 4px 6px; transition: color 0.15s; }
 .t-btn:hover { color: var(--text); }
-.play-btn { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+.play-btn {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: var(--bg-deep);
+  border: none; cursor: pointer; font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s; flex-shrink: 0;
+}
+.play-btn:hover { background: #d4b255; }
 .t-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); }
 .t-time b { color: var(--text); font-weight: 500; }
-.vol-label { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); }
+.t-spacer { flex: 1; }
+.t-vol { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); }
+.t-vol b { color: var(--accent); font-weight: 500; }
 
-/* Timeline */
-.timeline { flex-shrink: 0; height: 170px; border-top: 1px solid var(--border); display: flex; flex-direction: column; background: var(--surface); }
-.tl-header { display: flex; align-items: center; justify-content: space-between; padding: 4px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-.tl-title { font-size: 11px; font-weight: 500; color: var(--text-2); }
-.tl-legend { display: flex; gap: 12px; }
-.leg { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-3); }
-.leg-dot { width: 8px; height: 3px; border-radius: 1px; }
-.tl-body { flex: 1; position: relative; overflow: hidden; }
-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-#auto-cv { z-index: 3; }
-#wave-cv { z-index: 2; }
-#region-cv { z-index: 1; }
-#interact-cv { z-index: 5; cursor: pointer; }
-#playhead { position: absolute; top: 0; width: 1px; height: 100%; background: var(--accent); pointer-events: none; z-index: 10; left: 0; }
-#playhead::before { content: ''; position: absolute; top: -1px; left: -4px; width: 9px; height: 6px; background: var(--accent); clip-path: polygon(0 0,100% 0,50% 100%); }
+/* ── TIMELINE ─────────────────────────────────────────────────── */
+.timeline-area {
+  grid-area: timeline;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+  display: flex; overflow: hidden; position: relative;
+}
+.lane-labels {
+  width: var(--label-w); flex-shrink: 0;
+  display: flex; flex-direction: column;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+.lane-label {
+  display: flex; align-items: center; justify-content: flex-end;
+  padding-right: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-3);
+  border-bottom: 1px solid var(--border-light);
+  transition: color 0.15s;
+}
+.lane-label:hover { color: var(--text-2); }
+.ll-ruler  { height: 24px; }
+.ll-frames { height: 48px; }
+.ll-volume { height: 60px; }
+.ll-wave   { height: 60px; }
+.ll-voice  { height: 36px; border-bottom: none; }
 
-/* Sidebar */
-.sidebar { width: 300px; flex-shrink: 0; border-left: 1px solid var(--border); background: var(--bg); display: flex; flex-direction: column; overflow: hidden; }
-.sb-tabs { display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-.sb-tab { flex: 1; padding: 8px; text-align: center; font-size: 11px; font-weight: 500; color: var(--text-3); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; }
-.sb-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.sb-content { flex: 1; overflow-y: auto; }
+.lanes-canvas-wrap {
+  flex: 1; position: relative; overflow: hidden;
+}
+canvas { position: absolute; left: 0; }
+#ruler-cv  { top: 0;   height: 24px; z-index: 2; }
+#frames-cv { top: 24px; height: 48px; z-index: 2; }
+#auto-cv   { top: 72px; height: 60px; z-index: 2; }
+#wave-cv   { top: 132px; height: 60px; z-index: 2; }
+#voice-cv  { top: 192px; height: 36px; z-index: 2; }
+#interact-cv { top: 0; height: 228px; z-index: 10; cursor: crosshair; }
+#highlight-cv { top: 0; height: 228px; z-index: 8; pointer-events: none; }
+
+#playhead {
+  position: absolute; top: 0; width: 1px; height: 228px;
+  background: var(--accent);
+  pointer-events: none; z-index: 15; left: 0;
+  box-shadow: 0 0 0 0 var(--accent);
+  transition: box-shadow 0.3s;
+}
+#playhead.playing { box-shadow: 0 0 6px 1px rgba(201,168,76,0.4); }
+#playhead::before {
+  content: ''; position: absolute; top: -1px; left: -4px;
+  width: 9px; height: 6px; background: var(--accent);
+  clip-path: polygon(0 0,100% 0,50% 100%);
+}
+
+/* Lane dividers (horizontal lines between lanes) */
+.lane-div {
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: var(--border-light); pointer-events: none; z-index: 1;
+}
+
+/* ── CUE MAP PANEL ────────────────────────────────────────────── */
+.cuemap-panel {
+  grid-area: cuemap;
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.cm-tabs { display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.cm-tab {
+  flex: 1; padding: 8px 4px; text-align: center;
+  font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-3); cursor: pointer; border-bottom: 2px solid transparent;
+  transition: all 0.15s; position: relative;
+}
+.cm-tab::after {
+  content: ''; position: absolute; bottom: -2px; left: 50%; right: 50%;
+  height: 2px; background: var(--accent); transition: all 0.2s ease-out;
+}
+.cm-tab.active { color: var(--accent); }
+.cm-tab.active::after { left: 0; right: 0; }
+.cm-content { flex: 1; overflow-y: auto; }
+
+/* Cue map blocks */
+.cue-block {
+  display: flex; align-items: stretch; gap: 0;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer; transition: background 0.1s;
+}
+.cue-block:hover { background: var(--bg-hover); }
+.cue-block.active-cue { background: rgba(201,168,76,0.05); }
+.cb-bar { width: 3px; flex-shrink: 0; }
+.cb-body { flex: 1; padding: 8px 10px; min-width: 0; }
+.cb-name { font-size: 11px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cb-time { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-3); margin-top: 2px; }
+.cb-mood { font-size: 9px; color: var(--text-3); font-style: italic; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cb-energy { height: 3px; background: var(--border); border-radius: 2px; margin-top: 5px; overflow: hidden; }
+.cb-energy-fill { height: 100%; border-radius: 2px; background: var(--accent-dim); }
+
+/* Director's view */
+.dir-view { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.dv-back { font-size: 10px; color: var(--text-3); cursor: pointer; display: flex; align-items: center; gap: 5px; margin-bottom: -4px; }
+.dv-back:hover { color: var(--accent); }
+.dv-badge { display: flex; align-items: center; gap: 8px; }
+.dv-num {
+  width: 28px; height: 28px; border-radius: 5px; display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+}
+.dv-title { font-size: 13px; font-weight: 600; line-height: 1.3; }
+.dv-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); margin-top: 1px; }
+.mood-pill { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; background: var(--bg-elevated); color: var(--text-2); border: 1px solid var(--border); }
+.dv-section-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+.dv-text { font-size: 11px; line-height: 1.6; color: var(--text-2); }
+.dv-note { font-size: 11px; line-height: 1.6; color: var(--text); font-style: italic; }
+.prompt-box { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 6px; padding: 10px; }
+.prompt-box textarea {
+  width: 100%; background: none; border: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.7;
+  color: var(--text); resize: vertical; outline: none; min-height: 80px;
+}
+.prompt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.copy-btn {
+  font-size: 9px; padding: 2px 7px; border-radius: 3px;
+  border: 1px solid var(--border); background: none; color: var(--text-3);
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.copy-btn:hover { color: var(--text); border-color: var(--border-focus); }
 
 /* Transcript */
-.tr-seg { display: flex; gap: 8px; padding: 5px 12px; font-size: 11px; line-height: 1.55; cursor: pointer; transition: background 0.1s; border-left: 2px solid transparent; }
-.tr-seg:hover { background: var(--surface2); }
-.tr-seg.active { background: var(--accent-light); border-left-color: var(--accent); }
-.tr-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); flex-shrink: 0; width: 32px; padding-top: 1px; }
-.tr-text { color: var(--text-2); }
-.tr-seg.active .tr-text { color: var(--text); }
+.tr-seg {
+  display: flex; gap: 8px; padding: 5px 12px;
+  font-size: 11px; line-height: 1.55; cursor: pointer;
+  transition: background 0.1s; border-left: 2px solid transparent;
+}
+.tr-seg:hover { background: var(--bg-hover); }
+.tr-seg.active { background: var(--accent-glow2); border-left-color: var(--accent); }
+.tr-t { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-3); flex-shrink: 0; width: 30px; padding-top: 1px; }
+.tr-txt { color: var(--text-2); }
+.tr-seg.active .tr-txt { color: var(--text); }
 
-/* Cue detail */
-.cue-detail { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
-.sb-badge { width: 26px; height: 26px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; }
-.sb-title { font-size: 13px; font-weight: 600; }
-.sb-time { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-3); }
-.pill { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 500; background: var(--accent-light); color: var(--accent); }
-.label { font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
-.text-sm { font-size: 12px; line-height: 1.6; color: var(--text-2); }
-.text-em { font-size: 12px; line-height: 1.6; color: var(--text); font-style: italic; }
-.prompt-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 10px; }
-.prompt-box textarea { width: 100%; background: none; border: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.7; color: var(--text); resize: vertical; outline: none; min-height: 80px; }
-.copy-btn { font-size: 10px; padding: 3px 8px; border-radius: 3px; border: 1px solid var(--border); background: var(--bg); color: var(--text-3); cursor: pointer; }
-.copy-btn:hover { color: var(--text); }
-
-::-webkit-scrollbar { width: 4px; }
+/* ── SCROLLBAR ────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-focus); }
+
+/* Settings modal */
+.provider-btn {
+  padding: 10px 12px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--bg-elevated); cursor: pointer; transition: all 0.15s;
+}
+.provider-btn:hover { border-color: var(--border-focus); }
+.provider-btn.active { border-color: var(--accent); background: var(--accent-glow); }
+.provider-btn.active div:first-child { color: var(--accent); }
+#settings-overlay { display: none !important; }
+#settings-overlay.open { display: flex !important; }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">VIB<span>osing</span></a>
-  <div class="status"><div class="status-dot" id="srv-dot"></div><span id="srv-status">Checking...</span></div>
+  <div class="nav-center" id="nav-title"><b>Score Composer</b></div>
   <div class="nav-right">
     <button class="btn" onclick="exportJSON()">Export</button>
+    <button class="btn" id="gen-score-btn" onclick="openGenerateModal()" style="display:none">♫ Generate Score</button>
+    <button class="btn" onclick="openSettings()" title="LLM Settings" style="font-size:14px;padding:4px 10px">⚙</button>
     <button class="btn btn-accent" onclick="document.getElementById('file-input').click()">Load Video</button>
   </div>
 </nav>
 
-<div class="main">
-  <div class="editor">
-    <div class="video-wrap" id="drop-area">
-      <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
-        <div class="drop-icon">+</div>
-        <div class="drop-label"><strong>Drop video</strong> or click to browse</div>
+<!-- GENERATE SCORE MODAL -->
+<div id="gen-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:flex-start;justify-content:center;padding-top:60px;overflow-y:auto">
+  <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;width:580px;max-width:95vw;margin-bottom:40px">
+    <div style="padding:16px 18px 12px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div style="font-size:13px;font-weight:600">Generate Score</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">Review prompts · estimate cost · generate via ElevenLabs</div>
       </div>
-      <video id="video-el"></video>
-      <div class="now-playing" id="np"><div class="np-dot" id="np-dot"></div><span id="np-text"></span></div>
-      <input type="file" id="file-input" accept="video/*">
+      <button onclick="closeGenerateModal()" style="background:none;border:none;color:var(--text-3);cursor:pointer;font-size:18px">×</button>
     </div>
 
-    <div class="transport">
-      <button class="t-btn" onclick="skipBy(-10)">&#9664;&#9664;</button>
-      <button class="play-btn" id="play-btn" onclick="togglePlay()">&#9654;</button>
-      <button class="t-btn" onclick="skipBy(10)">&#9654;&#9654;</button>
-      <div class="t-time"><b id="t-cur">0:00</b> / <span id="t-tot">0:00</span></div>
-      <div class="vol-label" id="vol-label">Vol: —</div>
+    <!-- Cost estimate bar -->
+    <div style="padding:12px 18px;border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:12px;background:var(--bg-elevated)">
+      <div style="flex:1">
+        <div style="font-size:10px;color:var(--text-3)">Estimated cost</div>
+        <div id="cost-display" style="font-size:13px;font-weight:600;color:var(--text)">Calculating...</div>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:10px;color:var(--text-3)">Your balance</div>
+        <div id="balance-display" style="font-size:13px;font-weight:600;color:var(--text)">—</div>
+      </div>
+      <div id="afford-badge" style="font-size:10px;font-weight:600;padding:4px 10px;border-radius:4px"></div>
     </div>
 
-    <div class="timeline">
-      <div class="tl-header">
-        <div class="tl-title">Timeline</div>
-        <div class="tl-legend">
-          <div class="leg"><div class="leg-dot" style="background:var(--accent);opacity:0.5"></div>Volume</div>
-          <div class="leg"><div class="leg-dot" style="background:var(--drop)"></div>Drop</div>
-          <div class="leg"><div class="leg-dot" style="background:var(--peak)"></div>Peak</div>
-          <div class="leg"><div class="leg-dot" style="background:var(--border)"></div>Shot</div>
+    <!-- Cue list with editable prompts -->
+    <div id="gen-cue-list" style="max-height:360px;overflow-y:auto;padding:12px 18px;display:flex;flex-direction:column;gap:10px"></div>
+
+    <!-- Output name + generate button -->
+    <div style="padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center">
+      <div style="flex:1">
+        <div style="font-size:10px;color:var(--text-3);margin-bottom:4px">Output filename</div>
+        <input id="output-name" type="text" value="score_full.mp3" style="width:100%;background:var(--bg-elevated);border:1px solid var(--border);border-radius:4px;padding:6px 10px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;outline:none">
+      </div>
+      <button id="gen-go-btn" onclick="runGenerate()" class="btn btn-accent" style="margin-top:16px;padding:8px 20px;white-space:nowrap">Generate ↗</button>
+    </div>
+
+    <!-- Progress / result -->
+    <div id="gen-progress" style="display:none;padding:12px 18px;border-top:1px solid var(--border)">
+      <div id="gen-progress-msg" style="font-size:11px;color:var(--text-2);font-family:'JetBrains Mono',monospace"></div>
+      <div style="height:3px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden">
+        <div id="gen-progress-bar" style="height:100%;background:var(--accent);border-radius:2px;width:0%;transition:width 0.4s"></div>
+      </div>
+    </div>
+    <div id="gen-result" style="display:none;padding:12px 18px;border-top:1px solid var(--border)">
+      <div style="font-size:11px;color:var(--green);margin-bottom:8px">✓ Score generated successfully</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a id="gen-download-link" href="#" class="btn" style="display:inline-flex;align-items:center;gap:6px;font-size:11px">⬇ Download MP3</a>
+        <button class="btn btn-accent" style="font-size:11px" onclick="mixInComposer()">🎚 Mix with video →</button>
+      </div>
+      <div id="mix-status" style="font-size:10px;color:var(--text-3);margin-top:6px;min-height:14px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div id="settings-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:none;align-items:center;justify-content:center">
+  <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;width:420px;max-width:95vw;overflow:hidden">
+    <div style="padding:16px 18px 12px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--text)">AI Settings</div>
+        <div style="font-size:10px;color:var(--text-3);margin-top:2px">Connect your LLM to generate cue sheets for any video</div>
+      </div>
+      <button onclick="closeSettings()" style="background:none;border:none;color:var(--text-3);cursor:pointer;font-size:18px;line-height:1">×</button>
+    </div>
+    <div style="padding:18px">
+      <div style="margin-bottom:14px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px">Provider</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px" id="provider-grid">
+          <div class="provider-btn active" data-p="openrouter" onclick="selectProvider('openrouter')">
+            <div style="font-size:11px;font-weight:600">OpenRouter</div>
+            <div style="font-size:9px;color:var(--text-3)">Any model — recommended</div>
+          </div>
+          <div class="provider-btn" data-p="anthropic" onclick="selectProvider('anthropic')">
+            <div style="font-size:11px;font-weight:600">Anthropic</div>
+            <div style="font-size:9px;color:var(--text-3)">Claude direct</div>
+          </div>
+          <div class="provider-btn" data-p="openai" onclick="selectProvider('openai')">
+            <div style="font-size:11px;font-weight:600">OpenAI</div>
+            <div style="font-size:9px;color:var(--text-3)">GPT-4o etc.</div>
+          </div>
+          <div class="provider-btn" data-p="ollama" onclick="selectProvider('ollama')">
+            <div style="font-size:11px;font-weight:600">Ollama</div>
+            <div style="font-size:9px;color:var(--text-3)">Local · free · offline</div>
+          </div>
         </div>
       </div>
-      <div class="tl-body" id="tl-body">
-        <canvas id="region-cv"></canvas>
-        <canvas id="wave-cv"></canvas>
-        <canvas id="auto-cv"></canvas>
-        <canvas id="interact-cv"></canvas>
-        <div id="playhead"></div>
+      <div style="margin-bottom:12px" id="model-row">
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px">Model</div>
+        <input id="s-model" type="text" placeholder="e.g. anthropic/claude-opus-4" style="width:100%;background:var(--bg-elevated);border:1px solid var(--border);border-radius:5px;padding:8px 10px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;outline:none">
+        <div id="model-hint" style="font-size:10px;color:var(--text-3);margin-top:4px">OpenRouter: use format <code style="color:var(--accent)">anthropic/claude-opus-4</code></div>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px">API Key</div>
+        <input id="s-key" type="password" placeholder="sk-or-... or sk-..." style="width:100%;background:var(--bg-elevated);border:1px solid var(--border);border-radius:5px;padding:8px 10px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;outline:none">
+        <div style="font-size:10px;color:var(--text-3);margin-top:4px">Stored in your local <code style="color:var(--accent)">.env</code> file — never sent to anyone except your chosen provider.</div>
+      </div>
+      <div style="margin-bottom:16px" id="baseurl-row" style="display:none">
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px">Base URL <span style="color:var(--text-3);font-weight:400">(optional)</span></div>
+        <input id="s-url" type="text" placeholder="http://localhost:11434" style="width:100%;background:var(--bg-elevated);border:1px solid var(--border);border-radius:5px;padding:8px 10px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:11px;outline:none">
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onclick="saveSettings()" class="btn btn-accent" style="flex:1">Save Settings</button>
+        <div id="s-status" style="font-size:10px;color:var(--text-3)"></div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="sidebar" id="sidebar">
-    <div class="sb-tabs">
-      <div class="sb-tab active" onclick="switchTab('transcript')">Transcript</div>
-      <div class="sb-tab" onclick="switchTab('cues')">Cues</div>
+<!-- PIPELINE BAR -->
+<div class="pipeline-bar">
+  <div class="pipeline-steps">
+    <div class="p-step" id="p-upload">UPLOAD</div>
+    <div class="p-arrow">›</div>
+    <div class="p-step" id="p-analyse">ANALYSE</div>
+    <div class="p-arrow">›</div>
+    <div class="p-step" id="p-cues">AI CUES</div>
+    <div class="p-arrow">›</div>
+    <div class="p-step" id="p-score">SCORE</div>
+    <div class="p-arrow">›</div>
+    <div class="p-step" id="p-mix">MIX</div>
+    <div class="p-arrow">›</div>
+    <div class="p-step" id="p-export">EXPORT</div>
+  </div>
+  <div class="pipeline-meta">
+    <span class="el-credits" id="el-credits">EL: <b>—</b></span>
+    <span class="srv-wrap"><span class="srv-dot" id="srv-dot"></span><span id="srv-status">Checking...</span></span>
+  </div>
+</div>
+
+<!-- AI PANEL -->
+<div class="ai-panel">
+  <div class="ai-header">
+    <div class="ai-title">Music Editor</div>
+    <div class="ai-badge">AI</div>
+  </div>
+  <div class="ai-context">
+    <div class="ctx-card" id="ctx-card">
+      <div class="ctx-label">Now at</div>
+      <div class="ctx-cue" id="ctx-cue">Drop a video to begin</div>
+      <div class="ctx-mood" id="ctx-mood">Load a video to see scene analysis</div>
+      <div class="ctx-stats">
+        <div class="ctx-stat">Vol <b id="ctx-vol">—</b></div>
+        <div class="ctx-stat">Energy <b id="ctx-energy">—</b></div>
+        <div class="ctx-stat">Shot <b id="ctx-shot">—</b></div>
+      </div>
     </div>
-    <div class="sb-content" id="sb-content"></div>
+  </div>
+  <div class="ai-feed" id="ai-feed"></div>
+  <div class="ai-suggestions-wrap" id="ai-suggestions-wrap">
+    <div class="ai-suggestions-header">
+      <span>Suggestions</span>
+      <span class="suggestions-count" id="sug-count">—</span>
+    </div>
+    <div id="ai-suggestions">
+      <div class="no-suggestions">Analyse a video to surface scoring suggestions — auto-fixable issues and director's calls.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-area" id="drop-area">
+  <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+    <div class="drop-icon">▶</div>
+    <div class="drop-label"><strong>Drop video</strong> or click to browse</div>
+    <div class="drop-sub">MP4, MOV, WebM</div>
+  </div>
+  <video id="video-el"></video>
+  <div class="cue-overlay" id="cue-overlay">
+    <div class="cue-overlay-bar" id="cue-overlay-bar"></div>
+    <div class="cue-overlay-text">
+      <div class="cue-overlay-name" id="cue-overlay-name"></div>
+      <div class="cue-overlay-mood" id="cue-overlay-mood"></div>
+    </div>
+  </div>
+  <input type="file" id="file-input" accept="video/*">
+</div>
+
+<!-- TRANSPORT -->
+<div class="transport">
+  <button class="t-btn" onclick="skipBy(-10)" title="Back 10s">⏮</button>
+  <button class="play-btn" id="play-btn" onclick="togglePlay()">▶</button>
+  <button class="t-btn" onclick="skipBy(10)" title="Forward 10s">⏭</button>
+  <div class="t-time"><b id="t-cur">0:00</b> / <span id="t-tot">0:00</span></div>
+  <div class="t-spacer"></div>
+  <div class="t-vol">Vol <b id="vol-label">—</b></div>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline-area">
+  <div class="lane-labels">
+    <div class="lane-label ll-ruler">TIME</div>
+    <div class="lane-label ll-frames">FRAMES</div>
+    <div class="lane-label ll-volume">VOLUME</div>
+    <div class="lane-label ll-wave">WAVE</div>
+    <div class="lane-label ll-voice">VOICE</div>
+  </div>
+  <div class="lanes-canvas-wrap" id="lanes-wrap">
+    <!-- Lane dividers -->
+    <div class="lane-div" style="top:24px"></div>
+    <div class="lane-div" style="top:72px"></div>
+    <div class="lane-div" style="top:132px"></div>
+    <div class="lane-div" style="top:192px"></div>
+    <!-- Canvases -->
+    <canvas id="ruler-cv"></canvas>
+    <canvas id="frames-cv"></canvas>
+    <canvas id="auto-cv"></canvas>
+    <canvas id="wave-cv"></canvas>
+    <canvas id="voice-cv"></canvas>
+    <canvas id="highlight-cv"></canvas>
+    <canvas id="interact-cv"></canvas>
+    <div id="playhead"></div>
+  </div>
+</div>
+
+<!-- CUE MAP PANEL -->
+<div class="cuemap-panel">
+  <div class="cm-tabs">
+    <div class="cm-tab active" id="tab-cuemap" onclick="switchCMTab('cuemap')">Cue Map</div>
+    <div class="cm-tab" id="tab-director" onclick="switchCMTab('director')">Director</div>
+    <div class="cm-tab" id="tab-transcript" onclick="switchCMTab('transcript')">Script</div>
+  </div>
+  <div class="cm-content" id="cm-content">
+    <div style="padding:16px;font-size:11px;color:var(--text-3)">Load a video to see the cue map.</div>
   </div>
 </div>
 
 <script>
-const CUE_COLORS=['#7c6bc4','#5b8a9a','#4a9a8e','#c8932a','#b86c3a','#a84050','#6a9a5a','#8a6ab4','#4a7abc','#9a7a3a'];
+// ── CONSTANTS ──────────────────────────────────────────────────────────────
+const CUE_COLORS = ['#7c6bc4','#5b8a9a','#4a9a8e','#c8932a','#b86c3a','#a84050','#6a9a5a','#8a6ab4','#4a7abc','#9a7a3a'];
+const MARKER = {
+  DROP:      { color: '#e5484d', label: 'DROP' },
+  HIT:       { color: '#d4a038', label: 'HIT' },
+  HOOK:      { color: '#5cb868', label: 'HOOK' },
+  DUCK:      { color: '#4da8c4', label: 'DUCK' }
+};
+const API = 'http://localhost:5000';
 
-function pt(s){const[m,n]=s.split(':').map(Number);return m*60+n;}
-function fmt(s){return`${Math.floor(s/60)}:${Math.floor(s%60).toString().padStart(2,'0')}`;}
-function volAt(t){
-  const kf=STATE.autoKF;
-  if(!kf||kf.length<2)return 0.18;
-  for(let i=1;i<kf.length;i++){if(t<=kf[i][0]){const[t0,v0]=kf[i-1],[t1,v1]=kf[i];return v0+(v1-v0)*((t-t0)/(t1-t0));}}
+// ── STATE ──────────────────────────────────────────────────────────────────
+let STATE = { cues: [], shots: [], autoKF: [], duckCurve: [], totalDur: 0, scoreFile: '', mixedFile: '' };
+let UI = {
+  loaded: false, activeCue: -1, drag: false, cmTab: 'cuemap',
+  suggestions: [], dismissedIds: new Set(), selectedCue: -1,
+  wfData: null, frameThumbs: [], frameExtracting: false, hlTimecode: -1
+};
+let TRANSCRIPT = [];
+
+// ── UTILS ──────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const pt = s => { const [m, n] = s.split(':').map(Number); return m * 60 + n; };
+const fmt = s => `${Math.floor(s/60)}:${Math.floor(s%60).toString().padStart(2,'0')}`;
+function volAt(t) {
+  const kf = STATE.autoKF;
+  if (!kf || kf.length < 2) return 0.18;
+  for (let i = 1; i < kf.length; i++) {
+    if (t <= kf[i][0]) {
+      const [t0,v0] = kf[i-1], [t1,v1] = kf[i];
+      return v0 + (v1-v0) * ((t-t0)/(t1-t0));
+    }
+  }
   return kf[kf.length-1][1];
 }
-function mapCues(rawCues){
-  return rawCues.map((c,i)=>{
-    const raw=c.filename||'';
-    const name=c.name||(raw?raw.replace(/cue_\d+_/,'').replace('.mp3','').replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase()):`Cue ${c.cue}`);
-    return {...c,name,color:CUE_COLORS[i%CUE_COLORS.length],mood:c.suggested_mood||c.mood||'',snippet:c.transcript_snippet||c.snippet||'',beat:c.narrative_beat||c.beat||'',prompt:c.lyria_prompt||c.prompt||'',s:pt(c.start),e:pt(c.end)};
+function mapCues(raw) {
+  return raw.map((c, i) => {
+    const name = c.name || (c.filename||'').replace(/cue_\d+_/,'').replace('.mp3','').replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase()) || `Cue ${c.cue}`;
+    return { ...c, name, color: CUE_COLORS[i % CUE_COLORS.length],
+      mood: c.suggested_mood||c.mood||'',
+      snippet: c.transcript_snippet||c.snippet||'',
+      beat: c.narrative_beat||c.beat||'',
+      prompt: c.lyria_prompt||c.prompt||'',
+      s: pt(c.start), e: pt(c.end) };
   });
 }
 
-let STATE={cues:[],shots:[],autoKF:[],totalDur:0};
-let loaded=false,aCue=-1,wfD=null,drag=false,TRANSCRIPT=[],curTab='transcript';
+// ── PIPELINE ───────────────────────────────────────────────────────────────
+function setPipelineStep(step) {
+  const steps = ['upload','analyse','cues','score','mix','export'];
+  const labels = ['UPLOAD','ANALYSE','AI CUES','SCORE','MIX','EXPORT'];
+  const idx = steps.indexOf(step);
+  steps.forEach((s, i) => {
+    const el = $(`p-${s}`);
+    if (!el) return;
+    el.className = 'p-step';
+    if (i < idx) { el.className = 'p-step done'; el.innerHTML = `<span class="p-check">✓</span> ${labels[i]}`; }
+    else if (i === idx) { el.className = 'p-step active'; el.innerHTML = `<span class="p-spinner"></span> ${labels[i]}`; }
+    else { el.textContent = labels[i]; }
+  });
+}
 
-const $=id=>document.getElementById(id);
-const video=$('video-el'),tlBody=$('tl-body'),playhead=$('playhead');
+// ── SETTINGS ───────────────────────────────────────────────────────────────
+let currentProvider = 'openrouter';
+const MODEL_HINTS = {
+  openrouter: 'Use <code style="color:var(--accent)">anthropic/claude-opus-4</code> or any OpenRouter model',
+  anthropic:  'Use <code style="color:var(--accent)">claude-opus-4-6</code> or claude-sonnet-4-6',
+  openai:     'Use <code style="color:var(--accent)">gpt-4o</code> or gpt-4-turbo',
+  ollama:     'Use <code style="color:var(--accent)">llama3</code> or any model you\'ve pulled'
+};
+const MODEL_DEFAULTS = {
+  openrouter: 'anthropic/claude-opus-4',
+  anthropic:  'claude-opus-4-6',
+  openai:     'gpt-4o',
+  ollama:     'llama3'
+};
 
-// File
-$('drop-area').addEventListener('dragover',e=>e.preventDefault());
-$('drop-area').addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)loadV(f);});
-$('file-input').addEventListener('change',()=>{if($('file-input').files[0])loadV($('file-input').files[0]);});
-function loadV(f){
-  video.src=URL.createObjectURL(f);
-  video.style.display='block';
-  $('drop-zone').style.display='none';
-  $('np').style.display='flex';
+function openSettings() {
+  $('settings-overlay').classList.add('open');
+  fetch(`${API}/api/settings`).then(r => r.json()).then(d => {
+    if (d.provider) { currentProvider = d.provider; selectProvider(d.provider, false); }
+    if (d.model) $('s-model').value = d.model;
+    if (d.has_key) $('s-key').placeholder = '••••••••••••••••••••• (saved)';
+    if (d.base_url) $('s-url').value = d.base_url;
+  }).catch(() => {});
+}
+function closeSettings() {
+  $('settings-overlay').classList.remove('open');
+}
+function selectProvider(p, updateModel = true) {
+  currentProvider = p;
+  document.querySelectorAll('.provider-btn').forEach(b => b.classList.toggle('active', b.dataset.p === p));
+  $('model-hint').innerHTML = MODEL_HINTS[p] || '';
+  if (updateModel && !$('s-model').value) $('s-model').value = MODEL_DEFAULTS[p] || '';
+  $('baseurl-row').style.display = (p === 'ollama' || p === 'custom') ? '' : 'none';
+}
+function saveSettings() {
+  const payload = {
+    provider: currentProvider,
+    model: $('s-model').value.trim(),
+    base_url: $('s-url').value.trim()
+  };
+  const key = $('s-key').value.trim();
+  if (key && !key.startsWith('•')) payload.api_key = key;
+  $('s-status').textContent = 'Saving...';
+  fetch(`${API}/api/settings`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(r => r.json()).then(d => {
+      if (d.success) { $('s-status').textContent = '✓ Saved'; setTimeout(() => { $('s-status').textContent = ''; closeSettings(); }, 800); }
+      else $('s-status').textContent = d.error || 'Error';
+    }).catch(() => { $('s-status').textContent = 'Server offline'; });
+}
+$('settings-overlay').addEventListener('click', e => { if (e.target === $('settings-overlay')) closeSettings(); });
+
+// ── GENERATE CUES via LLM ─────────────────────────────────────────────────
+let currentFilename = '';
+function generateCues() {
+  if (!TRANSCRIPT.length) { feedLog('No transcript — run transcription first.'); return; }
+  setPipelineStep('cues');
+  feedLog('Calling LLM to generate cue sheet...');
+  fetch(`${API}/api/generate-cues`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      transcript: TRANSCRIPT,
+      shots: STATE.shots,
+      duration: STATE.totalDur,
+      num_cues: 7,
+      filename: currentFilename
+    })
+  }).then(r => r.json()).then(d => {
+    if (d.error) { feedLog(`LLM error: ${d.error}`); return; }
+    STATE.cues = mapCues(d.cues);
+    feedLog(`✓ Generated ${d.count} cues via AI`);
+    drawAll();
+    renderCueMap();
+    generateSuggestions();
+    setPipelineStep('score');
+    $('gen-score-btn').style.display = '';
+    const btn = $('gen-cues-btn');
+    if (btn) btn.remove();
+  }).catch(e => feedLog(`Error: ${e.message}`));
+}
+
+// ── FEED LOG ───────────────────────────────────────────────────────────────
+function feedLog(msg) {
+  const feed = $('ai-feed');
+  feed.style.display = 'block';
+  const now = new Date();
+  const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+  const line = document.createElement('div');
+  line.className = 'feed-line';
+  line.innerHTML = `<span class="ft">[${ts}]</span>${msg}`;
+  feed.appendChild(line);
+  feed.scrollTop = feed.scrollHeight;
+}
+
+// ── FILE HANDLING ──────────────────────────────────────────────────────────
+$('drop-area').addEventListener('dragover', e => e.preventDefault());
+$('drop-area').addEventListener('drop', e => { e.preventDefault(); const f = e.dataTransfer.files[0]; if(f) loadV(f); });
+$('file-input').addEventListener('change', () => { if ($('file-input').files[0]) loadV($('file-input').files[0]); });
+
+function loadV(f) {
+  // Reset all state for new video
+  TRANSCRIPT = [];
+  STATE.cues = []; STATE.shots = []; STATE.autoKF = []; STATE.duckCurve = []; STATE.scoreFile = ''; STATE.mixedFile = ''; STATE.totalDur = 0;
+  UI.suggestions = []; UI.dismissedIds = new Set();
+  renderSuggestions();   // clear suggestion cards + count immediately
+  currentFilename = '';
+
+  const video = $('video-el');
+  video.src = URL.createObjectURL(f);
+  video.style.display = 'block';
+  $('drop-zone').style.display = 'none';
   video.load();
-  setStatus('Uploading…');
-  const fd=new FormData();
-  fd.append('file',f);
-  fetch('http://localhost:5000/api/upload',{method:'POST',body:fd})
-    .then(r=>r.json())
-    .then(d=>{
-      if(d.error)throw new Error(d.error);
-      setStatus('Analysing…');
-      return fetch('http://localhost:5000/api/analyze-full',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({filename:d.filename})});
+  setPipelineStep('upload');
+  feedLog(`Loading <b>${f.name}</b>...`);
+
+  const fd = new FormData();
+  fd.append('file', f);
+  const safeJson = r => {
+    if (!r.ok) throw new Error(`Server ${r.status}: ${r.statusText}`);
+    return r.json();
+  };
+
+  fetch(`${API}/api/upload`, { method:'POST', body:fd })
+    .then(safeJson)
+    .then(d => {
+      if (d.error) throw new Error(d.error);
+      currentFilename = d.filename;
+      feedLog(`Uploaded ${d.size_mb}MB — analysing...`);
+      setPipelineStep('analyse');
+      $('nav-title').innerHTML = `<b>${f.name.replace(/\.[^.]+$/, '')}</b>`;
+      return fetch(`${API}/api/analyze-full`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({filename:d.filename}) });
     })
-    .then(r=>r.json())
-    .then(d=>{
-      STATE.shots=d.shots||[];
-      STATE.autoKF=d.automation||[];
-      STATE.cues=mapCues(d.cues||[]);
-      if(d.transcript&&d.transcript.length){TRANSCRIPT=d.transcript;if(curTab==='transcript')renderTranscript();}
-      setStatus('Connected',true);
+    .then(safeJson)
+    .then(d => {
+      STATE.shots = d.shots || [];
+      STATE.autoKF = d.automation || [];
+      if (STATE.autoKF.length) STATE.duckCurve = STATE.autoKF.map(([time,volume]) => ({time, volume}));
+      STATE.cues = mapCues(d.cues || []);
+      if (d.transcript && d.transcript.length) TRANSCRIPT = d.transcript;
+      feedLog(`Shots: ${STATE.shots.length} | Cues: ${STATE.cues.length} | KF: ${STATE.autoKF.length}`);
+      // Auto-transcribe if no transcript (needed for duck curve + cue generation)
+      if (!TRANSCRIPT.length) {
+        feedLog('No transcript — starting auto-transcription...');
+        fetch(`${API}/api/transcribe`, {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ filename: currentFilename, language:'en', model:'base' })
+        }).then(r => r.ok ? r.json() : null).then(r => {
+          if (!r || !r.job_id) return;
+          const poll = setInterval(async () => {
+            const st = await fetch(`${API}/api/transcribe/status/${r.job_id}`).then(x => x.json());
+            feedLog(`Transcribing… ${st.progress||0}%`);
+            if (st.status === 'done' || st.status === 'error') {
+              clearInterval(poll);
+              if (st.status === 'done') {
+                // Reload analysis to get transcript, then build duck curve
+                fetch(`${API}/api/analyze-full`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({filename:currentFilename}) })
+                  .then(r => r.json()).then(d2 => {
+                    if (d2.transcript && d2.transcript.length) {
+                      TRANSCRIPT = d2.transcript;
+                      feedLog(`Transcript ready: ${TRANSCRIPT.length} segments`);
+                      if (UI.cmTab === 'transcript') renderTranscript();
+                      // Build automation now that we have transcript
+                      const stem = currentFilename.replace(/\.[^.]+$/, '');
+                      return fetch(`${API}/api/build-automation`, {
+                        method:'POST', headers:{'Content-Type':'application/json'},
+                        body: JSON.stringify({ segments: TRANSCRIPT, duration: STATE.totalDur, stem })
+                      }).then(r => r.json());
+                    }
+                  }).then(a => {
+                    if (a && a.automation) { STATE.autoKF = a.automation; STATE.duckCurve = a.automation.map(([time,volume])=>({time,volume})); drawAll(); drawVoice(); }
+                  }).catch(() => {});
+              }
+            }
+          }, 3000);
+        }).catch(() => {});
+      }
       drawAll();
-      if(curTab==='cues')renderCues();
+      renderCueMap();
+      if (UI.cmTab === 'transcript') renderTranscript();
+      if (STATE.cues.length === 0) {
+        setPipelineStep('cues');
+        // Show generate button in AI panel
+        const wrap = $('ai-suggestions');
+        wrap.innerHTML = `<div style="padding:14px 14px 10px">
+          <div style="font-size:11px;color:var(--text-2);line-height:1.6;margin-bottom:12px">
+            No cue sheet found for this video.<br>Connect an LLM to generate one automatically.
+          </div>
+          <button id="gen-cues-btn" class="btn btn-accent" style="width:100%;justify-content:center" onclick="generateCues()">
+            ✦ Generate Cues with AI
+          </button>
+          <div style="margin-top:8px;font-size:10px;color:var(--text-3)">
+            Need API key? Click ⚙ in the nav.
+          </div>
+        </div>`;
+      } else {
+        setPipelineStep('score');
+        $('gen-score-btn').style.display = '';
+      }
+      // Build automation from transcript if missing (new videos)
+      if (!STATE.autoKF.length && TRANSCRIPT.length && STATE.totalDur > 0) {
+        const stem = currentFilename.replace(/\.[^.]+$/, '');
+        return fetch(`${API}/api/build-automation`, {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ segments: TRANSCRIPT, duration: STATE.totalDur, stem })
+        }).then(r => r.ok ? r.json() : null).catch(() => null);
+      }
+      return null;
     })
-    .catch(e=>{setStatus('Offline');console.error('Analysis failed:',e);});
-}
-function setStatus(msg,keyOk){
-  $('srv-status').textContent=msg;
-  if(keyOk!==undefined)$('srv-dot').classList.toggle('on',keyOk);
-}
-video.addEventListener('loadedmetadata',()=>{STATE.totalDur=video.duration;$('t-tot').textContent=fmt(STATE.totalDur);loaded=true;resize();extractWf();});
-
-function resize(){const W=tlBody.clientWidth,H=tlBody.clientHeight;['region-cv','wave-cv','auto-cv','interact-cv'].forEach(id=>{const c=$(id);c.width=W;c.height=H;});drawAll();}
-window.addEventListener('resize',resize);
-function drawAll(){drawR();drawW();drawA();}
-
-function drawR(){
-  const ctx=$('region-cv').getContext('2d'),W=ctx.canvas.width,H=ctx.canvas.height;ctx.clearRect(0,0,W,H);
-  if(!STATE.totalDur)return;
-  STATE.cues.forEach((c,i)=>{const x1=(c.s/STATE.totalDur)*W,x2=(c.e/STATE.totalDur)*W;ctx.globalAlpha=i===aCue?0.12:0.05;ctx.fillStyle=c.color;ctx.fillRect(x1,0,x2-x1,H);ctx.globalAlpha=i===aCue?0.7:0.25;ctx.fillRect(x1,0,x2-x1,2);ctx.globalAlpha=0.45;ctx.font='500 9px Inter';if(x2-x1>35)ctx.fillText(c.name,x1+5,13);});ctx.globalAlpha=1;
-}
-async function extractWf(){
-  try{const ac=new AudioContext(),buf=await(await fetch(video.src)).arrayBuffer(),dec=await ac.decodeAudioData(buf),raw=dec.getChannelData(0),W=$('wave-cv').width,step=Math.floor(raw.length/W);wfD=new Float32Array(W);for(let i=0;i<W;i++){let mx=0;for(let j=0;j<step;j++){const v=Math.abs(raw[i*step+j]||0);if(v>mx)mx=v;}wfD[i]=mx;}drawW();}
-  catch(e){wfD=new Float32Array($('wave-cv').width).fill(0).map((_,i)=>0.15+0.15*Math.sin(i*0.06));drawW();}
-}
-function drawW(){
-  if(!wfD)return;const ctx=$('wave-cv').getContext('2d'),W=ctx.canvas.width,H=ctx.canvas.height;ctx.clearRect(0,0,W,H);
-  for(let x=0;x<W;x++){const v=wfD[x]||0,bh=Math.max(1,v*H*0.55),y=(H-bh)/2,t=(x/W)*STATE.totalDur,ci=STATE.cues.findIndex(c=>t>=c.s&&t<c.e);ctx.fillStyle=ci>=0?STATE.cues[ci].color:'#ddd';ctx.globalAlpha=0.3;ctx.fillRect(x,y,1,bh);}ctx.globalAlpha=1;
-}
-function drawA(){
-  const ctx=$('auto-cv').getContext('2d'),W=ctx.canvas.width,H=ctx.canvas.height;ctx.clearRect(0,0,W,H);
-  if(!STATE.autoKF||STATE.autoKF.length<2||!STATE.totalDur)return;
-  const tX=t=>(t/STATE.totalDur)*W,vY=v=>H-(v*H*0.82)-H*0.06;
-  // Fill
-  ctx.beginPath();ctx.moveTo(0,H);STATE.autoKF.forEach(([t,v])=>ctx.lineTo(tX(t),vY(v)));ctx.lineTo(W,H);ctx.closePath();
-  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(94,106,210,0.12)');g.addColorStop(1,'rgba(94,106,210,0.01)');ctx.fillStyle=g;ctx.fill();
-  // Line
-  ctx.beginPath();STATE.autoKF.forEach(([t,v],i)=>{i===0?ctx.moveTo(tX(t),vY(v)):ctx.lineTo(tX(t),vY(v));});ctx.strokeStyle='rgba(94,106,210,0.5)';ctx.lineWidth=1.5;ctx.stroke();
-  // Drops & peaks
-  STATE.autoKF.forEach(([t,v])=>{if(v===0||v>=0.6){const x=tX(t),y=vY(v);ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle=v===0?'var(--drop)':'var(--peak)';ctx.fill();}});
-  // Shots
-  STATE.shots.forEach(t=>{const x=tX(t);ctx.strokeStyle='rgba(0,0,0,0.06)';ctx.lineWidth=1;ctx.setLineDash([1,3]);ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();ctx.setLineDash([]);});
-  // Grid
-  [.25,.5,.75].forEach(v=>{const y=vY(v);ctx.strokeStyle='rgba(0,0,0,0.04)';ctx.setLineDash([2,4]);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();ctx.setLineDash([]);});
-  // Cursor
-  if(loaded){const cx=tX(video.currentTime),cv=volAt(video.currentTime),cy=vY(cv);ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fillStyle='var(--accent)';ctx.fill();ctx.font='500 9px "JetBrains Mono"';ctx.fillStyle='var(--text-2)';ctx.fillText(`${Math.round(cv*100)}%`,cx+7,cy-3);}
+    .then(autoResult => {
+      if (autoResult && autoResult.automation) {
+        STATE.autoKF = autoResult.automation;
+        STATE.duckCurve = autoResult.automation.map(([time,volume]) => ({time, volume}));
+        feedLog(`Voice duck curve: ${autoResult.keyframes} keyframes generated`);
+        drawAll();
+        generateSuggestions();
+      }
+      // Load per-video duck curve for voice lane (for videos with existing automation)
+      const stem = currentFilename.replace(/\.[^.]+$/, '');
+      return fetch(`${API}/api/load/${stem}/automation.json`).then(r => r.ok ? r.json() : null).catch(() => null);
+    })
+    .then(duck => {
+      if (duck && Array.isArray(duck)) {
+        // automation JSON is [[t,v],...] — convert to curve format for voice lane
+        STATE.duckCurve = duck.map(([time, volume]) => ({time, volume}));
+        drawVoice();
+      } else if (duck && duck.curve) {
+        STATE.duckCurve = duck.curve;
+        drawVoice();
+      }
+      generateSuggestions();
+      feedLog(`Generating suggestions...`);
+    })
+    .catch(e => { feedLog(`Error: ${e.message}`); setSrvStatus(false, 'Error'); });
 }
 
-// Playback
-function togglePlay(){if(!loaded)return;if(video.paused){video.play();$('play-btn').innerHTML='&#10074;&#10074;';}else{video.pause();$('play-btn').innerHTML='&#9654;';}}
-function skipBy(s){if(loaded)video.currentTime=Math.max(0,Math.min(STATE.totalDur,video.currentTime+s));}
-video.addEventListener('ended',()=>$('play-btn').innerHTML='&#9654;');
-video.addEventListener('timeupdate',()=>{
-  if(!loaded)return;const t=video.currentTime;
-  $('t-cur').textContent=fmt(t);
-  $('vol-label').textContent=STATE.autoKF.length?`Vol: ${Math.round(volAt(t)*100)}%`:'Vol: —';
-  playhead.style.left=((t/STATE.totalDur)*tlBody.clientWidth)+'px';
-  const ci=STATE.cues.findIndex(c=>t>=c.s&&t<c.e);
-  if(ci!==aCue){aCue=ci;drawR();if(ci>=0){$('np-dot').style.background=STATE.cues[ci].color;$('np-text').textContent=`${STATE.cues[ci].cue}. ${STATE.cues[ci].name}`;}}
-  drawA();
-  document.querySelectorAll('.tr-seg').forEach(el=>{const s=+el.dataset.start,e=+el.dataset.end,a=t>=s&&t<e;el.classList.toggle('active',a);if(a)el.scrollIntoView({block:'nearest',behavior:'smooth'});});
+// ── VIDEO EVENTS ───────────────────────────────────────────────────────────
+const video = $('video-el');
+video.addEventListener('loadedmetadata', () => {
+  STATE.totalDur = video.duration;
+  $('t-tot').textContent = fmt(STATE.totalDur);
+  UI.loaded = true;
+  resize();
+  extractWf();
+  extractFrames();
 });
+video.addEventListener('ended', () => {
+  $('play-btn').innerHTML = '▶';
+  $('playhead').classList.remove('playing');
+});
+video.addEventListener('timeupdate', onTimeUpdate);
 
-// Timeline scrub
-$('interact-cv').addEventListener('mousedown',e=>{if(!loaded)return;drag=true;seekTo(e);});
-document.addEventListener('mousemove',e=>{if(drag&&loaded)seekTo(e);});
-document.addEventListener('mouseup',()=>drag=false);
-function seekTo(e){const r=tlBody.getBoundingClientRect();video.currentTime=Math.max(0,Math.min(STATE.totalDur,((e.clientX-r.left)/r.width)*STATE.totalDur));}
-$('interact-cv').addEventListener('click',e=>{if(!loaded)return;const r=tlBody.getBoundingClientRect(),t=((e.clientX-r.left)/r.width)*STATE.totalDur,ci=STATE.cues.findIndex(c=>t>=c.s&&t<c.e);if(ci>=0){switchTab('cues');openCue(ci);}});
+function onTimeUpdate() {
+  if (!UI.loaded) return;
+  const t = video.currentTime;
+  $('t-cur').textContent = fmt(t);
+  const v = STATE.autoKF.length ? `${Math.round(volAt(t)*100)}%` : '—';
+  $('vol-label').textContent = v;
+  $('playhead').style.left = ((t / STATE.totalDur) * $('lanes-wrap').clientWidth) + 'px';
 
-// Sidebar tabs
-function switchTab(tab){
-  curTab=tab;
-  document.querySelectorAll('.sb-tab').forEach(t=>t.classList.toggle('active',t.textContent.toLowerCase().includes(tab.substring(0,3))));
-  if(tab==='transcript')renderTranscript();
-  else renderCues();
-}
-function renderTranscript(){
-  $('sb-content').innerHTML=TRANSCRIPT.map(s=>`<div class="tr-seg" data-start="${s.start}" data-end="${s.end}" onclick="if(loaded)video.currentTime=${s.start}"><div class="tr-time">${s.start_fmt}</div><div class="tr-text">${s.text}</div></div>`).join('')||'<div style="padding:16px;font-size:12px;color:var(--text-3)">No transcript — drop a video to load.</div>';
-}
-function renderCues(){
-  if(!STATE.cues.length){$('sb-content').innerHTML='<div style="padding:16px;font-size:12px;color:var(--text-3)">No cues yet. Drop a video to analyse.</div>';return;}
-  $('sb-content').innerHTML=STATE.cues.map((c,i)=>`<div style="padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.1s" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background=''" onclick="openCue(${i});if(loaded)video.currentTime=${c.s}"><div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:2px;background:${c.color}"></div><span style="font-size:12px;font-weight:500">${c.name}</span><span style="font-size:10px;color:var(--text-3);margin-left:auto;font-family:'JetBrains Mono',monospace">${c.start}→${c.end}</span></div><div style="font-size:11px;color:var(--text-3);margin-top:3px">${c.mood}</div></div>`).join('');
-}
-function openCue(i){
-  const c=STATE.cues[i];
-  $('sb-content').innerHTML=`<div class="cue-detail">
-    <div style="display:flex;gap:8px;align-items:center"><div class="sb-badge" style="background:${c.color}15;color:${c.color};border:1px solid ${c.color}30">${c.cue}</div><div><div class="sb-title">${c.name}</div><div class="sb-time">${c.start} → ${c.end}</div></div></div>
-    <span class="pill">${c.mood}</span>
-    <div><div class="label">Script</div><div class="text-sm">"${c.snippet}"</div></div>
-    <div><div class="label">Director's Note</div><div class="text-em">${c.beat}</div></div>
-    <div class="prompt-box"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><div class="label" style="margin:0">Prompt</div><button class="copy-btn" onclick="navigator.clipboard.writeText(this.closest('.prompt-box').querySelector('textarea').value);this.textContent='Copied';setTimeout(()=>this.textContent='Copy',1500)">Copy</button></div><textarea>${c.prompt}</textarea></div>
-    <button class="btn" style="width:100%" onclick="switchTab('cues')">Back to cues</button>
-  </div>`;
-}
+  // Active cue
+  const ci = STATE.cues.findIndex(c => t >= c.s && t < c.e);
+  if (ci !== UI.activeCue) {
+    UI.activeCue = ci;
+    drawRuler(); drawVolume();
+    updateCueOverlay(ci);
+    updateCuemapHighlight(ci);
+  }
+  drawVolumeCursor(t);
+  updateContextCard(t, ci);
 
-function exportJSON(){
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({cues:STATE.cues,automation:STATE.autoKF,shots:STATE.shots},null,2)]));a.download='score_data.json';a.click();
+  // Transcript
+  document.querySelectorAll('.tr-seg').forEach(el => {
+    const active = t >= +el.dataset.s && t < +el.dataset.e;
+    el.classList.toggle('active', active);
+    if (active) el.scrollIntoView({ block:'nearest', behavior:'smooth' });
+  });
 }
 
-// Server check
-fetch('http://localhost:5000/api/status').then(r=>r.json()).then(d=>{$('srv-dot').classList.toggle('on',d.key_loaded);$('srv-status').textContent=d.key_loaded?'Connected':'No API key';}).catch(()=>{$('srv-status').textContent='Offline';});
+// ── PLAYBACK ───────────────────────────────────────────────────────────────
+function togglePlay() {
+  if (!UI.loaded) return;
+  if (video.paused) {
+    video.play();
+    $('play-btn').innerHTML = '⏸';
+    $('playhead').classList.add('playing');
+  } else {
+    video.pause();
+    $('play-btn').innerHTML = '▶';
+    $('playhead').classList.remove('playing');
+  }
+}
+function skipBy(s) {
+  if (UI.loaded) video.currentTime = Math.max(0, Math.min(STATE.totalDur, video.currentTime + s));
+}
 
-// Init
-(function(){resize();wfD=new Float32Array($('wave-cv').width).fill(0).map((_,i)=>0.15+0.13*Math.sin(i*0.06));drawAll();renderTranscript();})();
+// ── TIMELINE SCRUB ─────────────────────────────────────────────────────────
+$('interact-cv').addEventListener('mousedown', e => { if (!UI.loaded) return; UI.drag = true; seekTo(e); });
+document.addEventListener('mousemove', e => { if (UI.drag && UI.loaded) seekTo(e); });
+document.addEventListener('mouseup', () => UI.drag = false);
+function seekTo(e) {
+  const r = $('lanes-wrap').getBoundingClientRect();
+  video.currentTime = Math.max(0, Math.min(STATE.totalDur, ((e.clientX - r.left) / r.width) * STATE.totalDur));
+}
+
+// ── CUE OVERLAY ────────────────────────────────────────────────────────────
+function updateCueOverlay(ci) {
+  const overlay = $('cue-overlay');
+  if (ci < 0) { overlay.style.display = 'none'; return; }
+  const c = STATE.cues[ci];
+  $('cue-overlay-bar').style.background = c.color;
+  $('cue-overlay-name').textContent = `${c.cue}. ${c.name}`;
+  $('cue-overlay-mood').textContent = c.mood;
+  overlay.style.display = 'flex';
+}
+
+// ── CONTEXT CARD ───────────────────────────────────────────────────────────
+function updateContextCard(t, ci) {
+  const card = $('ctx-card');
+  if (ci >= 0) {
+    const c = STATE.cues[ci];
+    card.style.borderLeftColor = c.color;
+    $('ctx-cue').textContent = `${c.cue}. ${c.name}`;
+    $('ctx-mood').textContent = c.mood;
+  } else {
+    card.style.borderLeftColor = '';
+    $('ctx-cue').textContent = 'Between cues';
+    $('ctx-mood').textContent = fmt(t);
+  }
+  $('ctx-vol').textContent = STATE.autoKF.length ? `${Math.round(volAt(t)*100)}%` : '—';
+  // Voice energy
+  if (STATE.duckCurve.length) {
+    const frame = STATE.duckCurve.find(f => Math.abs(f.time - Math.floor(t)) <= 1);
+    $('ctx-energy').textContent = frame ? (frame.speaking ? `${Math.round(frame.energy*100)}%` : 'silent') : '—';
+  }
+  // Nearest shot
+  if (STATE.shots.length) {
+    const nearest = STATE.shots.reduce((a, b) => Math.abs(b - t) < Math.abs(a - t) ? b : a);
+    const diff = Math.abs(nearest - t);
+    $('ctx-shot').textContent = diff < 2 ? `@${fmt(nearest)}` : `${Math.round(diff)}s away`;
+  }
+}
+
+// ── CANVAS RESIZE ──────────────────────────────────────────────────────────
+const LANE_H = { 'ruler-cv':24, 'frames-cv':48, 'auto-cv':60, 'wave-cv':60, 'voice-cv':36 };
+function resize() {
+  const W = $('lanes-wrap').clientWidth;
+  Object.entries(LANE_H).forEach(([id, h]) => {
+    const c = $(id); c.width = W; c.height = h;
+  });
+  ['highlight-cv','interact-cv'].forEach(id => {
+    const c = $(id); c.width = W; c.height = 228;
+  });
+  drawAll();
+}
+window.addEventListener('resize', resize);
+
+// ── DRAW ALL ───────────────────────────────────────────────────────────────
+function drawAll() { drawRuler(); drawFrames(); drawVolume(); drawWaveform(); drawVoice(); }
+
+// ── DRAW RULER ─────────────────────────────────────────────────────────────
+function drawRuler() {
+  const cv = $('ruler-cv'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  if (!STATE.totalDur) return;
+  const tX = t => (t / STATE.totalDur) * W;
+
+  // Background
+  ctx.fillStyle = '#0f0f16';
+  ctx.fillRect(0, 0, W, H);
+
+  // Cue region tints on ruler
+  STATE.cues.forEach(c => {
+    ctx.globalAlpha = 0.18;
+    ctx.fillStyle = c.color;
+    ctx.fillRect(tX(c.s), 0, tX(c.e) - tX(c.s), H);
+  });
+  ctx.globalAlpha = 1;
+
+  // Time ticks
+  const step = STATE.totalDur <= 120 ? 10 : STATE.totalDur <= 600 ? 30 : 60;
+  ctx.fillStyle = '#5c5a6e';
+  ctx.font = '9px "JetBrains Mono", monospace';
+  ctx.textAlign = 'center';
+  for (let t = 0; t <= STATE.totalDur; t += step) {
+    const x = tX(t);
+    const major = (t % (step * 3)) === 0 || step >= 60;
+    ctx.globalAlpha = major ? 0.5 : 0.25;
+    ctx.fillRect(x, H - (major ? 6 : 4), 1, major ? 6 : 4);
+    if (major) {
+      ctx.globalAlpha = 0.6;
+      ctx.fillText(fmt(t), x, H - 9);
+    }
+  }
+  ctx.globalAlpha = 1;
+
+  // Event markers (triangles)
+  const markers = buildMarkers();
+  markers.forEach(m => {
+    const x = tX(m.t);
+    ctx.fillStyle = MARKER[m.type].color;
+    ctx.globalAlpha = 0.9;
+    ctx.beginPath();
+    ctx.moveTo(x - 5, 0);
+    ctx.lineTo(x + 5, 0);
+    ctx.lineTo(x, 7);
+    ctx.closePath();
+    ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+}
+
+function buildMarkers() {
+  const markers = [];
+  if (!STATE.autoKF.length) return markers;
+  // DROPs (vol = 0)
+  STATE.autoKF.forEach(([t, v]) => {
+    if (v === 0) markers.push({ type: 'DROP', t });
+  });
+  // DEEP DUCK (vol < 0.10)
+  STATE.autoKF.forEach(([t, v]) => {
+    if (v > 0 && v < 0.10) markers.push({ type: 'DUCK', t });
+  });
+  // HOOK = first keyframe of each cue
+  STATE.cues.forEach(c => {
+    const kf = STATE.autoKF.find(([t]) => t >= c.s && t < c.s + 5);
+    if (kf) markers.push({ type: 'HOOK', t: kf[0] });
+  });
+  // HIT POINT = shot changes near cue boundaries
+  STATE.shots.forEach(st => {
+    const nearBoundary = STATE.cues.some(c => Math.abs(st - c.s) < 3 || Math.abs(st - c.e) < 3);
+    if (nearBoundary) markers.push({ type: 'HIT', t: st });
+  });
+  return markers;
+}
+
+// ── DRAW FRAMES ────────────────────────────────────────────────────────────
+function drawFrames() {
+  const cv = $('frames-cv'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0a0a10';
+  ctx.fillRect(0, 0, W, H);
+  if (!STATE.totalDur) return;
+  const tX = t => (t / STATE.totalDur) * W;
+
+  // Cue region tints
+  STATE.cues.forEach(c => {
+    ctx.globalAlpha = 0.07;
+    ctx.fillStyle = c.color;
+    ctx.fillRect(tX(c.s), 0, tX(c.e) - tX(c.s), H);
+  });
+  ctx.globalAlpha = 1;
+
+  if (UI.frameThumbs.length === 0) {
+    // Skeleton placeholder bars
+    const barW = Math.max(4, W / (STATE.totalDur / 10));
+    for (let t = 0; t <= STATE.totalDur; t += 10) {
+      const x = tX(t);
+      ctx.fillStyle = '#1a1a24';
+      ctx.fillRect(x + 1, 1, barW - 2, H - 2);
+    }
+    if (UI.frameExtracting) {
+      ctx.fillStyle = '#c9a84c';
+      ctx.font = '9px "JetBrains Mono"';
+      ctx.textAlign = 'left';
+      ctx.globalAlpha = 0.6;
+      ctx.fillText('Extracting frames...', 8, H / 2 + 3);
+      ctx.globalAlpha = 1;
+    }
+    return;
+  }
+
+  UI.frameThumbs.forEach((f, i) => {
+    const x = Math.round(tX(f.t));
+    const tw = i + 1 < UI.frameThumbs.length ? Math.round(tX(UI.frameThumbs[i+1].t)) - x : W - x;
+    if (tw <= 0) return;
+    // Create temp canvas to draw ImageData
+    const tmp = document.createElement('canvas');
+    tmp.width = f.iw; tmp.height = f.ih;
+    tmp.getContext('2d').putImageData(f.img, 0, 0);
+    ctx.drawImage(tmp, x, 0, tw, H);
+    // Shot change border
+    const isShot = STATE.shots.some(s => Math.abs(s - f.t) < 2);
+    if (isShot) {
+      ctx.strokeStyle = '#c9a84c';
+      ctx.lineWidth = 1.5;
+      ctx.globalAlpha = 0.7;
+      ctx.strokeRect(x + 0.5, 0.5, tw - 1, H - 1);
+      ctx.globalAlpha = 1;
+    }
+  });
+
+  // Active cue highlight border
+  if (UI.activeCue >= 0) {
+    const c = STATE.cues[UI.activeCue];
+    const x1 = tX(c.s), x2 = tX(c.e);
+    ctx.strokeStyle = c.color;
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.4;
+    ctx.strokeRect(x1, 0, x2 - x1, H);
+    ctx.globalAlpha = 1;
+  }
+}
+
+async function extractFrames() {
+  if (!UI.loaded || UI.frameExtracting) return;
+  UI.frameExtracting = true;
+  UI.frameThumbs = [];
+  drawFrames();
+  const TW = 120, TH = 48;
+  const tmp = document.createElement('canvas');
+  tmp.width = TW; tmp.height = TH;
+  const tmpCtx = tmp.getContext('2d');
+  const times = [];
+  const step = Math.max(5, Math.floor(STATE.totalDur / 40));
+  for (let t = 0; t <= STATE.totalDur; t += step) times.push(t);
+  STATE.shots.forEach(s => { if (!times.some(t => Math.abs(t - s) < step / 2)) times.push(s); });
+  times.sort((a, b) => a - b);
+  const savedT = video.currentTime;
+  for (const t of times) {
+    video.currentTime = t;
+    await new Promise(res => { video.onseeked = () => { tmpCtx.drawImage(video, 0, 0, TW, TH); res(); }; });
+    UI.frameThumbs.push({ t, img: tmpCtx.getImageData(0, 0, TW, TH), iw: TW, ih: TH });
+    drawFrames();
+  }
+  video.currentTime = savedT;
+  UI.frameExtracting = false;
+  video.onseeked = null;
+  drawFrames();
+}
+
+// ── DRAW VOLUME (automation) ───────────────────────────────────────────────
+function drawVolume() {
+  const cv = $('auto-cv'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0c0c14';
+  ctx.fillRect(0, 0, W, H);
+  if (!STATE.autoKF.length || !STATE.totalDur) return;
+  const tX = t => (t / STATE.totalDur) * W;
+  const vY = v => H - (v * H * 0.82) - H * 0.06;
+
+  // Cue regions
+  STATE.cues.forEach((c, i) => {
+    ctx.globalAlpha = i === UI.activeCue ? 0.12 : 0.04;
+    ctx.fillStyle = c.color;
+    ctx.fillRect(tX(c.s), 0, tX(c.e) - tX(c.s), H);
+  });
+  ctx.globalAlpha = 1;
+
+  // Grid lines
+  [0.25, 0.5, 0.75].forEach(v => {
+    const y = vY(v);
+    ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([2, 4]);
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    ctx.setLineDash([]);
+  });
+
+  // Shot lines
+  STATE.shots.forEach(t => {
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+    ctx.lineWidth = 1; ctx.setLineDash([1, 3]);
+    ctx.beginPath(); ctx.moveTo(tX(t), 0); ctx.lineTo(tX(t), H); ctx.stroke();
+    ctx.setLineDash([]);
+  });
+
+  // Fill under curve
+  ctx.beginPath(); ctx.moveTo(0, H);
+  STATE.autoKF.forEach(([t, v]) => ctx.lineTo(tX(t), vY(v)));
+  ctx.lineTo(W, H); ctx.closePath();
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, 'rgba(201,168,76,0.15)');
+  g.addColorStop(1, 'rgba(201,168,76,0.01)');
+  ctx.fillStyle = g; ctx.fill();
+
+  // Curve line
+  ctx.beginPath();
+  STATE.autoKF.forEach(([t, v], i) => { i === 0 ? ctx.moveTo(tX(t), vY(v)) : ctx.lineTo(tX(t), vY(v)); });
+  ctx.strokeStyle = 'rgba(201,168,76,0.6)'; ctx.lineWidth = 1.5; ctx.stroke();
+
+  // Keyframe dots
+  STATE.autoKF.forEach(([t, v]) => {
+    if (v === 0 || v >= 0.55 || v < 0.10) {
+      const x = tX(t), y = vY(v);
+      ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI*2);
+      ctx.fillStyle = v === 0 ? '#e5484d' : (v >= 0.55 ? '#5cb868' : '#4da8c4');
+      ctx.fill();
+    }
+  });
+}
+
+let _volCursorRaf = null;
+function drawVolumeCursor(t) {
+  if (_volCursorRaf) return;
+  _volCursorRaf = requestAnimationFrame(() => {
+    _volCursorRaf = null;
+    const cv = $('auto-cv'), ctx = cv.getContext('2d');
+    const W = cv.width, H = cv.height;
+    if (!STATE.autoKF.length || !STATE.totalDur) return;
+    const tX = tt => (tt / STATE.totalDur) * W;
+    const vY = v => H - (v * H * 0.82) - H * 0.06;
+    const cv_t = volAt(t);
+    const cx = tX(t), cy = vY(cv_t);
+    // Redraw only the cursor area by redrawing the whole lane (cheap enough)
+    drawVolume();
+    ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI*2);
+    ctx.fillStyle = '#c9a84c'; ctx.fill();
+    ctx.fillStyle = '#9896a8';
+    ctx.font = '500 9px "JetBrains Mono"';
+    ctx.textAlign = 'left';
+    ctx.fillText(`${Math.round(cv_t*100)}%`, cx + 7, cy - 2);
+  });
+}
+
+// ── DRAW WAVEFORM ──────────────────────────────────────────────────────────
+function drawWaveform() {
+  const cv = $('wave-cv'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0c0c14';
+  ctx.fillRect(0, 0, W, H);
+  if (!UI.wfData) return;
+  for (let x = 0; x < W; x++) {
+    const v = UI.wfData[x] || 0;
+    const bh = Math.max(1, v * H * 0.75);
+    const y = (H - bh) / 2;
+    const t = (x / W) * STATE.totalDur;
+    const ci = STATE.cues.findIndex(c => t >= c.s && t < c.e);
+    ctx.fillStyle = ci >= 0 ? STATE.cues[ci].color : '#3a3a50';
+    ctx.globalAlpha = ci >= 0 ? 0.35 : 0.2;
+    ctx.fillRect(x, y, 1, bh);
+  }
+  ctx.globalAlpha = 1;
+}
+
+async function extractWf() {
+  try {
+    const ac = new AudioContext();
+    const buf = await (await fetch(video.src)).arrayBuffer();
+    const dec = await ac.decodeAudioData(buf);
+    const raw = dec.getChannelData(0);
+    const W = $('wave-cv').width;
+    const step = Math.floor(raw.length / W);
+    UI.wfData = new Float32Array(W);
+    for (let i = 0; i < W; i++) {
+      let mx = 0;
+      for (let j = 0; j < step; j++) { const vv = Math.abs(raw[i*step+j]||0); if(vv>mx) mx=vv; }
+      UI.wfData[i] = mx;
+    }
+  } catch(e) {
+    UI.wfData = new Float32Array($('wave-cv').width).fill(0).map((_,i) => 0.12 + 0.1*Math.sin(i*0.06));
+  }
+  drawWaveform();
+}
+
+// ── DRAW VOICE ─────────────────────────────────────────────────────────────
+function drawVoice() {
+  const cv = $('voice-cv'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#090910';
+  ctx.fillRect(0, 0, W, H);
+  if (!STATE.duckCurve.length || !STATE.totalDur) return;
+  const tX = t => (t / STATE.totalDur) * W;
+
+  ctx.beginPath();
+  ctx.moveTo(0, H);
+  STATE.duckCurve.forEach(f => {
+    const x = tX(f.time);
+    const y = H - (f.energy * H * 0.85);
+    ctx.lineTo(x, y);
+  });
+  ctx.lineTo(W, H);
+  ctx.closePath();
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, 'rgba(77,168,196,0.5)');
+  g.addColorStop(1, 'rgba(77,168,196,0.05)');
+  ctx.fillStyle = g;
+  ctx.fill();
+
+  // Speaking segments brighter
+  STATE.duckCurve.forEach(f => {
+    if (f.speaking) {
+      const x = tX(f.time);
+      const bh = f.energy * H * 0.85;
+      ctx.fillStyle = 'rgba(201,168,76,0.15)';
+      ctx.fillRect(x, H - bh, Math.max(1, tX(f.time+1) - x), bh);
+    }
+  });
+}
+
+// ── HIGHLIGHT CANVAS (card hover) ─────────────────────────────────────────
+function drawHighlight(t) {
+  const cv = $('highlight-cv'), ctx = cv.getContext('2d');
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  if (t < 0 || !STATE.totalDur) return;
+  const x = (t / STATE.totalDur) * cv.width;
+  ctx.strokeStyle = 'rgba(201,168,76,0.5)';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, cv.height); ctx.stroke();
+}
+
+// ── SUGGESTIONS ────────────────────────────────────────────────────────────
+function generateSuggestions() {
+  const list = [];
+  if (!STATE.autoKF.length) return;
+
+  // Director calls: DROPs
+  STATE.autoKF.forEach(([t, v], i) => {
+    if (v === 0 && t > 2) {
+      list.push({
+        id: `drop-${t}`, type:'director', t,
+        body: `Hard mute at ${fmt(t)} — keep silence or soften to 10%?`,
+        actions: [{label:'Keep Mute', val:'keep'}, {label:'Soft Dip 10%', val:'dip10'}]
+      });
+    }
+  });
+
+  // Director calls: genuine peaks — local maxima > 0.80, min 30s apart, max 5 total
+  const peakMinGap = 30;
+  let lastPeakT = -peakMinGap;
+  const kf = STATE.autoKF;
+  for (let i = 1; i < kf.length - 1; i++) {
+    const [t, v] = kf[i];
+    const vPrev = kf[i-1][1], vNext = kf[i+1][1];
+    const isLocalMax = v > vPrev && v >= vNext;
+    if (isLocalMax && v >= 0.82 && t - lastPeakT >= peakMinGap && list.filter(s=>s.id.startsWith('peak')).length < 5) {
+      lastPeakT = t;
+      list.push({
+        id: `peak-${t}`, type:'director', t,
+        body: `Peak ${Math.round(v*100)}% at ${fmt(t)} — keep or pull back to 50%?`,
+        actions: [{label:'Keep Peak', val:'keep'}, {label:'Pull to 50%', val:'pull50'}]
+      });
+    }
+  }
+
+  // Auto: floor below 18% during speech
+  if (STATE.duckCurve.length) {
+    const lowSpeech = STATE.duckCurve.filter(f => f.speaking && volAt(f.time) < 0.15 && f.time > 2);
+    if (lowSpeech.length > 3) {
+      const first = lowSpeech[0];
+      list.push({
+        id: `floor-${first.time}`, type:'auto', t: first.time,
+        body: `Volume floor below 18% during speech (${lowSpeech.length} frames). Music disappears under dialogue.`,
+        actions: [{label:'Raise Floor to 18%', val:'floor18'}, {label:'Ignore', val:'ignore'}]
+      });
+    }
+  }
+
+  // Auto: shot changes without keyframe transitions
+  const orphanShots = STATE.shots.filter(st => {
+    return !STATE.autoKF.some(([t]) => Math.abs(t - st) <= 2);
+  });
+  if (orphanShots.length > 0) {
+    list.push({
+      id: `shots-${orphanShots[0]}`, type:'auto', t: orphanShots[0],
+      body: `${orphanShots.length} shot change${orphanShots.length>1?'s':''} without volume transitions. Swells at cuts add momentum.`,
+      actions: [{label:'Add Swells', val:'swells'}, {label:'Skip', val:'ignore'}]
+    });
+  }
+
+  // Director: long cues (> 90s) — suggest split
+  STATE.cues.forEach(c => {
+    const dur = c.e - c.s;
+    if (dur > 90) {
+      const mid = c.s + Math.round(dur / 2);
+      list.push({
+        id: `split-${c.cue}`, type:'director', t: c.s,
+        body: `Cue ${c.cue} "${c.name}" is ${Math.round(dur)}s — consider splitting at ${fmt(mid)} for mood shift.`,
+        actions: [{label:'Keep Together', val:'keep'}, {label:'Note Split', val:'note'}]
+      });
+    }
+  });
+
+  UI.suggestions = list;
+  renderSuggestions();
+  feedLog(`${list.filter(s=>s.type==='auto').length} auto + ${list.filter(s=>s.type==='director').length} director suggestions`);
+}
+
+function renderSuggestions() {
+  const container = $('ai-suggestions');
+  if (!UI.suggestions.length) {
+    container.innerHTML = '<div class="no-suggestions">No suggestions — your mix looks solid.</div>';
+    $('sug-count').textContent = '0';
+    return;
+  }
+  const active = UI.suggestions.filter(s => !UI.dismissedIds.has(s.id));
+  $('sug-count').textContent = active.length;
+  container.innerHTML = active.map(s => `
+    <div class="suggestion-card ${s.type}" id="sc-${s.id}" data-t="${s.t}">
+      <div class="card-header">
+        <span class="card-type ${s.type}">${s.type === 'auto' ? 'AUTO' : "DIRECTOR'S CALL"}</span>
+        <span class="card-tc" onclick="seekToCard(${s.t})">${fmt(s.t)}</span>
+      </div>
+      <div class="card-body">${s.body}</div>
+      <div class="card-actions">
+        ${s.actions.map((a,i) => `<button class="card-btn ${i===0?'primary':''}" onclick="applySuggestion('${s.id}','${a.val}')">${a.label}</button>`).join('')}
+        <button class="card-btn dismiss" onclick="dismissSuggestion('${s.id}')">Dismiss</button>
+      </div>
+    </div>
+  `).join('');
+
+  // Hover highlights
+  active.forEach(s => {
+    const el = $(`sc-${s.id}`);
+    if (!el) return;
+    el.addEventListener('mouseenter', () => drawHighlight(s.t));
+    el.addEventListener('mouseleave', () => drawHighlight(-1));
+  });
+}
+
+function seekToCard(t) {
+  if (UI.loaded) video.currentTime = t;
+}
+function applySuggestion(id, val) {
+  const s = UI.suggestions.find(s => s.id === id);
+  if (!s) return;
+  if (val === 'dip10') {
+    const kf = STATE.autoKF.find(([t]) => Math.abs(t - s.t) < 1);
+    if (kf) kf[1] = 0.10;
+    drawVolume(); feedLog(`Applied: soft dip 10% at ${fmt(s.t)}`);
+  } else if (val === 'floor18') {
+    STATE.autoKF.forEach(kf => { if (kf[1] < 0.18 && kf[1] > 0) kf[1] = 0.18; });
+    drawVolume(); feedLog('Applied: raised volume floor to 18%');
+  } else if (val === 'pull50') {
+    const kf = STATE.autoKF.find(([t]) => Math.abs(t - s.t) < 1);
+    if (kf) kf[1] = 0.50;
+    drawVolume(); feedLog(`Applied: peak pulled to 50% at ${fmt(s.t)}`);
+  }
+  UI.dismissedIds.add(id);
+  const el = $(`sc-${id}`);
+  if (el) { el.classList.add('applied'); setTimeout(() => el.remove(), 500); }
+  $('sug-count').textContent = UI.suggestions.filter(s => !UI.dismissedIds.has(s.id)).length;
+}
+function dismissSuggestion(id) {
+  UI.dismissedIds.add(id);
+  const el = $(`sc-${id}`);
+  if (el) {
+    el.style.opacity = '0'; el.style.transform = 'translateX(16px)';
+    setTimeout(() => el.remove(), 250);
+  }
+  $('sug-count').textContent = UI.suggestions.filter(s => !UI.dismissedIds.has(s.id)).length;
+}
+
+// ── CUE MAP ────────────────────────────────────────────────────────────────
+let curCMTab = 'cuemap';
+function switchCMTab(tab) {
+  curCMTab = tab;
+  ['cuemap','director','transcript'].forEach(t => {
+    $(`tab-${t}`).classList.toggle('active', t === tab);
+  });
+  if (tab === 'cuemap') renderCueMap();
+  else if (tab === 'director') renderDirectorView(UI.selectedCue);
+  else renderTranscript();
+}
+
+function renderCueMap() {
+  if (!STATE.cues.length) return;
+  const cont = $('cm-content');
+  cont.innerHTML = STATE.cues.map((c, i) => {
+    const dur = c.e - c.s;
+    const energy = cueEnergy(c);
+    return `
+      <div class="cue-block ${i === UI.activeCue ? 'active-cue' : ''}" id="cb-${i}"
+           onclick="onCueBlockClick(${i})">
+        <div class="cb-bar" style="background:${c.color}"></div>
+        <div class="cb-body">
+          <div class="cb-name">${c.cue}. ${c.name}</div>
+          <div class="cb-time">${c.start} → ${c.end} · ${Math.round(dur)}s</div>
+          <div class="cb-mood">${c.mood}</div>
+          <div class="cb-energy"><div class="cb-energy-fill" style="width:${Math.round(energy*100)}%;background:${c.color}60"></div></div>
+        </div>
+      </div>`;
+  }).join('');
+}
+function cueEnergy(c) {
+  if (!STATE.duckCurve.length) return 0;
+  const entries = STATE.duckCurve.filter(f => f.time >= c.s && f.time <= c.e);
+  if (!entries.length) return 0;
+  return entries.reduce((sum, f) => sum + (f.energy||0), 0) / entries.length;
+}
+function onCueBlockClick(i) {
+  UI.selectedCue = i;
+  if (UI.loaded) video.currentTime = STATE.cues[i].s;
+  switchCMTab('director');
+}
+function updateCuemapHighlight(ci) {
+  document.querySelectorAll('.cue-block').forEach((el, i) => {
+    el.classList.toggle('active-cue', i === ci);
+  });
+}
+
+function renderDirectorView(i) {
+  const cont = $('cm-content');
+  if (i < 0 || i >= STATE.cues.length) {
+    cont.innerHTML = '<div style="padding:16px;font-size:11px;color:var(--text-3)">Click a cue in Cue Map to open.</div>';
+    return;
+  }
+  const c = STATE.cues[i];
+  const cueSugs = UI.suggestions.filter(s => !UI.dismissedIds.has(s.id) && Math.abs(s.t - c.s) < (c.e - c.s));
+  cont.innerHTML = `
+    <div class="dir-view">
+      <div class="dv-back" onclick="switchCMTab('cuemap')">‹ Cue Map</div>
+      <div class="dv-badge">
+        <div class="dv-num" style="background:${c.color}20;color:${c.color};border:1px solid ${c.color}40">${c.cue}</div>
+        <div>
+          <div class="dv-title">${c.name}</div>
+          <div class="dv-time">${c.start} → ${c.end}</div>
+        </div>
+      </div>
+      <span class="mood-pill">${c.mood}</span>
+      ${c.snippet ? `<div><div class="dv-section-label">Script</div><div class="dv-text">"${c.snippet}"</div></div>` : ''}
+      ${c.beat ? `<div><div class="dv-section-label">Director's Note</div><div class="dv-note">${c.beat}</div></div>` : ''}
+      <div class="prompt-box">
+        <div class="prompt-header">
+          <div class="dv-section-label" style="margin:0">Prompt</div>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <textarea id="prompt-ta-${i}">${c.prompt}</textarea>
+      </div>
+      ${cueSugs.length ? `
+        <div>
+          <div class="dv-section-label">Suggestions for this cue</div>
+          ${cueSugs.map(s => `<div style="font-size:10px;color:var(--${s.type==='auto'?'auto-green':'director-amber'});padding:3px 0;border-left:2px solid currentColor;padding-left:6px;margin-bottom:4px">${s.body}</div>`).join('')}
+        </div>` : ''}
+    </div>`;
+}
+function copyPrompt(btn) {
+  const ta = btn.closest('.prompt-box').querySelector('textarea');
+  navigator.clipboard.writeText(ta.value);
+  btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1500);
+}
+
+function renderTranscript() {
+  const cont = $('cm-content');
+  if (!TRANSCRIPT.length) { cont.innerHTML = '<div style="padding:16px;font-size:11px;color:var(--text-3)">No transcript loaded.</div>'; return; }
+  cont.innerHTML = TRANSCRIPT.map(s =>
+    `<div class="tr-seg" data-s="${s.start}" data-e="${s.end}" onclick="if(UI.loaded)video.currentTime=${s.start}">
+       <div class="tr-t">${s.start_fmt}</div><div class="tr-txt">${s.text}</div>
+     </div>`
+  ).join('');
+}
+
+// ── EXPORT ─────────────────────────────────────────────────────────────────
+function exportJSON() {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify({ cues: STATE.cues, automation: STATE.autoKF, shots: STATE.shots }, null, 2)]));
+  const stem = currentFilename ? currentFilename.replace(/\.[^.]+$/, '') : 'score_data';
+  a.download = `${stem}_score_data.json`; a.click();
+}
+
+// ── GENERATE SCORE MODAL ──────────────────────────────────────────────────
+function openGenerateModal() {
+  if (!STATE.cues.length) { feedLog('No cues — generate or load a cue sheet first.'); return; }
+  $('gen-overlay').style.display = 'flex';
+  renderGenCueList();
+  estimateCost();
+}
+function closeGenerateModal() {
+  $('gen-overlay').style.display = 'none';
+}
+$('gen-overlay').addEventListener('click', e => { if (e.target === $('gen-overlay')) closeGenerateModal(); });
+
+function renderGenCueList() {
+  $('gen-cue-list').innerHTML = STATE.cues.map((c, i) => `
+    <div style="background:var(--bg-elevated);border:1px solid var(--border);border-left:3px solid ${c.color};border-radius:5px;padding:10px 12px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div style="font-size:11px;font-weight:600">${c.cue}. ${c.name}</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-3)">${c.start} → ${c.end}</div>
+      </div>
+      <div style="font-size:10px;color:var(--text-3);font-style:italic;margin-bottom:6px">${c.mood}</div>
+      <textarea id="gen-prompt-${i}" rows="2"
+        style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:6px 8px;color:var(--text-2);font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.6;resize:vertical;outline:none">${c.prompt}</textarea>
+    </div>
+  `).join('');
+}
+
+function estimateCost() {
+  const sections = buildSections();
+  fetch(`${API}/api/el/preview-cost`, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ sections })
+  }).then(r => r.json()).then(d => {
+    $('cost-display').textContent = d.credits_needed ? `${d.credits_needed.toLocaleString()} credits` : 'Unknown';
+    $('balance-display').textContent = d.credits_remaining != null ? `${d.credits_remaining.toLocaleString()} credits` : '—';
+    if (d.can_afford === false) {
+      $('afford-badge').style.cssText = 'background:rgba(229,72,77,0.15);color:#e5484d;font-size:10px;font-weight:600;padding:4px 10px;border-radius:4px';
+      $('afford-badge').textContent = 'Not enough credits';
+      $('gen-go-btn').disabled = true; $('gen-go-btn').style.opacity = '0.5';
+    } else {
+      $('afford-badge').style.cssText = 'background:rgba(92,184,104,0.15);color:#5cb868;font-size:10px;font-weight:600;padding:4px 10px;border-radius:4px';
+      $('afford-badge').textContent = '✓ Sufficient';
+      $('gen-go-btn').disabled = false; $('gen-go-btn').style.opacity = '1';
+    }
+  }).catch(() => { $('cost-display').textContent = 'Could not estimate (server offline?)'; });
+}
+
+function buildSections() {
+  return STATE.cues.map((c, i) => ({
+    start_time_seconds: c.s,
+    end_time_seconds: c.e,
+    prompt: ($(`gen-prompt-${i}`) ? $(`gen-prompt-${i}`).value : c.prompt) || c.prompt
+  }));
+}
+
+function runGenerate() {
+  const sections = buildSections();
+  const output = $('output-name').value.trim() || 'score_full.mp3';
+  $('gen-progress').style.display = 'block';
+  $('gen-result').style.display = 'none';
+  $('gen-go-btn').disabled = true;
+  $('gen-progress-msg').textContent = 'Composing your score… (this takes 1–3 minutes)';
+  $('gen-progress-bar').style.width = '15%';
+
+  let prog = 15;
+  const ticker = setInterval(() => {
+    prog = Math.min(prog + 3, 85);
+    $('gen-progress-bar').style.width = prog + '%';
+  }, 4000);
+
+  fetch(`${API}/api/music/generate`, {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ sections, stem: currentFilename.replace(/\.[^.]+$/, '') })
+  }).then(r => r.json()).then(d => {
+    clearInterval(ticker);
+    $('gen-progress-bar').style.width = '100%';
+    if (d.error) {
+      $('gen-progress-msg').style.color = '#e5484d';
+      $('gen-progress-msg').textContent = `Error: ${d.error}`;
+      $('gen-go-btn').disabled = false;
+      return;
+    }
+    STATE.scoreFile = d.file;
+    STATE.scoreStem = d.stem || currentFilename.replace(/\.[^.]+$/, '');
+    $('gen-progress').style.display = 'none';
+    $('gen-result').style.display = 'block';
+    $('gen-download-link').href = `${API}/api/download/${STATE.scoreStem}/score.mp3`;
+    $('gen-download-link').download = `${STATE.scoreStem}_score.mp3`;
+    $('gen-download-link').textContent = `⬇ Download score (${d.size_mb}MB) · ${d.provider || ''}`;
+    setPipelineStep('mix');
+    feedLog(`✓ Score generated (${d.size_mb}MB) via ${d.provider || 'music engine'}`);
+  }).catch(e => {
+    clearInterval(ticker);
+    $('gen-progress-msg').style.color = '#e5484d';
+    $('gen-progress-msg').textContent = `Error: ${e.message}`;
+    $('gen-go-btn').disabled = false;
+  });
+}
+
+async function mixInComposer() {
+  if (!currentFilename || !STATE.scoreFile) {
+    $('mix-status').textContent = 'No video or score loaded.'; return;
+  }
+  $('mix-status').textContent = 'Mixing… this takes about 30 seconds';
+  try {
+    const r = await fetch(`${API}/api/mix-video`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ video: currentFilename, audio: STATE.scoreFile, automation: STATE.autoKF, master_level: 0.28 })
+    }).then(r => r.json());
+    if (r.error) throw new Error(r.error);
+    STATE.mixedFile = r.file;
+    const mixStem = r.stem || STATE.scoreStem || currentFilename.replace(/\.[^.]+$/,'');
+    $('mix-status').innerHTML = `✓ Mixed · <a href="${API}/api/download/${mixStem}/scored.mp4" download="${mixStem}_scored.mp4" style="color:var(--accent)">⬇ Download ${mixStem}_scored.mp4 (${r.size_mb}MB)</a>`;
+    setPipelineStep('export');
+    feedLog(`✓ Mixed video ready (${r.size_mb}MB)`);
+  } catch(e) {
+    $('mix-status').style.color = 'var(--red)';
+    $('mix-status').textContent = `Mix error: ${e.message}`;
+  }
+}
+
+// ── SERVER STATUS ──────────────────────────────────────────────────────────
+function setSrvStatus(ok, msg) {
+  $('srv-dot').classList.toggle('on', ok);
+  $('srv-status').textContent = msg;
+}
+fetch(`${API}/api/status`).then(r => r.json()).then(d => {
+  setSrvStatus(d.key_loaded, d.key_loaded ? 'Connected' : 'No API key');
+  if (d.credits !== null && d.credits !== undefined) {
+    $('el-credits').innerHTML = `EL: <b>${d.credits.toLocaleString()} credits</b>`;
+  }
+}).catch(() => setSrvStatus(false, 'Offline'));
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+(function init() {
+  resize();
+  // Placeholder waveform
+  const W = $('wave-cv').width;
+  UI.wfData = new Float32Array(W).fill(0).map((_, i) => 0.08 + 0.06 * Math.sin(i * 0.07));
+  drawAll();
+})();
 </script>
 </body>
 </html>
